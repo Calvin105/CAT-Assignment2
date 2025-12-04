@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, Leaf, Eye } from 'lucide-react';
 import HeroBackground from '../components/HeroBackground';
+import CountUp from '../components/CountUp';
 
 const Landing = () => {
     const containerVariants = {
@@ -98,6 +99,66 @@ const Landing = () => {
                             </p>
                         </motion.div>
                     </motion.div>
+                </div>
+            </section>
+
+            {/* Statistics Section */}
+            <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-deep-sky-blue/5"></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Operational Excellence</h2>
+                        <p className="text-slate-400 max-w-2xl mx-auto">
+                            Setting new benchmarks in the renewable energy sector with superior performance and reliability.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
+                        <div className="p-8">
+                            <div className="text-6xl font-bold text-deep-sky-blue mb-4 flex justify-center items-baseline">
+                                <CountUp
+                                    from={0}
+                                    to={99}
+                                    separator=","
+                                    direction="up"
+                                    duration={1.5}
+                                    className="count-up-text"
+                                />
+                                <span className="text-4xl ml-1">%</span>
+                            </div>
+                            <h4 className="text-xl font-semibold text-white mb-2">Machine Availability</h4>
+                            <p className="text-slate-400 text-sm">Industry-leading uptime</p>
+                        </div>
+                        <div className="p-8">
+                            <div className="text-6xl font-bold text-energetic-teal mb-4 flex justify-center items-baseline">
+                                <CountUp
+                                    from={0}
+                                    to={3.4}
+                                    separator=","
+                                    direction="up"
+                                    duration={1.5}
+                                    className="count-up-text"
+                                />
+                                <span className="text-4xl ml-1">MW</span>
+                            </div>
+                            <h4 className="text-xl font-semibold text-white mb-2">Average Capacity</h4>
+                            <p className="text-slate-400 text-sm">Per airborne unit</p>
+                        </div>
+                        <div className="p-8">
+                            <div className="text-6xl font-bold text-white mb-4 flex justify-center items-baseline">
+                                <CountUp
+                                    from={0}
+                                    to={11}
+                                    separator=","
+                                    direction="up"
+                                    duration={1}
+                                    className="count-up-text"
+                                />
+                                <span className="text-4xl ml-1">%</span>
+                            </div>
+                            <h4 className="text-xl font-semibold text-white mb-2">Annual Growth</h4>
+                            <p className="text-slate-400 text-sm">Global market expansion</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

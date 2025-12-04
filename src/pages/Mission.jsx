@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Recycle, Sun } from 'lucide-react';
 
 const Mission = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="bg-white">
             {/* Header */}
-            <section className="bg-slate-50 py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <section className="bg-slate-50 min-h-screen flex items-center justify-center relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-bold text-slate-gray mb-6"
+                        className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 mb-8 tracking-tighter"
                     >
                         Our Mission
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
                         className="text-xl text-slate-500 max-w-3xl mx-auto"
                     >
                         To accelerate the world's transition to sustainable energy by unlocking the untapped power of the sky.

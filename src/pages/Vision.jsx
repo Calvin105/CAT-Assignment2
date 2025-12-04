@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Map, TrendingUp, Cpu } from 'lucide-react';
 
 const Vision = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const roadmapItems = [
         {
             year: '2025',
@@ -26,19 +30,24 @@ const Vision = () => {
 
     return (
         <div className="bg-white">
-            <section className="bg-slate-900 text-white py-24 relative overflow-hidden">
+            <section className="bg-slate-900 text-white min-h-screen flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-bold mb-6"
+                        className="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-sky-200"
                     >
                         A World Powered by Wind
                     </motion.h1>
-                    <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                        className="text-xl text-slate-300 max-w-3xl mx-auto"
+                    >
                         Envisioning a future where clean energy is abundant, accessible, and invisible.
-                    </p>
+                    </motion.p>
                 </div>
             </section>
 
