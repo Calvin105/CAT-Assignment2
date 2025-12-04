@@ -12,7 +12,7 @@ const Team = () => {
             name: 'Dr. Elena Rostova',
             role: 'CEO & Founder',
             bio: 'Former aerospace engineer at NASA with 15 years of experience in aerodynamics.',
-            image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop',
+            image: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=723&auto=format&fit=crop',
         },
         {
             name: 'James Chen',
