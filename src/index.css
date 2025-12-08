@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
-@theme {
-  --color-deep-sky-blue: #00BFFF;
-  --color-cloud-white: #F0F8FF;
-  --color-slate-gray: #708090;
-  --color-energetic-teal: #008080;
-  
-  --font-sans: "Inter", sans-serif;
-}
-
 :root {
-  font-family: var(--font-sans);
-  line-height: 1.6;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
   font-weight: 400;
-  color: var(--color-slate-gray);
-  background-color: var(--color-cloud-white);
+
+  color-scheme: light dark;
+  background-color: #0f172a;
+  /* Slate 900 for a deep, premium dark mode base */
+  color: #f8fafc;
+  /* Slate 50 */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
