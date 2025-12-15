@@ -3,6 +3,8 @@ import CalvinImg from '../assets/CALVIN.jpg';
 import KeYingImg from '../assets/KeYing.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 
+import BaoShengImg from '../assets/BaoSheng.jpg';
+
 interface TeamMember {
     id: number;
     name: string;
@@ -43,7 +45,7 @@ const members: TeamMember[] = [
         role: "Frontend Developer",
         bio: "React enthusiast who loves bringing designs to life with smooth animations.",
         achievements: ["React Core Contributor", "Performance Expert"],
-        image: null
+        image: BaoShengImg
     }
 ];
 
