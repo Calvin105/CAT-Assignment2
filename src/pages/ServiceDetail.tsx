@@ -117,7 +117,10 @@ const ServiceDetail = () => {
   }
 
   return (
-    <div className="flex-grow pt-16 min-h-screen" style={{ backgroundColor: '#EEE3C3' }}>
+    <div
+      className="flex-grow pt-16 min-h-screen"
+      style={{ backgroundColor: "#EEE3C3" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Button */}
         <motion.button
@@ -151,7 +154,7 @@ const ServiceDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               className="text-white p-8 rounded-2xl hover:scale-105 transition-transform duration-300"
-              style={{ backgroundColor: '#0E5851' }}
+              style={{ backgroundColor: "#0E5851" }}
             >
               <h3 className="text-2xl font-bold mb-3">{detail.title}</h3>
               <p className="text-gray-300 leading-relaxed">

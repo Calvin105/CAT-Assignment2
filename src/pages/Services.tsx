@@ -118,7 +118,10 @@ const Services = () => {
   };
 
   return (
-    <div className="flex-grow pt-16 min-h-screen relative overflow-hidden" style={{ backgroundColor: '#EEE3C3' }}>
+    <div
+      className="flex-grow pt-16 min-h-screen relative overflow-hidden"
+      style={{ backgroundColor: "#EEE3C3" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="mb-8 flex justify-between items-center">
