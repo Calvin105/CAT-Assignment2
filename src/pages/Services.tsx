@@ -175,7 +175,7 @@ const Services = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute top-0 left-0 w-full h-full flex items-center justify-between px-12 pt-24"
+                    className="absolute top-0 left-0 w-full h-full flex items-center justify-between px-12 pt-28"
                   >
                     {/* Image slides from bottom */}
                     {activeService?.image && (
