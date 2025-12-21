@@ -105,7 +105,7 @@ const ServiceDetail = () => {
 
   if (!service) {
     return (
-      <div className="flex-grow pt-16 flex items-center justify-center bg-[#EEE3C3]">
+      <div className="grow pt-16 flex items-center justify-center bg-[#EEE3C3]">
         <div className="text-center">
           <h1 className="text-4xl font-black text-[#1a1a1a] mb-4">
             Service Not Found
@@ -123,7 +123,7 @@ const ServiceDetail = () => {
 
   return (
     <div
-      className="flex-grow pt-24 min-h-screen relative overflow-hidden"
+      className="grow pt-24 min-h-screen relative overflow-hidden"
       style={{ backgroundColor: "#EEE3C3" }}
     >
       {/* Background Decor */}

@@ -4,7 +4,7 @@ const Home = () => {
     const [email, setEmail] = useState('');
 
     return (
-        <div className="flex-grow pt-16">
+        <div className="grow pt-16">
             {/* Hero Section */}
             <div className="relative pt-20 pb-20 sm:pt-32 sm:pb-24 overflow-hidden">
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
@@ -14,7 +14,7 @@ const Home = () => {
                     </div>
                     <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight mb-8">
                         <span className="block text-[#865832] mb-2">Build faster with</span>
-                        <span className="bg-gradient-to-r from-[#865832] via-[#C5A978] to-[#73A6A2] text-transparent bg-clip-text">
+                        <span className="bg-linear-to-r from-[#865832] via-[#C5A978] to-[#73A6A2] text-transparent bg-clip-text">
                             Paw-some Tools
                         </span>
                     </h1>
@@ -109,12 +109,12 @@ const Home = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             className="flex-1 bg-white border border-[#D9C49D] rounded-lg px-4 py-3 text-[#865832] focus:outline-none focus:border-[#865832] focus:ring-1 focus:ring-[#865832] transition-all"
                         />
-                        <button className="bg-gradient-to-r from-[#865832] to-[#A8754D] hover:from-[#A8754D] hover:to-[#865832] text-[#EEE3C3] font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105">
+                        <button className="bg-linear-to-r from-[#865832] to-[#A8754D] hover:from-[#A8754D] hover:to-[#865832] text-[#EEE3C3] font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105">
                             Notify Me
                         </button>
                     </div>
                 </div>
-                <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-[#865832]/20 to-transparent"></div>
+                <div className="absolute bottom-0 w-full h-px bg-linear-to-r from-transparent via-[#865832]/20 to-transparent"></div>
             </div>
         </div>
     );

@@ -118,7 +118,7 @@ const Services = () => {
 
   return (
     <div
-      className="flex-grow pt-16 min-h-screen relative overflow-hidden"
+      className="grow pt-16 min-h-screen relative overflow-hidden"
       style={{ backgroundColor: "#EEE3C3" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -232,9 +232,9 @@ const Services = () => {
                               initial={{ scale: 0.9, opacity: 0, rotate: 5 }}
                               animate={{ scale: 1, opacity: 1, rotate: -2 }}
                               transition={{ delay: 0.1 }}
-                              className="flex-shrink-0 w-full md:w-80 h-48 relative overflow-hidden rounded-lg shadow-2xl border-4 border-white/10"
+                              className="shrink-0 w-full md:w-80 h-48 relative overflow-hidden rounded-lg shadow-2xl border-4 border-white/10"
                             >
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+                              <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent z-10" />
                               <img
                                 src={service.image}
                                 alt={service.name}

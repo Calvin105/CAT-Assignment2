@@ -53,7 +53,7 @@ const HeroSection = () => {
                     Est. 2025
                 </motion.div>
 
-                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-8 leading-tight">
+                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white to-slate-500 mb-8 leading-tight">
                     <KineticText text="MEOW" delay={0} />
                     <KineticText text="IEEE" delay={0.2} />
                 </h1>
@@ -126,7 +126,7 @@ const VisionOrbitalSection = () => {
                 {/* Orbital Animation */}
                 <div className="md:w-1/2 h-[500px] relative flex items-center justify-center">
                     {/* Center Core */}
-                    <div className="absolute w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                    <div className="absolute w-24 h-24 bg-linear-to-br from-indigo-500 to-purple-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
                     <div className="relative w-24 h-24 bg-slate-900 rounded-full border border-indigo-500/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(99,102,241,0.3)]">
                         <Globe2 className="w-10 h-10 text-indigo-400" />
                     </div>
@@ -242,9 +242,9 @@ const ServicesBentoSection = () => {
                         transition={{ delay: i * 0.1 }}
                         whileHover={{ y: -5 }}
                     >
-                        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                        <div className={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                        <div className="relative z-10 flex-grow">
+                        <div className="relative z-10 grow">
                             <div className="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
                                 {service.icon}
                             </div>
@@ -292,14 +292,14 @@ const TeamSection = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                     {team.map((member, i) => (
                         <div key={i} className="group relative">
-                            <div className="relative overflow-hidden rounded-2xl aspect-[3/4] mb-6">
+                            <div className="relative overflow-hidden rounded-2xl aspect-3/4 mb-6">
                                 {/* Grayscale to Color Image */}
                                 <img
                                     src={member.img}
                                     alt={member.name}
                                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+                                <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
                             </div>
 
                             <div className="text-center">

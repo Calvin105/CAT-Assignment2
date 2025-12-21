@@ -182,7 +182,7 @@ const OurTeam = () => {
                         <div
                             key={member.id}
                             onClick={() => setSelectedMember(member)}
-                            className={`absolute rounded-full border-4 border-[#fff] shadow-xl hover:scale-110 hover:shadow-2xl hover:border-[#865032] cursor-pointer transition-all duration-300 z-20 overflow-hidden ${pos.size} group bg-white animate-float`}
+                            className={`absolute rounded-full border-4 border-white shadow-xl hover:scale-110 hover:shadow-2xl hover:border-[#865032] cursor-pointer transition-all duration-300 z-20 overflow-hidden ${pos.size} group bg-white animate-float`}
                             style={{
                                 top: pos.top,
                                 left: pos.left,
@@ -224,7 +224,7 @@ const OurTeam = () => {
                                     alt={selectedMember.name}
                                     className="w-full h-full object-cover object-top"
                                 />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-4">
                                     <div className="text-white font-bold flex items-center gap-2">
                                         <selectedMember.icon className="w-5 h-5" />
                                         <span>{selectedMember.role.split('&')[0].trim()}</span>
@@ -252,7 +252,7 @@ const OurTeam = () => {
                                     <ul className="space-y-2">
                                         {selectedMember.responsibilities.map((resp, idx) => (
                                             <li key={idx} className="flex items-start text-sm text-[#5d4037]">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-[#73A6A2] mr-2 mt-1.5 flex-shrink-0"></span>
+                                                <span className="w-1.5 h-1.5 rounded-full bg-[#73A6A2] mr-2 mt-1.5 shrink-0"></span>
                                                 {resp}
                                             </li>
                                         ))}

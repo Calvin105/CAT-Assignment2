@@ -20,7 +20,7 @@ const CatRain = () => {
     // We'll use inline styles for the randomized animation properties.
 
     return (
-        <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none z-9999 overflow-hidden">
             {cats.map((cat) => (
                 <div
                     key={cat.id}
