@@ -7,8 +7,6 @@ import BaoShengImg from '../assets/BaoSheng.jpeg';
 import CatLogo from '../assets/Meowieeee logo transparent bg.png';
 import CatRain from '../components/CatRain';
 
-import BaoShengImg from '../assets/BaoSheng.jpg';
-
 interface TeamMember {
     id: number;
     name: string;
