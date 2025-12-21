@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logo from '../assets/Meowieeee logo transparent bg.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -15,6 +16,42 @@ const Navbar = () => {
     ];
 
     const isActive = (path: string) => location.pathname === path;
+
+    const handleGetInTouch = () => {
+        setIsOpen(false);
+        
+        if (location.pathname === '/') {
+            // Already on home page, scroll to section with navbar offset
+            const element = document.getElementById('investment');
+            if (element) {
+                const navbarHeight = 64; // h-16 = 64px
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - navbarHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+            // Navigate to home page first
+            navigate('/');
+            // Wait for navigation and DOM to be ready, then scroll
+            setTimeout(() => {
+                const element = document.getElementById('investment');
+                if (element) {
+                    const navbarHeight = 64; // h-16 = 64px
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - navbarHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 300);
+        }
+    };
 
     return (
         <nav className="fixed w-full z-50 bg-[#865832]/90 backdrop-blur-md border-b border-[#EEE3C3]/20">
@@ -34,15 +71,18 @@ const Navbar = () => {
                                     key={link.name}
                                     to={link.path}
                                     className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${isActive(link.path)
-                                        ? 'text-[#EEE3C3] bg-[#0E5851]/40'
+                                        ? 'text-[#865832] bg-[#EEE3C3]'
                                         : 'text-[#D9C49D] hover:text-[#EEE3C3] hover:bg-[#EEE3C3]/10'
                                         }`}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
-                            <button className="bg-[#0E5851] hover:bg-[#73A6A2] text-[#EEE3C3] px-4 py-2 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-[#0E5851]/25 transform hover:scale-105">
-                                Get Started
+                            <button
+                                className="bg-[#EEE3C3] hover:bg-[#C5A978] text-[#865832] cursor-pointer px-4 py-2 rounded-full text-sm font-bold transition-colors duration-300 shadow-md hover:shadow-lg"
+                                onClick={handleGetInTouch}
+                            >
+                                Get In Touch
                             </button>
                         </div>
                     </div>
@@ -50,7 +90,7 @@ const Navbar = () => {
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-slate-300 hover:text-white p-2"
+                            className="text-[#EEE3C3] hover:text-[#C5A978] p-2 rounded-lg hover:bg-[#EEE3C3]/10 transition-colors duration-300"
                         >
                             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                         </button>
@@ -67,7 +107,7 @@ const Navbar = () => {
                                 key={link.name}
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
-                                className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(link.path)
+                                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${isActive(link.path)
                                     ? 'text-[#EEE3C3] bg-[#0E5851]/40'
                                     : 'text-[#D9C49D] hover:text-[#EEE3C3] hover:bg-[#EEE3C3]/10'
                                     }`}
@@ -75,6 +115,12 @@ const Navbar = () => {
                                 {link.name}
                             </Link>
                         ))}
+                        <button 
+                            className="w-full mt-3 bg-[#EEE3C3] hover:bg-[#C5A978] text-[#865832] px-4 py-2 rounded-full text-base font-bold transition-colors duration-300 shadow-md"
+                            onClick={handleGetInTouch}
+                        >
+                            Get In Touch
+                        </button>
                     </div>
                 </div>
             )}
