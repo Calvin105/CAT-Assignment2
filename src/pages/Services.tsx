@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import logo from "../assets/Meowieeee logo transparent bg.png";
 import webDesignImage from "../assets/cyber-security-expert-working-with-technology-neon-lights.jpg";
 import brandingImage from "../assets/3d-rendering-futuristic-technologies.jpg";
@@ -107,8 +108,6 @@ const Services = () => {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const activeService = servicesData.find((s) => s.name === hoveredService);
-
   const getServiceSlug = (serviceName: string) => {
     return serviceName.toLowerCase().replace(/\s+/g, "-");
   };
@@ -124,96 +123,144 @@ const Services = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="mb-8 flex justify-between items-center">
-          <div className="border-2 border-black rounded-full px-8 py-3 inline-block mt-8">
-            <span className="font-bold text-black text-lg">SERVICES</span>
-          </div>
-          <div>
+        <div className="mb-12 flex justify-between items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="border-2 border-black rounded-full px-8 py-3 inline-block mt-8 bg-white/50 backdrop-blur-sm"
+          >
+            <span className="font-black text-black text-xl tracking-wider">SERVICES</span>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
             <img
               src={logo}
               alt="Meowieeee Logo"
               className="w-32 h-32 object-contain"
             />
-          </div>
+          </motion.div>
         </div>
 
         {/* Services List */}
-        <div className="relative">
-          {servicesData.map((service, index) => (
-            <motion.div
-              key={service.name}
-              className="border-t-2 border-black relative cursor-pointer overflow-hidden"
-              onMouseEnter={() => setHoveredService(service.name)}
-              onMouseLeave={() => setHoveredService(null)}
-              onClick={() => handleServiceClick(service.name)}
-              initial={false}
-              animate={{
-                backgroundColor:
-                  hoveredService === service.name ? "#0E5851" : "#EEE3C3",
-                height: hoveredService === service.name ? "300px" : "auto",
-              }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-            >
-              <div className="py-8 relative z-10">
-                <motion.h2
-                  className="text-4xl md:text-6xl font-bold transition-colors duration-300"
-                  animate={{
-                    color:
-                      hoveredService === service.name ? "#FFFFFF" : "#000000",
-                    x: hoveredService === service.name ? 50 : 0,
-                  }}
-                  transition={{ duration: 0.4 }}
+        <div className="relative flex flex-col gap-4">
+          <motion.div layout className="flex flex-col gap-4">
+            {servicesData.map((service) => (
+              <motion.div
+                layout
+                key={service.name}
+                className="relative cursor-pointer overflow-hidden rounded-xl border border-black/10 group bg-[#EEE3C3]/50"
+                onMouseEnter={() => setHoveredService(service.name)}
+                onMouseLeave={() => setHoveredService(null)}
+                onClick={() => handleServiceClick(service.name)}
+                animate={{
+                  backgroundColor:
+                    hoveredService === service.name ? "#0E5851" : "rgba(238, 227, 195, 0.5)",
+                }}
+                transition={{ duration: 0.3 }}
+                style={{ willChange: "transform, height, background-color" }}
+              >
+                <motion.div
+                  layout="position"
+                  className="py-10 px-8 sm:px-12 relative z-10 w-full"
                 >
-                  {service.name}
-                </motion.h2>
-              </div>
+                  <div className="flex items-center justify-between w-full relative z-20">
+                    <motion.h2
+                      layout="position"
+                      className="text-4xl md:text-6xl font-black tracking-tight"
+                      animate={{
+                        color: hoveredService === service.name ? "#FFFFFF" : "#1a1a1a",
+                      }}
+                    >
+                      {service.name}
+                    </motion.h2>
 
-              {/* Expanded Content */}
-              <AnimatePresence>
+                    <motion.div
+                      layout="position"
+                      animate={{
+                        opacity: hoveredService === service.name ? 1 : 0,
+                      }}
+                      className="hidden sm:block"
+                    >
+                      <div className="flex items-center gap-2 text-white/90 text-sm font-bold uppercase tracking-widest border border-white/30 rounded-full px-4 py-2 hover:bg-white/10 transition-colors">
+                        Explore <ArrowUpRight className="w-4 h-4" />
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Expanded Content */}
+                  <AnimatePresence mode="popLayout">
+                    {hoveredService === service.name && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pt-8 flex flex-col md:flex-row items-center gap-12">
+                          {/* Tagline */}
+                          {service.tagline && (
+                            <div className="flex-1">
+                              <motion.p
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.1 }}
+                                className="text-3xl font-medium text-white/90 leading-tight italic"
+                              >
+                                "{service.tagline}"
+                              </motion.p>
+                              <motion.div
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="mt-6 flex flex-wrap gap-3"
+                              >
+                                {service.details.slice(0, 3).map((detail, idx) => (
+                                  <span key={idx} className="inline-block px-3 py-1 bg-white/10 rounded-md text-white/80 text-sm">
+                                    {detail.title}
+                                  </span>
+                                ))}
+                              </motion.div>
+                            </div>
+                          )}
+
+                          {/* Image Preview */}
+                          {service.image && (
+                            <motion.div
+                              initial={{ scale: 0.9, opacity: 0, rotate: 5 }}
+                              animate={{ scale: 1, opacity: 1, rotate: -2 }}
+                              transition={{ delay: 0.1 }}
+                              className="flex-shrink-0 w-full md:w-80 h-48 relative overflow-hidden rounded-lg shadow-2xl border-4 border-white/10"
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+                              <img
+                                src={service.image}
+                                alt={service.name}
+                                loading="lazy"
+                                className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 will-change-transform"
+                              />
+                            </motion.div>
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+
+                {/* Optimized Background Decoration */}
                 {hoveredService === service.name && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute top-0 left-0 w-full h-full flex items-center justify-between px-12 pt-28"
-                  >
-                    {/* Image slides from bottom */}
-                    {activeService?.image && (
-                      <motion.div
-                        initial={{ y: 100, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 100, opacity: 0 }}
-                        transition={{ delay: 0.2, duration: 0.4 }}
-                        className="flex-shrink-0"
-                      >
-                        <img
-                          src={activeService.image}
-                          alt={activeService.name}
-                          className="w-72 h-52 object-cover rounded-lg shadow-2xl"
-                        />
-                      </motion.div>
-                    )}
-
-                    {/* Tagline slides from right */}
-                    {activeService?.tagline && (
-                      <motion.div
-                        initial={{ x: 100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: 100, opacity: 0 }}
-                        transition={{ delay: 0.3, duration: 0.4 }}
-                        className="flex-1 text-right max-w-md ml-auto"
-                      >
-                        <p className="text-2xl font-medium text-white leading-relaxed">
-                          {activeService.tagline}
-                        </p>
-                      </motion.div>
-                    )}
-                  </motion.div>
+                    className="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none"
+                  />
                 )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-          <div className="border-t-2 border-black"></div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </div>
