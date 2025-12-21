@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import logo from "../assets/Meowieeee logo transparent bg.png";
 import webDesignImage from "../assets/cyber-security-expert-working-with-technology-neon-lights.jpg";
 import brandingImage from "../assets/3d-rendering-futuristic-technologies.jpg";
 import itSupportImage from "../assets/761.jpg";
@@ -121,27 +120,27 @@ const Services = () => {
       className="grow pt-16 min-h-screen relative overflow-hidden"
       style={{ backgroundColor: "#EEE3C3" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <div className="mb-12 flex justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="border-2 border-black rounded-full px-8 py-3 inline-block mt-8 bg-white/50 backdrop-blur-sm"
-          >
-            <span className="font-black text-black text-xl tracking-wider">SERVICES</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-          >
-            <img
-              src={logo}
-              alt="Meowieeee Logo"
-              className="w-32 h-32 object-contain"
-            />
-          </motion.div>
-        </div>
+      {/* Header / Title */}
+      <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 w-full px-4 pointer-events-none">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-6xl font-extrabold text-[#865832] mb-2 drop-shadow-sm"
+        >
+          Services
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-[#A8754D] font-medium text-lg"
+        >
+          Explore our comprehensive digital solutions
+        </motion.p>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-32">
 
         {/* Services List */}
         <div className="relative flex flex-col gap-4">
