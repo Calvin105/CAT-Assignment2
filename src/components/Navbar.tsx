@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from '../assets/Meowieeee logo transparent bg.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +17,13 @@ const Navbar = () => {
     const isActive = (path: string) => location.pathname === path;
 
     return (
-        <nav className="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
+        <nav className="fixed w-full z-50 bg-[#865832]/90 backdrop-blur-md border-b border-[#EEE3C3]/20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex-shrink-0 flex items-center gap-2">
-                        <Code2 className="h-8 w-8 text-indigo-400" />
-                        <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 text-transparent bg-clip-text">
-                            Nebula
+                        <img src={logo} alt="Meowieeee" className="h-10 w-auto" />
+                        <Link to="/" className="text-2xl font-bold text-[#EEE3C3]">
+                            Meowieeee
                         </Link>
                     </div>
 
@@ -33,14 +34,14 @@ const Navbar = () => {
                                     key={link.name}
                                     to={link.path}
                                     className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${isActive(link.path)
-                                            ? 'text-indigo-400 bg-indigo-500/10'
-                                            : 'text-slate-300 hover:text-indigo-400 hover:bg-white/5'
+                                        ? 'text-[#EEE3C3] bg-[#0E5851]/40'
+                                        : 'text-[#D9C49D] hover:text-[#EEE3C3] hover:bg-[#EEE3C3]/10'
                                         }`}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
-                            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-indigo-500/25 transform hover:scale-105">
+                            <button className="bg-[#0E5851] hover:bg-[#73A6A2] text-[#EEE3C3] px-4 py-2 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-[#0E5851]/25 transform hover:scale-105">
                                 Get Started
                             </button>
                         </div>
@@ -59,7 +60,7 @@ const Navbar = () => {
 
             {/* Mobile menu */}
             {isOpen && (
-                <div className="md:hidden bg-slate-900 border-b border-white/10">
+                <div className="md:hidden bg-[#865832] border-b border-[#EEE3C3]/20">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
                             <Link
@@ -67,8 +68,8 @@ const Navbar = () => {
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
                                 className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(link.path)
-                                        ? 'text-indigo-400 bg-indigo-500/10'
-                                        : 'text-slate-300 hover:text-white hover:bg-white/5'
+                                    ? 'text-[#EEE3C3] bg-[#0E5851]/40'
+                                    : 'text-[#D9C49D] hover:text-[#EEE3C3] hover:bg-[#EEE3C3]/10'
                                     }`}
                             >
                                 {link.name}
