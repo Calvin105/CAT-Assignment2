@@ -54,12 +54,12 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed w-full z-50 bg-[#865832]/90 backdrop-blur-md border-b border-[#EEE3C3]/20">
+        <nav className="fixed w-full z-50 bg-brand-primary backdrop-blur-md border-b border-brand-cream/20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    <div className="shrink-0 flex items-center gap-2">
-                        <img src={logo} alt="Meowieeee" className="h-10 w-auto" />
-                        <Link to="/" className="text-2xl font-bold text-[#EEE3C3]">
+                    <div className="shrink-0 flex items-center">
+                        <img src={logo} alt="Meowieeee" className="h-17 w-auto" />
+                        <Link to="/" className="text-2xl font-bold text-brand-cream">
                             Meowieeee
                         </Link>
                     </div>
@@ -71,15 +71,15 @@ const Navbar = () => {
                                     key={link.name}
                                     to={link.path}
                                     className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${isActive(link.path)
-                                        ? 'text-[#865832] bg-[#EEE3C3]'
-                                        : 'text-[#D9C49D] hover:text-[#EEE3C3] hover:bg-[#EEE3C3]/10'
+                                        ? 'text-brand-primary bg-brand-cream'
+                                        : 'text-brand-quaternary hover:text-brand-cream hover:bg-brand-cream/10'
                                         }`}
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                             <button
-                                className="bg-[#EEE3C3] hover:bg-[#C5A978] text-[#865832] cursor-pointer px-4 py-2 rounded-full text-sm font-bold transition-colors duration-300 shadow-md hover:shadow-lg"
+                                className="bg-brand-cream hover:bg-brand-tertiary text-brand-primary cursor-pointer px-4 py-2 rounded-full text-sm font-bold transition-colors duration-300 shadow-md hover:shadow-lg"
                                 onClick={handleGetInTouch}
                             >
                                 Get In Touch
@@ -90,7 +90,7 @@ const Navbar = () => {
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-[#EEE3C3] hover:text-[#C5A978] p-2 rounded-lg hover:bg-[#EEE3C3]/10 transition-colors duration-300"
+                            className="text-brand-cream hover:text-brand-tertiary p-2 rounded-lg hover:bg-brand-cream/10 transition-colors duration-300"
                         >
                             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                         </button>
@@ -100,7 +100,7 @@ const Navbar = () => {
 
             {/* Mobile menu */}
             {isOpen && (
-                <div className="md:hidden bg-[#865832] border-b border-[#EEE3C3]/20">
+                <div className="md:hidden bg-brand-primary border-b border-brand-cream/20">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
                             <Link
@@ -108,15 +108,15 @@ const Navbar = () => {
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
                                 className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${isActive(link.path)
-                                    ? 'text-[#EEE3C3] bg-[#0E5851]/40'
-                                    : 'text-[#D9C49D] hover:text-[#EEE3C3] hover:bg-[#EEE3C3]/10'
+                                    ? 'text-brand-primary bg-brand-cream'
+                                    : 'text-brand-quaternary hover:text-brand-cream hover:bg-brand-cream/10'
                                     }`}
                             >
                                 {link.name}
                             </Link>
                         ))}
                         <button 
-                            className="w-full mt-3 bg-[#EEE3C3] hover:bg-[#C5A978] text-[#865832] px-4 py-2 rounded-full text-base font-bold transition-colors duration-300 shadow-md"
+                            className="w-full mt-3 bg-brand-cream hover:bg-brand-tertiary text-brand-primary px-4 py-2 rounded-full text-base font-bold transition-colors duration-300 shadow-md"
                             onClick={handleGetInTouch}
                         >
                             Get In Touch
