@@ -5,6 +5,7 @@ const AboutUs = () => {
     return (
         <div className="bg-[#EEE3C3] text-[#865832] selection:bg-[#0E5851]/30 selection:text-[#0E5851] overflow-x-hidden font-sans">
             <HeroSection />
+            <OurApproachSection />
             <AboutMeowieeeeSection />
             <VisionOrbitalSection />
             <MissionSection />
@@ -95,6 +96,39 @@ const FloatingShape = ({ mouseX, mouseY, speed, className }: any) => {
     const x = useTransform(mouseX, [0, 1], [-20 * speed, 20 * speed]);
     const y = useTransform(mouseY, [0, 1], [-20 * speed, 20 * speed]);
     return <motion.div style={{ x, y }} className={`absolute ${className}`} />;
+};
+
+// --- Our Approach Section ---
+const OurApproachSection = () => {
+    const approaches = [
+        { title: "Fast", desc: "when responding" },
+        { title: "Alert", desc: "to risks" },
+        { title: "Flexible", desc: "in solutions" },
+        { title: "Adaptable", desc: "to all environments" }
+    ];
+
+    return (
+        <section className="py-24 px-6 max-w-4xl mx-auto relative z-10">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+            >
+                <h2 className="text-3xl md:text-5xl font-bold mb-8 text-[#865832]">Our <span className="text-[#0E5851]">Approach:</span></h2>
+                <p className="text-xl text-[#865832] mb-8 font-medium">Just like a cat:</p>
+                <div className="space-y-4">
+                    {approaches.map((item, idx) => (
+                        <div key={idx} className="flex items-center text-lg md:text-xl text-[#865832]/80">
+                            <span className="w-2 h-2 rounded-full bg-[#0E5851] mr-4"></span>
+                            <span className="font-bold text-[#865832] mr-2">{item.title}</span>
+                            {item.desc}
+                        </div>
+                    ))}
+                </div>
+            </motion.div>
+        </section>
+    );
 };
 
 // --- About Meowieeee Section ---
