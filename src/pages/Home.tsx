@@ -30,6 +30,11 @@ import itSupportImage from '../assets/761.jpg';
 import trainingImage from '../assets/futurism-perspective-digital-nomads-lifestyle.jpg';
 import sleekCatImage from '../assets/Sleek Cat.png';
 import tabletLoginVideo from '../assets/Tablet login.mp4';
+import reactTechImg from '../assets/react.png';
+import typescriptTechImg from '../assets/typescript.jpg';
+import nodejsTechImg from '../assets/nodejs.jpg';
+import cloudTechImg from '../assets/aws-cloud.png';
+import mlTechImg from '../assets/machine-learning.png';
 import Squares from '../components/Squares';
 
 // Reusable scroll animation component
@@ -163,6 +168,14 @@ const Home = () => {
     { name: 'Koay Ke Ying', role: 'Tech Lead', image: KeYingImg, icon: Cpu },
     { name: 'Lim Pei Xuan', role: 'UI/UX Designer', image: PeiXuanImg, icon: Palette },
     { name: 'Ch\'ng Bao Sheng', role: 'Training Specialist', image: BaoShengImg, icon: BookOpen },
+  ];
+
+  const techStack = [
+    { name: 'React', image: reactTechImg },
+    { name: 'TypeScript', image: typescriptTechImg },
+    { name: 'Node.js', image: nodejsTechImg },
+    { name: 'AI/ML', image: mlTechImg },
+    { name: 'Cloud', image: cloudTechImg },
   ];
 
   return (
@@ -559,7 +572,7 @@ const Home = () => {
           <ScrollReveal>
             <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
               {/* Technology demo video */}
-              <div className="flex justify-center">
+              <div className="flex justify-center h-full">
                 <div className="w-full max-w-md aspect-4/5 scale-120">
                   <video
                     src={tabletLoginVideo}
@@ -574,16 +587,19 @@ const Home = () => {
 
               {/* Tech stack cards */}
               <div className="grid grid-cols-2 gap-6">
-                {['React', 'TypeScript', 'Node.js', 'AI/ML', 'Cloud', 'Automation'].map((tech, idx) => (
+                {techStack.map((tech) => (
                   <motion.div
-                    key={idx}
-                    whileHover={{ scale: 1.05, rotate: 2 }}
-                    className="p-6 rounded-2xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all text-center group"
+                    key={tech.name}
+                    className="p-6 rounded-2xl bg-white text-center group"
                   >
-                    <div className="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-primary/20 transition-colors">
-                      <Code2 className="w-8 h-8 text-brand-primary" />
+                    <div className="w-full mb-4 rounded-xl overflow-hidden flex items-center justify-center">
+                      <img
+                        src={tech.image}
+                        alt={tech.name}
+                        className="w-full h-16 md:h-28 object-contain"
+                      />
                     </div>
-                    <p className="font-bold text-brand-primary">{tech}</p>
+                    <p className="font-bold text-brand-primary">{tech.name}</p>
                   </motion.div>
                 ))}
               </div>
