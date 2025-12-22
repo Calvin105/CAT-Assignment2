@@ -65,7 +65,7 @@ const Home = () => {
       {/* Section 1: Hero Section */}
       <section
         onMouseMove={handleMouseMove}
-        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+        className="relative h-[calc(100dvh-4rem)] flex flex-col items-center justify-center overflow-hidden"
       >
         {/* Animated Squares Background */}
         <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
