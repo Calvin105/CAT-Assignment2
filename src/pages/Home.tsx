@@ -560,10 +560,10 @@ const Home = () => {
             <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
               {/* Technology demo video */}
               <div className="flex justify-center">
-                <div className="w-full max-w-md aspect-4/5 rounded-3xl overflow-hidden shadow-2xl bg-black/80">
+                <div className="w-full max-w-md aspect-4/5 scale-120">
                   <video
                     src={tabletLoginVideo}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full"
                     autoPlay
                     muted
                     loop
