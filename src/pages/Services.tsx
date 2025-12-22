@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import webDesignImage from "../assets/cyber-security-expert-working-with-technology-neon-lights.jpg";
 import brandingImage from "../assets/3d-rendering-futuristic-technologies.jpg";

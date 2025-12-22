@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle, Sparkles, Zap, Shield, Search } from "lucide-react";
 
 interface ServiceDetail {

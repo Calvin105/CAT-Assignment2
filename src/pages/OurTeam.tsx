@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion } from "framer-motion";
 import { Briefcase, PawPrint, Cpu, Palette, BookOpen, Crown, X, Bomb } from 'lucide-react';
 import CalvinImg from '../assets/CALVIN.jpg';
 import KeYingImg from '../assets/KeYing.JPG';
@@ -133,18 +133,18 @@ const OurTeam = () => {
             {/* Header / Title */}
             <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 w-full px-4 pointer-events-none">
                 <motion.h1
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="text-4xl md:text-6xl font-extrabold text-[#865832] mb-2 drop-shadow-sm"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-4xl md:text-6xl font-extrabold text-[#865832] mb-2 drop-shadow-sm"
                 >
                     Our Team
                 </motion.h1>
                 <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-[#A8754D] font-medium text-lg"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="text-[#A8754D] font-medium text-lg"
                 >
                     Click on a bubble to meet the team!
                 </motion.p>
