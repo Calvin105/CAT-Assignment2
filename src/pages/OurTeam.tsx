@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 import { User, Briefcase, Award } from 'lucide-react';
+=======
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Briefcase, PawPrint, Cpu, Palette, BookOpen, Crown, X, Bomb } from 'lucide-react';
+>>>>>>> Stashed changes
 import CalvinImg from '../assets/CALVIN.jpg';
 import KeYingImg from '../assets/KeYing.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
@@ -51,6 +57,7 @@ const members: TeamMember[] = [
 
 const OurTeam = () => {
     return (
+<<<<<<< Updated upstream
         <div className="flex-grow pt-16">
             <div className="relative py-20 bg-slate-900 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -61,6 +68,29 @@ const OurTeam = () => {
                         The brilliant minds behind Nebula. We are a small but mighty team of 4 dedicated to your success.
                     </p>
                 </div>
+=======
+        <div className="min-h-screen bg-[#EEE3C3] relative overflow-hidden pt-16 font-sans">
+            {isExploding && <CatRain />}
+
+            {/* Header / Title */}
+            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 w-full px-4 pointer-events-none">
+                <motion.h1
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-4xl md:text-6xl font-extrabold text-[#865832] mb-2 drop-shadow-sm"
+                >
+                    Our Team
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="text-[#A8754D] font-medium text-lg"
+                >
+                    Click on a bubble to meet the team!
+                </motion.p>
+>>>>>>> Stashed changes
             </div>
 
             <div className="py-16 bg-slate-800/30">

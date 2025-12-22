@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 import { motion, useTransform, useMotionValue } from 'framer-motion';
+=======
+
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+>>>>>>> Stashed changes
 import { MousePointer2, Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
 
 const AboutUs = () => {
@@ -47,7 +52,11 @@ const HeroSection = () => {
                 </motion.div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-8 leading-tight">
+=======
+                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
+>>>>>>> Stashed changes
 =======
                 <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
 >>>>>>> Stashed changes
@@ -148,9 +157,15 @@ const VisionOrbitalSection = () => {
                 <div className="md:w-1/2 h-[500px] relative flex items-center justify-center">
                     {/* Center Core */}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     <div className="absolute w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
                     <div className="relative w-24 h-24 bg-slate-900 rounded-full border border-indigo-500/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(99,102,241,0.3)]">
                         <Globe2 className="w-10 h-10 text-indigo-400" />
+=======
+                    <div className="absolute w-24 h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
+                    <div className="relative w-24 h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
+                        <Globe2 className="w-10 h-10 text-[#0E5851]" />
+>>>>>>> Stashed changes
 =======
                     <div className="absolute w-24 h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
                     <div className="relative w-24 h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
@@ -230,6 +245,7 @@ const MissionSection = () => {
                     <div className="h-1 w-20 bg-[#A8754D] rounded-full mx-auto"></div>
                 </motion.div>
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
                 {services.map((service, i) => (
@@ -330,6 +346,24 @@ const TeamSection = () => {
                             <p className="text-[#865832]/70 leading-relaxed">{mission.desc}</p>
                         </motion.div>
 >>>>>>> Stashed changes
+=======
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {missions.map((mission, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.1 }}
+                            viewport={{ once: true }}
+                            className="bg-white/40 border border-[#865832]/10 p-8 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:-translate-y-2 group shadow-sm hover:shadow-xl"
+                        >
+                            <div className="w-12 h-12 bg-[#EEE3C3] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md border border-[#865832]/20">
+                                {mission.icon}
+                            </div>
+                            <h3 className="text-xl font-bold text-[#865832] mb-3 group-hover:text-[#0E5851] transition-colors">{mission.title}</h3>
+                            <p className="text-[#865832]/70 leading-relaxed">{mission.desc}</p>
+                        </motion.div>
+>>>>>>> Stashed changes
                     ))}
                 </div>
             </div>
@@ -337,9 +371,12 @@ const TeamSection = () => {
     );
 };
 
+<<<<<<< Updated upstream
 
 
 
 
 
+=======
+>>>>>>> Stashed changes
 export default AboutUs;
