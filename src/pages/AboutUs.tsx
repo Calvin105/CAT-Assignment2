@@ -4,7 +4,6 @@ import { MousePointer2, Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, H
 const AboutUs = () => {
     return (
         <div className="bg-[#EEE3C3] text-[#865832] selection:bg-[#0E5851]/30 selection:text-[#0E5851] overflow-x-hidden font-sans">
-            <HeroSection />
             <OurApproachSection />
             <AboutMeowieeeeSection />
             <VisionOrbitalSection />
