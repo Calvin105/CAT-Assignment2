@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, useMotionValue, useInView } from 'motion/react';
-import { 
-  ArrowDown, 
-  Globe2, 
-  Palette, 
+import { motion, useMotionValue, useTransform, useInView, animate } from "framer-motion";
+import {
+  ArrowDown,
+  Globe2,
+  Palette,
   BookOpen,
   Cpu,
   Crown
@@ -77,8 +77,8 @@ const Home = () => {
             hoverFillColor="#0E5851"
           />
         </div>
-        
-        {/* Gradient Overlay */}        
+
+        {/* Gradient Overlay */}
         <div className="relative z-30 text-center px-4 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -122,10 +122,10 @@ const Home = () => {
             className="flex flex-col sm:flex-row justify-center gap-4 relative z-40"
           >
             <button
-                onClick={() => document.getElementById('investment')?.scrollIntoView({ behavior: 'smooth' })}
-                className="relative z-40 cursor-pointer bg-accent-dark text-brand-cream hover:bg-accent-dark/80 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl"
+              onClick={() => document.getElementById('investment')?.scrollIntoView({ behavior: 'smooth' })}
+              className="relative z-40 cursor-pointer bg-accent-dark text-brand-cream hover:bg-accent-dark/80 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl"
             >
-                Explore Investment Opportunity
+              Explore Investment Opportunity
             </button>
 
             <button
