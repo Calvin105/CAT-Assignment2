@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-
-// Fallback images for missing assets
-const webDesignImage = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b";
-const brandingImage = "https://images.unsplash.com/photo-1634942537034-2531766767d1";
-const itSupportImage = "https://images.unsplash.com/photo-1597852074816-d933c7d2b988";
-const trainingImage = "https://images.unsplash.com/photo-1531482615713-2afd69097998";
-// import logo from "../assets/Meowieeee logo transparent bg.png";
+import webDesignImage from "../assets/cyber-security-expert-working-with-technology-neon-lights.jpg";
+import brandingImage from "../assets/3d-rendering-futuristic-technologies.jpg";
+import itSupportImage from "../assets/761.jpg";
+import trainingImage from "../assets/futurism-perspective-digital-nomads-lifestyle.jpg";
 
 interface ServiceDetail {
   title: string;
@@ -18,7 +15,7 @@ interface ServiceDetail {
 interface ServiceCategory {
   name: string;
   details: ServiceDetail[];
-  image?: string; // Kept as optional for compatibility
+  image?: string;
   tagline?: string;
 }
 
