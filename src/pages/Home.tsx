@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, useMotionValue, useTransform, useInView, AnimatePresence } from 'motion/react';
+import { motion, useMotionValue, useInView, AnimatePresence } from 'motion/react';
 import { 
   ArrowDown, 
   Globe2, 
@@ -85,11 +85,16 @@ const AnimatedCounter = ({ value, suffix = '', duration = 2 }: { value: number; 
 
 const Home = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  const getServiceSlug = (name: string) =>
+    name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-');
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
@@ -122,13 +127,6 @@ const Home = () => {
         ))}
       </span>
     );
-  };
-
-  // Floating shape component
-  const FloatingShape = ({ mouseX, mouseY, speed, className }: { mouseX: any; mouseY: any; speed: number; className: string }) => {
-    const x = useTransform(mouseX, [0, 1], [-20 * speed, 20 * speed]);
-    const y = useTransform(mouseY, [0, 1], [-20 * speed, 20 * speed]);
-    return <motion.div style={{ x, y }} className={`absolute ${className}`} />;
   };
 
   // Orbital ring component
@@ -334,7 +332,7 @@ const Home = () => {
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
                   className="group relative overflow-hidden rounded-3xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all duration-500 p-8 flex flex-col cursor-pointer"
-                  onClick={() => navigate('/services')}
+                  onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
                 >
                   <div className={`absolute inset-0 ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                   <div className="relative z-10">
@@ -541,7 +539,7 @@ const Home = () => {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="relative cursor-pointer overflow-hidden rounded-xl border border-brand-quaternary/20 group bg-white"
-                  onClick={() => navigate('/services')}
+                  onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
                 >
                   <div className="py-10 px-8 sm:px-12 relative z-10 flex items-center justify-between">
                     <div className="flex-1">
