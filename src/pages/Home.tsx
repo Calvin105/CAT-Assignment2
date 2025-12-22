@@ -30,12 +30,13 @@ import itSupportImage from '../assets/761.jpg';
 import trainingImage from '../assets/futurism-perspective-digital-nomads-lifestyle.jpg';
 import sleekCatImage from '../assets/Sleek Cat.png';
 import tabletLoginVideo from '../assets/Tablet login.mp4';
-import reactTechImg from '../assets/react.png';
-import typescriptTechImg from '../assets/typescript.jpg';
-import nodejsTechImg from '../assets/nodejs.jpg';
-import cloudTechImg from '../assets/aws-cloud.png';
-import mlTechImg from '../assets/machine-learning.png';
+import reactTechImg from '../assets/tech/react.png';
+import typescriptTechImg from '../assets/tech/typescript.jpg';
+import nodejsTechImg from '../assets/tech/nodejs.jpg';
+import cloudTechImg from '../assets/tech/aws-cloud.png';
+import mlTechImg from '../assets/tech/machine-learning.png';
 import Squares from '../components/Squares';
+import HackathonLoops from '../components/HackathonLoops';
 
 // Reusable scroll animation component
 const ScrollReveal = ({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) => {
@@ -428,6 +429,15 @@ const Home = () => {
                 </motion.div>
               </ScrollReveal>
             ))}
+          </div>
+
+          <div className="mt-16">
+            <ScrollReveal>
+              <p className="text-sm uppercase tracking-[0.3em] text-brand-primary/60 text-center mb-4">
+                Awarded Hackathons & Competitions
+              </p>
+              <HackathonLoops />
+            </ScrollReveal>
           </div>
         </div>
       </section>
