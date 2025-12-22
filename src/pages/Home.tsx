@@ -31,10 +31,11 @@ import trainingImage from '../assets/futurism-perspective-digital-nomads-lifesty
 import sleekCatImage from '../assets/Sleek Cat.png';
 import tabletLoginVideo from '../assets/Tablet login.mp4';
 import reactTechImg from '../assets/tech/react.png';
+import cloudflareImg from '../assets/tech/cloudflare.png';
 import typescriptTechImg from '../assets/tech/typescript.jpg';
-import nodejsTechImg from '../assets/tech/nodejs.jpg';
+import nodejsTechImg from '../assets/tech/nodejs.png';
 import cloudTechImg from '../assets/tech/aws-cloud.png';
-import mlTechImg from '../assets/tech/machine-learning.png';
+import mlTechImg from '../assets/tech/machine-learning-logo.png';
 import Squares from '../components/Squares';
 import HackathonLoops from '../components/HackathonLoops';
 
@@ -175,6 +176,7 @@ const Home = () => {
     { name: 'Node.js', image: nodejsTechImg },
     { name: 'AI/ML', image: mlTechImg },
     { name: 'Cloud', image: cloudTechImg },
+    { name: 'CloudFlare', image: cloudflareImg },
   ];
 
   return (
@@ -570,7 +572,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
-              Built on Modern <span className="text-accent-dark">Technology</span>
+              Built on Modern <span className="text-accent-dark">Web Technologies</span>
             </h2>
             <p className="text-xl text-brand-primary/70 max-w-2xl mx-auto text-center mb-16">
               Scalable infrastructure powered by cutting-edge tools
@@ -598,16 +600,13 @@ const Home = () => {
                 {techStack.map((tech) => (
                   <motion.div
                     key={tech.name}
-                    className="p-6 rounded-2xl bg-white text-center group"
+                    className="p-6 rounded-2xl text-center group"
                   >
-                    <div className="w-full mb-4 rounded-xl overflow-hidden flex items-center justify-center">
-                      <img
-                        src={tech.image}
-                        alt={tech.name}
-                        className="w-full h-16 md:h-28 object-contain"
-                      />
-                    </div>
-                    <p className="font-bold text-brand-primary">{tech.name}</p>
+                    <img
+                      src={tech.image}
+                      alt={tech.name}
+                      className="w-full h-16 md:h-28 object-contain filter sepia"
+                    />
                   </motion.div>
                 ))}
               </div>
