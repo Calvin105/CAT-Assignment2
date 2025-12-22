@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
 import { motion, useTransform, useMotionValue } from 'framer-motion';
-=======
-
-import { motion, useMotionValue, useTransform } from 'framer-motion';
->>>>>>> Stashed changes
 import { MousePointer2, Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
 
 const AboutUs = () => {
@@ -51,15 +46,7 @@ const HeroSection = () => {
                     Est. 2025
                 </motion.div>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-8 leading-tight">
-=======
                 <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
->>>>>>> Stashed changes
-=======
-                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
->>>>>>> Stashed changes
                     <KineticText text="MEOW" delay={0} />
                     <KineticText text="IEEE" delay={0.2} />
                 </h1>
@@ -156,21 +143,9 @@ const VisionOrbitalSection = () => {
                 {/* Orbital Animation (Kept as visual metaphor) */}
                 <div className="md:w-1/2 h-[500px] relative flex items-center justify-center">
                     {/* Center Core */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                    <div className="absolute w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
-                    <div className="relative w-24 h-24 bg-slate-900 rounded-full border border-indigo-500/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(99,102,241,0.3)]">
-                        <Globe2 className="w-10 h-10 text-indigo-400" />
-=======
                     <div className="absolute w-24 h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
                     <div className="relative w-24 h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
                         <Globe2 className="w-10 h-10 text-[#0E5851]" />
->>>>>>> Stashed changes
-=======
-                    <div className="absolute w-24 h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
-                    <div className="relative w-24 h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
-                        <Globe2 className="w-10 h-10 text-[#0E5851]" />
->>>>>>> Stashed changes
                     </div>
 
                     {/* Orbit 1 */}
@@ -245,90 +220,6 @@ const MissionSection = () => {
                     <div className="h-1 w-20 bg-[#A8754D] rounded-full mx-auto"></div>
                 </motion.div>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
-                {services.map((service, i) => (
-                    <motion.div
-                        key={i}
-                        className={`${service.size} group relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all duration-500 p-8 flex flex-col`}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.1 }}
-                        whileHover={{ y: -5 }}
-                    >
-                        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
-                        <div className="relative z-10 flex-grow">
-                            <div className="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                                {service.icon}
-                            </div>
-                            <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-                            <p className="text-slate-400 mb-6 group-hover:text-slate-200 transition-colors">{service.desc}</p>
-
-                            <ul className="space-y-2">
-                                {service.details.map((detail, idx) => (
-                                    <li key={idx} className="flex items-start text-sm text-slate-500 group-hover:text-slate-300 transition-colors">
-                                        <span className="mr-2 text-indigo-400">•</span>
-                                        {detail}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="relative z-10 self-end mt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
-                            <ArrowRight className="text-white" />
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-        </section>
-    );
-};
-
-
-// --- Team Section ---
-const TeamSection = () => {
-    const team = [
-        { name: "Alex Chen", role: "Project Lead", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" },
-        { name: "Sarah Jones", role: "Tech Lead", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" },
-        { name: "Mike Ross", role: "UI/UX Designer", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" },
-        { name: "Emily Watson", role: "Training Specialist", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" },
-    ];
-
-    return (
-        <section className="py-32 px-6 bg-slate-900 border-t border-slate-800">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-20">
-                    <h2 className="text-4xl font-bold mb-4">The <span className="text-purple-400">Architects</span></h2>
-                    <p className="text-slate-400">Humans behind the code.</p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                    {team.map((member, i) => (
-                        <div key={i} className="group relative">
-                            <div className="relative overflow-hidden rounded-2xl aspect-[3/4] mb-6">
-                                {/* Grayscale to Color Image */}
-                                <img
-                                    src={member.img}
-                                    alt={member.name}
-                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
-                            </div>
-
-                            <div className="text-center">
-                                <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">{member.name}</h3>
-                                <p className="text-sm text-slate-500 uppercase tracking-widest mt-1">{member.role}</p>
-
-                                <div className="flex justify-center space-x-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
-                                    <Github className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer" />
-                                    <Linkedin className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer" />
-                                    <Twitter className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer" />
-                                </div>
-                            </div>
-                        </div>
-=======
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {missions.map((mission, idx) => (
                         <motion.div
@@ -345,25 +236,6 @@ const TeamSection = () => {
                             <h3 className="text-xl font-bold text-[#865832] mb-3 group-hover:text-[#0E5851] transition-colors">{mission.title}</h3>
                             <p className="text-[#865832]/70 leading-relaxed">{mission.desc}</p>
                         </motion.div>
->>>>>>> Stashed changes
-=======
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {missions.map((mission, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                            viewport={{ once: true }}
-                            className="bg-white/40 border border-[#865832]/10 p-8 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:-translate-y-2 group shadow-sm hover:shadow-xl"
-                        >
-                            <div className="w-12 h-12 bg-[#EEE3C3] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md border border-[#865832]/20">
-                                {mission.icon}
-                            </div>
-                            <h3 className="text-xl font-bold text-[#865832] mb-3 group-hover:text-[#0E5851] transition-colors">{mission.title}</h3>
-                            <p className="text-[#865832]/70 leading-relaxed">{mission.desc}</p>
-                        </motion.div>
->>>>>>> Stashed changes
                     ))}
                 </div>
             </div>
@@ -371,12 +243,4 @@ const TeamSection = () => {
     );
 };
 
-<<<<<<< Updated upstream
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 export default AboutUs;
