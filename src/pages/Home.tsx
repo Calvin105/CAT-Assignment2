@@ -211,7 +211,7 @@ const Home = () => {
           <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-tight">
             <div className="text-brand-primary">
               <KineticText text="MEOW" delay={0} />
-              <KineticText text="IEEE" delay={0.2} />
+              <KineticText text="IEEEE" delay={0.2} />
             </div>
           </h1>
 
@@ -402,44 +402,68 @@ const Home = () => {
 
       {/* Section 4: Why Us? - Competitive Advantages - Bento Box */}
       <section className="py-24 bg-[#ECE0BF] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
-              Why <span className="text-accent-dark">Meowieeee</span> Wins
-            </h2>
-            <p className="text-xl text-brand-primary/70 max-w-2xl mx-auto text-center mb-16">
-              Trusted by businesses seeking innovative, reliable digital solutions
-            </p>
+            <div className="text-center md:space-y-2">
+              {[
+                "Meowieeee helps your business run faster, safer, and smarter.",
+                "With built-in AI and a design that puts people first,",
+                "we make technology work for you, not the other way around."
+              ].map((line, idx) => (
+                <motion.p
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.3, duration: 0.8, ease: "easeOut" }}
+                  className="text-[1rem] md:text-xl lg:text-2xl xl:text-3xl text-brand-primary/90 leading-tight font-medium"
+                >
+                  {line}
+                </motion.p>
+              ))}
+            </div>
           </ScrollReveal>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Bento Grid - Asymmetric layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
+          {/* Row Layout - Each row has title and description together */}
+          <div className="space-y-8 md:space-y-12">
             {[
-              { title: 'Lightning Fast', desc: 'Optimized for speed with edge computing capabilities', icon: Zap, color: 'text-brand-primary', span: 'md:col-span-1 lg:col-span-2', size: 'large' },
-              { title: 'Secure by Default', desc: 'Enterprise-grade security with automated compliance', icon: Shield, color: 'text-brand-secondary', span: 'md:col-span-1', size: 'medium' },
-              { title: 'AI Integration', desc: 'Built-in AI assistants for instant optimization', icon: Sparkles, color: 'text-accent-light', span: 'md:col-span-1', size: 'medium' },
-              { title: 'Human-Centered', desc: 'UX philosophy that puts users first', icon: Users, color: 'text-brand-tertiary', span: 'md:col-span-2 lg:col-span-1', size: 'large' },
+              { title: 'Human-Centered', desc: 'UX philosophy that puts users first', icon: Users },
+              { title: 'AI Integration', desc: 'Built-in AI assistants for instant optimization', icon: Sparkles },
+              { title: 'Secure by Default', desc: 'Enterprise-grade security with automated compliance', icon: Shield },
+              { title: 'Lightning Fast', desc: 'Optimized for speed with edge computing capabilities', icon: Zap },
             ].map((feature, idx) => {
-              const isLarge = feature.size === 'large';
+              // Decreasing opacity: 100%, 85%, 70%, 55%
+              const opacity = 100 - (idx * 15);
               return (
                 <ScrollReveal key={idx} delay={idx * 0.1}>
-                  <motion.div
-                    whileHover={{ scale: 1.05, rotate: 1 }}
-                    className={`${feature.span} p-6 md:p-8 lg:p-10 rounded-3xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all group shadow-sm relative overflow-hidden`}
-                  >
-                    <div className={`absolute inset-0 ${isLarge ? 'bg-accent-dark' : 'bg-brand-primary'} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                    <div className="relative z-10 flex flex-col h-full">
-                      <motion.div
-                        animate={{ rotate: [0, 10, -10, 0] }}
-                        transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                        className={`${isLarge ? 'w-20 h-20' : 'w-16 h-16'} rounded-lg bg-brand-cream flex items-center justify-center mb-4 md:mb-6 group-hover:bg-brand-primary/20 transition-colors`}
-                      >
-                        <feature.icon className={`${isLarge ? 'w-10 h-10' : 'w-8 h-8'} ${feature.color}`} />
-                      </motion.div>
-                      <h3 className={`${isLarge ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-bold text-brand-primary mb-3 md:mb-4`}>{feature.title}</h3>
-                      <p className={`text-brand-primary/70 ${isLarge ? 'text-base md:text-lg' : 'text-sm md:text-base'} leading-relaxed`}>{feature.desc}</p>
+                  <div className="relative">
+                    <div className="grid grid-cols-3 md:items-center gap-4 md:gap-8 lg:gap-12">
+                      {/* Left Side - Number & Title */}
+                      <div className="flex flex-col items-startmd:gap-2">
+                        <div className="text-sm md:text-lg lg:text-xl text-brand-primary/50 tabular-nums">
+                          {String(idx + 1).padStart(2, '0')}
+                        </div>
+                        <h3 className="mt-[-12px] text-2xl md:text-3xl lg:text-4xl font-bold text-brand-primary">
+                          {feature.title}
+                        </h3>
+                      </div>
+                      {/* Right Side - Description */}
+                      <div className="relative col-span-2">
+                        <p 
+                          className="text-lg md:text-xl lg:text-2xl text-brand-primary leading-relaxed"
+                          style={{ opacity: `${opacity}%` }}
+                        >
+                          {feature.desc}
+                        </p>
+                        {/* Divider on the right side - more visible */}
+                        {idx > 0 && (
+                          <div className="absolute -top-4 md:-top-6 left-0 w-full md:w-1/2 h-px bg-brand-quaternary" />
+                        )}
+                      </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </ScrollReveal>
               );
             })}
