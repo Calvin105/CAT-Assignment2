@@ -267,8 +267,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Section 2: Market Opportunity - Bento Box */}
-      <section className="py-24 bg-[#ECE0BF] relative -mt-40 pt-48 shadow-[inset_0_10px_10px_-10px_rgba(0,0,0,0.5)] z-10">
+      {/* Section 2: The digital divide */}
+      <section className="bg-[#ECE0BF] relative -mt-40 pt-48 shadow-[inset_0_10px_10px_-10px_rgba(0,0,0,0.5)] z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-6 mt-10 text-center">
@@ -331,13 +331,20 @@ const Home = () => {
             </div>
           </ScrollReveal>
         </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-12">
+          <ScrollReveal>
+            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary text-center">
+              Digital Solutions That <span className="text-accent-dark">Works For You</span>
+            </h2>
+          </ScrollReveal>
+        </div>
       </section>
 
       {/* Section 3: Our Solution - Services Overview - Two Column Layout */}
       <section className="relative">
         {/* Fixed Background Image - Stays in place while services scroll */}
         <div className="fixed top-16 right-0 w-1/2 h-[calc(100dvh-4rem)] z-0 pointer-events-none hidden md:flex items-center justify-center">
-          <div className="h-full w-full flex items-center justify-center p-4 lg:p-4 bg-white/50">
+          <div className="h-full w-full flex items-center justify-center p-4 lg:p-4">
             <img 
               src={vibrantAbstractDesign}
               alt="Vibrant Abstract Design"
