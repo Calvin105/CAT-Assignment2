@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, Sparkles, Zap, Shield, Search, ArrowRight, FileText } from "lucide-react";
+import { ArrowLeft, CheckCircle, Sparkles, Zap, Shield, Search, ArrowRight } from "lucide-react";
 
 interface ServiceDetail {
   title: string;
@@ -196,9 +196,6 @@ const ServiceDetail = () => {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -ml-24 -mb-24" />
 
             <div className="relative z-10 max-w-3xl">
-              <div className="mb-6 inline-flex p-3 rounded-2xl bg-white/10 backdrop-blur-sm">
-                <FileText className="w-6 h-6" />
-              </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight">
                 Ready to Get Started?
               </h2>
