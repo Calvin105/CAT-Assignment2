@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Briefcase, PawPrint, Cpu, Palette, BookOpen, Crown, X, Bomb } from 'lucide-react';
 import CalvinImg from '../assets/CALVIN.jpg';
-import KeYingImg from '../assets/KeYing.JPG';
+import KeYingImg from '../assets/KeYing-pic.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
 import CatLogo from '../assets/Meowieeee logo transparent bg.png';
@@ -110,10 +110,10 @@ const fillerBubbles = [
 
 // Fixed positions for team members to ensure they are well spaced
 const teamPositions = [
-    { top: '15%', left: '15%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Calvin (Top Left)
-    { top: '15%', left: '65%', size: 'w-40 h-40 md:w-48 md:h-48' }, // Ke Ying (Top Right)
-    { top: '55%', left: '20%', size: 'w-44 h-44 md:w-52 md:h-52' }, // Pei Xuan (Bottom Left)
-    { top: '55%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Bao Sheng (Bottom Right)
+    { top: '15%', left: '15%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Calvin
+    { top: '15%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Ke Ying
+    { top: '55%', left: '20%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Pei Xuan
+    { top: '55%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Bao Sheng
 ];
 
 const OurTeam = () => {
@@ -129,6 +129,31 @@ const OurTeam = () => {
     return (
         <div className="min-h-screen bg-[#EEE3C3] relative overflow-hidden pt-16 font-sans">
             {isExploding && <CatRain />}
+
+            {/* Mobile Responsiveness Styles */}
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (max-width: 767px) {
+                    .bubbles-container {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        align-items: center !important;
+                        gap: 3rem !important;
+                        height: auto !important;
+                        padding-top: 10rem !important;
+                        padding-bottom: 5rem !important;
+                    }
+                    .team-bubble {
+                        position: relative !important;
+                        top: auto !important;
+                        left: auto !important;
+                        margin: 0 auto !important;
+                    }
+                    .filler-bubble {
+                        display: none !important;
+                    }
+                }
+            `}} />
 
             {/* Header / Title */}
             <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 w-full px-4 pointer-events-none">
@@ -165,14 +190,14 @@ const OurTeam = () => {
 
 
             {/* Bubbles Container */}
-            <div className="relative w-full h-[800px] md:h-screen mx-auto max-w-7xl">
+            <div className="bubbles-container relative w-full h-[800px] md:h-screen mx-auto max-w-7xl md:block">
 
                 {/* Filler Cat Bubbles */}
                 {fillerBubbles.map((bubble, idx) => (
                     <div
                         key={bubble.id}
                         onClick={() => setSelectedQuote(bubble.quote)}
-                        className={`absolute rounded-full flex items-center justify-center overflow-hidden shadow-md animate-float cursor-pointer hover:scale-110 transition-transform duration-300 ${bubble.color} ${bubble.size}`}
+                        className={`filler-bubble absolute rounded-full flex items-center justify-center overflow-hidden shadow-md animate-float cursor-pointer hover:scale-110 transition-transform duration-300 ${bubble.color} ${bubble.size}`}
                         style={{
                             top: bubble.top,
                             left: bubble.left,
@@ -195,7 +220,7 @@ const OurTeam = () => {
                         <div
                             key={member.id}
                             onClick={() => setSelectedMember(member)}
-                            className={`absolute rounded-full border-4 border-white shadow-xl hover:scale-110 hover:shadow-2xl hover:border-[#865032] cursor-pointer transition-all duration-300 z-20 overflow-hidden ${pos.size} group bg-white animate-float`}
+                            className={`team-bubble absolute rounded-full border-4 border-white shadow-xl hover:scale-110 hover:shadow-2xl hover:border-[#865032] cursor-pointer transition-all duration-300 z-20 overflow-hidden ${pos.size} group bg-white animate-float`}
                             style={{
                                 top: pos.top,
                                 left: pos.left,
@@ -206,7 +231,8 @@ const OurTeam = () => {
                             <img
                                 src={member.image || CatLogo}
                                 alt={member.name}
-                                className="w-full h-full object-cover object-top"
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: 'center 10%' }}
                             />
                             {/* Hover Overlay Name */}
                             <div className="absolute inset-0 bg-[#865032]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -219,57 +245,65 @@ const OurTeam = () => {
 
             {/* Modal - Team Member Details */}
             {selectedMember && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-                    <div className="bg-white rounded-3xl max-w-2xl w-full shadow-2xl relative overflow-hidden animate-slide-up">
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto"
+                    onClick={() => setSelectedMember(null)}
+                >
+                    <div
+                        className="bg-white rounded-3xl max-w-2xl w-full shadow-2xl relative overflow-hidden animate-slide-up my-auto max-h-[90vh] flex flex-col"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         {/* Close Button */}
                         <button
                             onClick={() => setSelectedMember(null)}
-                            className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors z-10"
+                            className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors z-30 shadow-lg border border-gray-100"
                         >
-                            <X className="w-6 h-6 text-gray-600" />
+                            <X className="w-5 h-5 md:w-6 md:h-6 text-gray-800" />
                         </button>
 
-                        <div className="flex flex-col md:flex-row">
-                            {/* Left Side: Image */}
-                            <div className="md:w-2/5 h-64 md:h-auto bg-[#C5A978] relative">
-                                <img
-                                    src={selectedMember.image || CatLogo}
-                                    alt={selectedMember.name}
-                                    className="w-full h-full object-cover object-top"
-                                />
-                                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-4">
-                                    <div className="text-white font-bold flex items-center gap-2">
-                                        <selectedMember.icon className="w-5 h-5" />
-                                        <span>{selectedMember.role.split('&')[0].trim()}</span>
+                        <div className="overflow-y-auto custom-scrollbar">
+                            <div className="flex flex-col md:flex-row">
+                                <div className="md:w-2/5 h-60 md:h-auto bg-[#C5A978] relative shrink-0">
+                                    <img
+                                        src={selectedMember.image || CatLogo}
+                                        alt={selectedMember.name}
+                                        className="w-full h-full object-cover"
+                                        style={{ objectPosition: 'center 10%' }}
+                                    />
+                                    <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-4">
+                                        <div className="text-white font-bold flex items-center gap-2">
+                                            {React.createElement(selectedMember.icon, { className: "w-5 h-5" })}
+                                            <span>{selectedMember.role.split('&')[0].trim()}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Right Side: Content */}
-                            <div className="md:w-3/5 p-8">
-                                <h2 className="text-2xl md:text-3xl font-extrabold text-[#865032] mb-2">{selectedMember.name}</h2>
-                                <h3 className="text-[#0E5851] font-bold mb-4 flex items-center">
-                                    <Briefcase className="w-4 h-4 mr-2" />
-                                    {selectedMember.role}
-                                </h3>
+                                {/* Right Side: Content */}
+                                <div className="md:w-3/5 p-6 md:p-8">
+                                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#865032] mb-2">{selectedMember.name}</h2>
+                                    <h3 className="text-[#0E5851] font-bold mb-4 flex items-center">
+                                        <Briefcase className="w-4 h-4 mr-2" />
+                                        {selectedMember.role}
+                                    </h3>
 
-                                <div className="prose prose-sm text-[#A8754D] mb-6">
-                                    <p className="leading-relaxed">{selectedMember.bio}</p>
-                                </div>
+                                    <div className="prose prose-sm text-[#A8754D] mb-6">
+                                        <p className="leading-relaxed">{selectedMember.bio}</p>
+                                    </div>
 
-                                <div className="bg-[#EEE3C3]/30 rounded-xl p-4 border border-[#EEE3C3]">
-                                    <h4 className="text-[#865032] font-bold text-sm uppercase tracking-wider mb-3 flex items-center">
-                                        <PawPrint className="w-4 h-4 mr-2" />
-                                        Responsibilities
-                                    </h4>
-                                    <ul className="space-y-2">
-                                        {selectedMember.responsibilities.map((resp, idx) => (
-                                            <li key={idx} className="flex items-start text-sm text-[#5d4037]">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-[#73A6A2] mr-2 mt-1.5 shrink-0"></span>
-                                                {resp}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <div className="bg-[#EEE3C3]/30 rounded-xl p-4 border border-[#EEE3C3]">
+                                        <h4 className="text-[#865032] font-bold text-sm uppercase tracking-wider mb-3 flex items-center">
+                                            <PawPrint className="w-4 h-4 mr-2" />
+                                            Responsibilities
+                                        </h4>
+                                        <ul className="space-y-2">
+                                            {selectedMember.responsibilities.map((resp, idx) => (
+                                                <li key={idx} className="flex items-start text-sm text-[#5d4037]">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-[#73A6A2] mr-2 mt-1.5 shrink-0"></span>
+                                                    {resp}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>

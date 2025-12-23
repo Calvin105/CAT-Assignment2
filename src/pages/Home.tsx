@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useInView, AnimatePresence } from 'motion/react';
 import {
   Globe2,
-  Palette, 
-  Users, 
-  Zap, 
-  Shield, 
+  Palette,
+  Users,
+  Zap,
+  Shield,
   Sparkles,
   CheckCircle,
   ArrowRight,
@@ -16,7 +16,7 @@ import {
   Crown
 } from 'lucide-react';
 import CalvinImg from '../assets/CALVIN.jpg';
-import KeYingImg from '../assets/KeYing.JPG';
+import KeYingImg from '../assets/KeYing-pic.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
 import sleekCatImage from '../assets/Sleek Cat.png';
@@ -61,13 +61,13 @@ const AnimatedCounter = ({ value, suffix = '', duration = 2 }: { value: number; 
 
   useEffect(() => {
     if (!isInView) return;
-    
+
     let startTime: number;
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
       setCount(Math.floor(progress * value));
-      
+
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
@@ -127,34 +127,34 @@ const Home = () => {
   };
 
   const servicesData = [
-    { 
-      name: 'Web Solutions', 
-      icon: Globe2, 
-      desc: 'Modern websites and digital experiences', 
+    {
+      name: 'Web Solutions',
+      icon: Globe2,
+      desc: 'Modern websites and digital experiences',
       color: 'bg-accent-dark',
       media: uiuxSvg,
       quote: "\"Our website looks outdated and doesn't convert visitors. We're losing potential customers to competitors with better online presence.\""
     },
-    { 
-      name: 'Branding', 
-      icon: Palette, 
-      desc: 'Visual identities that stick', 
+    {
+      name: 'Branding',
+      icon: Palette,
+      desc: 'Visual identities that stick',
       color: 'bg-brand-primary',
       media: marketingSvg,
       quote: "\"We don't have a consistent brand identity. Our marketing materials look unprofessional and don't reflect our company values.\""
     },
-    { 
-      name: 'IT Support', 
-      icon: Cpu, 
-      desc: 'Robust technical solutions', 
+    {
+      name: 'IT Support',
+      icon: Cpu,
+      desc: 'Robust technical solutions',
       color: 'bg-accent-light',
       media: supportSvg,
       quote: "\"Our IT systems keep breaking down, causing downtime and lost productivity. We need reliable technical support.\""
     },
-    { 
-      name: 'Training', 
-      icon: BookOpen, 
-      desc: 'Empowering through knowledge', 
+    {
+      name: 'Training',
+      icon: BookOpen,
+      desc: 'Empowering through knowledge',
       color: 'bg-brand-tertiary',
       media: onboardingSvg,
       quote: "\"Our team struggles with new technologies. We need training to stay competitive and improve our digital skills.\""
@@ -305,7 +305,7 @@ const Home = () => {
               </div>
             </div>
           </ScrollReveal>
-          
+
           <ScrollReveal delay={0.1}>
             <div className="grid grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-12 w-full">
               {/* Smaller card */}
@@ -344,7 +344,7 @@ const Home = () => {
         {/* Fixed Background Image - Stays in place while services scroll */}
         <div className="fixed top-16 right-0 w-1/2 h-[calc(100dvh-4rem)] z-0 pointer-events-none hidden md:flex items-center justify-center">
           <div className="h-full w-full flex items-center justify-center p-4 lg:p-4">
-            <img 
+            <img
               src={vibrantAbstractDesign}
               alt="Vibrant Abstract Design"
               className='rounded-4xl max-h-full mx-auto'
@@ -363,7 +363,7 @@ const Home = () => {
                   </blockquote>
                 </div>
               </ScrollReveal>
-              
+
               <ScrollReveal delay={0.3}>
                 <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-brand-primary mb-8 md:mb-12 leading-20">
                   <span className="text-accent-dark">{service.name}</span>
@@ -387,8 +387,8 @@ const Home = () => {
             <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-8 lg:p-12 relative">
               <ScrollReveal delay={0.3}>
                 <div className="w-full h-full flex items-center justify-center">
-                  <img 
-                    src={service.media} 
+                  <img
+                    src={service.media}
                     alt={service.name}
                     className="w-full h-full max-w-none object-contain scale-125 md:scale-150"
                   />
@@ -450,7 +450,7 @@ const Home = () => {
                       </div>
                       {/* Right Side - Description */}
                       <div className="relative col-span-2 flex items-center h-full">
-                        <p 
+                        <p
                           className="text-lg md:text-xl lg:text-2xl text-brand-primary leading-relaxed"
                           style={{ opacity: `${opacity}%` }}
                         >
