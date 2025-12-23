@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
-import { Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
+import { motion, useTransform, useMotionValue } from 'framer-motion';
+import { MousePointer2, Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
 
 const AboutUs = () => {
     return (
-        <div className="bg-[#EEE3C3] text-[#865832] selection:bg-[#0E5851]/30 selection:text-[#0E5851] overflow-x-hidden font-sans">
+        <div className="bg-mesh-gradient text-[#865832] selection:bg-[#0E5851]/30 selection:text-[#0E5851] overflow-x-hidden font-sans">
+            <HeroSection />
             <OurApproachSection />
             <AboutMeowieeeeSection />
             <VisionOrbitalSection />
@@ -46,9 +47,9 @@ const HeroSection = () => {
                     Est. 2025
                 </motion.div>
 
-                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
+                <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
                     <KineticText text="MEOW" delay={0} />
-                    <KineticText text="IEEE" delay={0.2} />
+                    <KineticText text="IEEEE" delay={0.2} />
                 </h1>
 
                 <motion.p
@@ -114,13 +115,13 @@ const OurApproachSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
             >
-                <h2 className="text-3xl md:text-5xl font-bold mb-8 text-brand-primary">Our <span className="text-accent-dark">Approach:</span></h2>
-                <p className="text-xl text-brand-primary mb-8 font-medium">Just like a cat:</p>
+                <h2 className="text-3xl md:text-5xl font-bold mb-8 text-[#865832]">Our <span className="text-[#0E5851]">Approach:</span></h2>
+                <p className="text-xl text-[#865832] mb-8 font-medium">Just like a cat:</p>
                 <div className="space-y-4">
                     {approaches.map((item, idx) => (
-                        <div key={idx} className="flex items-center text-lg md:text-xl text-brand-primary/80">
-                            <span className="w-2 h-2 rounded-full bg-accent-dark mr-4"></span>
-                            <span className="font-bold text-brand-primary mr-2">{item.title}</span>
+                        <div key={idx} className="flex items-center text-lg md:text-xl text-[#865832]/80">
+                            <span className="w-2 h-2 rounded-full bg-[#0E5851] mr-4"></span>
+                            <span className="font-bold text-[#865832] mr-2">{item.title}</span>
                             {item.desc}
                         </div>
                     ))}
@@ -140,8 +141,8 @@ const AboutMeowieeeeSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
             >
-                <h2 className="text-3xl md:text-5xl font-bold mb-8 text-brand-primary">About <span className="text-accent-dark">Meowieeee</span></h2>
-                <p className="text-lg md:text-xl text-brand-primary/80 leading-relaxed font-light">
+                <h2 className="text-3xl md:text-5xl font-bold mb-8 text-[#865832]">About <span className="text-[#0E5851]">Meowieeee</span></h2>
+                <p className="text-lg md:text-xl text-[#865832]/80 leading-relaxed font-light">
                     Meowieeee is a creative studio driven by technology that integrates innovation, design, and a sense of fun into its operations. Similar to a curious cat, the company aims to facilitate business growth through modern digital solutions, ranging from impactful website construction to practical IT workshops and reliable tech support. They believe technology should be approachable, empowering, and accessible to all.
                 </p>
             </motion.div>
@@ -153,7 +154,7 @@ const AboutMeowieeeeSection = () => {
 // --- Vision Section: Orbital Map ---
 const VisionOrbitalSection = () => {
     return (
-        <section className="py-24 relative overflow-hidden bg-brand-quaternary/20">
+        <section className="py-24 relative overflow-hidden bg-[#D9C49D]/20">
             <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2">
                     <motion.div
@@ -162,12 +163,12 @@ const VisionOrbitalSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight text-brand-primary">
-                            Our <span className="text-accent-dark">Vision</span>
+                        <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight text-[#865832]">
+                            Our <span className="text-[#0E5851]">Vision</span>
                         </h2>
-                        <div className="text-lg text-brand-primary/80 leading-relaxed mb-6 space-y-6">
+                        <div className="text-lg text-[#865832]/80 leading-relaxed mb-6 space-y-6">
                             <p>
-                                To become a trusted, community-centered IT partner that fosters creativity, enhances digital skills, and supports the thriving of individuals and businesses in a rapidly changing digital landscape, with <span className="text-brand-secondary font-bold">positivity</span> and <span className="text-brand-tertiary font-bold">playfulness</span> as core values.
+                                To become a trusted, community-centered IT partner that fosters creativity, enhances digital skills, and supports the thriving of individuals and businesses in a rapidly changing digital landscape, with <span className="text-[#A8754D] font-bold">positivity</span> and <span className="text-[#C5A978] font-bold">playfulness</span> as core values.
                             </p>
                         </div>
                     </motion.div>
@@ -176,9 +177,9 @@ const VisionOrbitalSection = () => {
                 {/* Orbital Animation (Kept as visual metaphor) */}
                 <div className="md:w-1/2 h-[300px] sm:h-[400px] md:h-[500px] relative flex items-center justify-center scale-75 sm:scale-90 md:scale-100 overflow-visible">
                     {/* Center Core */}
-                    <div className="absolute w-24 h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
-                    <div className="relative w-24 h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
-                        <Globe2 className="w-10 h-10 text-[#0E5851]" />
+                    <div className="absolute w-16 h-16 md:w-24 md:h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
+                    <div className="relative w-16 h-16 md:w-24 md:h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
+                        <Globe2 className="w-8 h-8 md:w-10 md:h-10 text-[#0E5851]" />
                     </div>
 
                     {/* Orbit 1 */}
@@ -206,7 +207,11 @@ const OrbitalRing = ({ size, mdSize, duration, delay, reverse, children }: any) 
     return (
         <div
             className="absolute rounded-full border border-[#865832]/20"
-            style={{ width: size, height: size }}
+            style={{
+                width: 'var(--ring-size)',
+                height: 'var(--ring-size)',
+                '--ring-size': `${size}px`
+            } as any}
         >
             <style dangerouslySetInnerHTML={{
                 __html: `
@@ -230,7 +235,7 @@ const OrbitalRing = ({ size, mdSize, duration, delay, reverse, children }: any) 
 const OrbitalItem = ({ icon, mdIcon, color, angle = 0 }: any) => {
     return (
         <div
-            className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center text-[#EEE3C3] shadow-lg`}
+            className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 ${color} rounded-full flex items-center justify-center text-[#EEE3C3] shadow-lg`}
             style={{ transform: `rotate(${angle}deg) translateY(-50%) rotate(-${angle}deg)` }}
         >
             <div className="md:hidden flex items-center justify-center animate-spin-reverse">{icon}</div>
@@ -242,11 +247,11 @@ const OrbitalItem = ({ icon, mdIcon, color, angle = 0 }: any) => {
 // --- Mission Section ---
 const MissionSection = () => {
     const missions = [
-        { title: "Empower businesses", desc: "Provide user-friendly websites, modern branding, and an effective digital presence.", icon: <Zap className="w-6 h-6 text-brand-tertiary" /> },
-        { title: "Create meaningful learning experiences", desc: "Offer practical IT workshops and tech literacy programs.", icon: <Lightbulb className="w-6 h-6 text-brand-secondary" /> },
-        { title: "Provide reliable support", desc: "Solve problems with friendly, customer-first tech support.", icon: <Heart className="w-6 h-6 text-brand-primary" /> },
-        { title: "Promote creativity and innovation", desc: "Deliver simple, efficient, and enjoyable solutions.", icon: <Palette className="w-6 h-6 text-accent-light" /> },
-        { title: "Make technology accessible", desc: "Break down complexity into easy, 'pawsible' steps for everyone.", icon: <Target className="w-6 h-6 text-accent-dark" /> }
+        { title: "Empower businesses", desc: "Provide user-friendly websites, modern branding, and an effective digital presence.", icon: <Zap className="w-6 h-6 text-[#C5A978]" /> },
+        { title: "Create meaningful learning experiences", desc: "Offer practical IT workshops and tech literacy programs.", icon: <Lightbulb className="w-6 h-6 text-[#A8754D]" /> },
+        { title: "Provide reliable support", desc: "Solve problems with friendly, customer-first tech support.", icon: <Heart className="w-6 h-6 text-[#865832]" /> },
+        { title: "Promote creativity and innovation", desc: "Deliver simple, efficient, and enjoyable solutions.", icon: <Palette className="w-6 h-6 text-[#73A6A2]" /> },
+        { title: "Make technology accessible", desc: "Break down complexity into easy, 'pawsible' steps for everyone.", icon: <Target className="w-6 h-6 text-[#0E5851]" /> }
     ];
 
     return (
@@ -258,8 +263,8 @@ const MissionSection = () => {
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <h2 className="text-4xl font-bold mb-4 text-brand-primary">Our <span className="text-brand-secondary">Mission</span></h2>
-                    <div className="h-1 w-20 bg-brand-secondary rounded-full mx-auto"></div>
+                    <h2 className="text-4xl font-bold mb-4 text-[#865832]">Our <span className="text-[#A8754D]">Mission</span></h2>
+                    <div className="h-1 w-20 bg-[#A8754D] rounded-full mx-auto"></div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -270,13 +275,13 @@ const MissionSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-white/40 border border-brand-primary/10 p-8 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:-translate-y-2 group shadow-sm hover:shadow-xl"
+                            className="bg-white/40 border border-[#865832]/10 p-8 rounded-2xl hover:bg-white/80 transition-all duration-300 hover:-translate-y-2 group shadow-sm hover:shadow-xl"
                         >
-                            <div className="w-12 h-12 bg-brand-cream rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md border border-brand-primary/20">
+                            <div className="w-12 h-12 bg-[#EEE3C3] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md border border-[#865832]/20">
                                 {mission.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-brand-primary mb-3 group-hover:text-accent-dark transition-colors">{mission.title}</h3>
-                            <p className="text-brand-primary/70 leading-relaxed">{mission.desc}</p>
+                            <h3 className="text-xl font-bold text-[#865832] mb-3 group-hover:text-[#0E5851] transition-colors">{mission.title}</h3>
+                            <p className="text-[#865832]/70 leading-relaxed">{mission.desc}</p>
                         </motion.div>
                     ))}
                 </div>
