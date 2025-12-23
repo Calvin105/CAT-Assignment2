@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, Sparkles, Zap, Shield, Search, ArrowRight } from "lucide-react";
+import { ArrowLeft, CheckCircle, Sparkles, Zap, Shield, Search } from "lucide-react";
 
 interface ServiceDetail {
   title: string;
@@ -105,14 +105,14 @@ const ServiceDetail = () => {
 
   if (!service) {
     return (
-      <div className="grow pt-16 flex items-center justify-center bg-brand-cream">
+      <div className="grow pt-16 flex items-center justify-center bg-[#EEE3C3]">
         <div className="text-center">
           <h1 className="text-4xl font-black text-[#1a1a1a] mb-4">
             Service Not Found
           </h1>
           <button
             onClick={() => navigate("/services")}
-            className="text-accent-dark hover:underline font-bold"
+            className="text-[#0E5851] hover:underline font-bold"
           >
             Return to Services
           </button>
@@ -151,21 +151,21 @@ const ServiceDetail = () => {
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-[#1a1a1a] mb-4 tracking-tighter leading-none">
             {service.name}
           </h1>
-          <div className="h-2 w-32 bg-accent-dark rounded-full mb-6" />
+          <div className="h-2 w-32 bg-[#0E5851] rounded-full mb-6" />
           <p className="text-2xl md:text-3xl text-[#1a1a1a]/80 font-serif italic max-w-3xl">
             {service.tagline}
           </p>
         </motion.div>
 
         {/* Service Details Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {service.details.map((detail, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 + 0.2, duration: 0.5, ease: "easeOut" }}
-              className="group p-8 rounded-3xl bg-accent-dark text-white hover:shadow-2xl hover:shadow-accent-dark/30 transition-all duration-300 hover:-translate-y-2 border border-accent-dark relative overflow-hidden"
+              className="group p-8 rounded-3xl bg-[#0E5851] text-white hover:shadow-2xl hover:shadow-[#0E5851]/30 transition-all duration-300 hover:-translate-y-2 border border-[#0E5851] relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-500" />
 
@@ -181,55 +181,6 @@ const ServiceDetail = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Call to Action - Get Quotation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="relative"
-        >
-          <div className="bg-linear-to-br from-accent-dark to-[#1a7a72] rounded-3xl p-8 md:p-12 lg:p-16 text-white relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -ml-24 -mb-24" />
-
-            <div className="relative z-10 max-w-3xl">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight">
-                Ready to Get Started?
-              </h2>
-              <p className="text-white/90 text-lg md:text-xl mb-8 leading-relaxed">
-                Get a personalized quotation for {service.name.toLowerCase()} and discover how we can transform your digital presence.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    navigate("/");
-                    setTimeout(() => {
-                      document.getElementById("investment")?.scrollIntoView({ behavior: "smooth" });
-                    }, 100);
-                  }}
-                  className="cursor-pointer group flex items-center justify-center gap-3 px-8 py-4 bg-white text-accent-dark rounded-full font-bold text-lg transition-all shadow-lg"
-                >
-                  <span>Get Quotation</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-                
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate("/services")}
-                  className="cursor-pointer flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-lg border-2 border-white/40 text-white hover:bg-white hover:text-accent-dark transition-all backdrop-blur-sm"
-                >
-                  <span>Explore Other Services</span>
-                </motion.button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
   );

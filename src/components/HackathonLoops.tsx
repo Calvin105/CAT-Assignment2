@@ -5,10 +5,6 @@ import devmatchHackathon from '../assets/hackathons/Devmatch.jpg';
 import googleAIHackathon from '../assets/hackathons/Google AI Hackathon.png';
 import payHackHackathon from '../assets/hackathons/PayHack2025.png';
 import vHackHackathon from '../assets/hackathons/VHack.png';
-import csiroHackathon from '../assets/hackathons/CSIRO.png';
-import datathonHackathon from '../assets/hackathons/Datathon.png';
-import tesserectHackathon from '../assets/hackathons/tesserect.png';
-import tunixHackathon from '../assets/hackathons/Tunix.png';
 
 const hackathonLogos = [
   { src: alibabaHackathon, alt: 'Alibaba Hackathon' },
@@ -17,10 +13,6 @@ const hackathonLogos = [
   { src: googleAIHackathon, alt: 'Google AI Hackathon' },
   { src: payHackHackathon, alt: 'PayHack 2025' },
   { src: vHackHackathon, alt: 'VHack' },
-  { src: csiroHackathon, alt: 'CSIRO' },
-  { src: datathonHackathon, alt: 'UM Datathon' },
-  { src: tunixHackathon, alt: 'Tunix' },
-  { src: tesserectHackathon, alt: 'Tesserect' },
 ];
 
 const HackathonLoops = () => {
@@ -29,7 +21,7 @@ const HackathonLoops = () => {
       <LogoLoop
         logos={hackathonLogos.map((logo) => ({
           node: (
-            <div className="h-24 md:h-26 w-32 md:w-40 bg-black p-2 rounded-xl flex items-center justify-center shadow-md">
+            <div className="h-12 md:h-14 w-32 md:w-40 bg-black p-2 rounded-xl flex items-center justify-center shadow-md">
               <img
                 src={logo.src}
                 alt={logo.alt}

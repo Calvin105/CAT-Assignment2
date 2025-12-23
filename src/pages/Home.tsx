@@ -8,9 +8,11 @@ import {
   Zap,
   Shield,
   Sparkles,
+  TrendingUp,
   CheckCircle,
   ArrowRight,
   Download,
+  Briefcase,
   BookOpen,
   Cpu,
   Crown
@@ -19,21 +21,19 @@ import CalvinImg from '../assets/CALVIN.jpg';
 import KeYingImg from '../assets/KeYing-pic.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
+import webDesignImage from '../assets/cyber-security-expert-working-with-technology-neon-lights.jpg';
+import brandingImage from '../assets/3d-rendering-futuristic-technologies.jpg';
+import itSupportImage from '../assets/761.jpg';
+import trainingImage from '../assets/futurism-perspective-digital-nomads-lifestyle.jpg';
 import sleekCatImage from '../assets/Sleek Cat.png';
-import tabletLoginVideo from '../assets/videos/Tablet login.mp4';
+import tabletLoginVideo from '../assets/Tablet login.mp4';
 import reactTechImg from '../assets/tech/react.png';
-import cloudflareImg from '../assets/tech/cloudflare.png';
 import typescriptTechImg from '../assets/tech/typescript.jpg';
-import nodejsTechImg from '../assets/tech/nodejs.png';
+import nodejsTechImg from '../assets/tech/nodejs.jpg';
 import cloudTechImg from '../assets/tech/aws-cloud.png';
-import mlTechImg from '../assets/tech/machine-learning-logo.png';
+import mlTechImg from '../assets/tech/machine-learning.png';
 import Squares from '../components/Squares';
 import HackathonLoops from '../components/HackathonLoops';
-import uiuxSvg from '../assets/videos/uiux.svg';
-import marketingSvg from '../assets/videos/marketing.svg';
-import supportSvg from '../assets/videos/support.svg';
-import onboardingSvg from '../assets/videos/onboarding.svg';
-import vibrantAbstractDesign from '../assets/Vibrant Abstract Design.png';
 
 // Reusable scroll animation component
 const ScrollReveal = ({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) => {
@@ -80,26 +80,6 @@ const AnimatedCounter = ({ value, suffix = '', duration = 2 }: { value: number; 
   return <span ref={ref}>{count}{suffix}</span>;
 };
 
-// Kinetic text component
-const KineticText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
-  return (
-    <span className="inline-block">
-      {text.split('').map((char, i) => (
-        <motion.span
-          key={i}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: delay + i * 0.05, type: 'spring', stiffness: 100 }}
-          className="inline-block hover:text-accent-dark transition-colors duration-200"
-          whileHover={{ y: -10, rotate: Math.random() * 10 - 5 }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
-      ))}
-    </span>
-  );
-};
-
 const Home = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
@@ -126,39 +106,57 @@ const Home = () => {
     setTimeout(() => setFormSubmitted(false), 3000);
   };
 
+  // Kinetic text component
+  const KineticText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+    return (
+      <span className="inline-block">
+        {text.split('').map((char, i) => (
+          <motion.span
+            key={i}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: delay + i * 0.05, type: 'spring', stiffness: 100 }}
+            className="inline-block hover:text-accent-dark transition-colors duration-200"
+            whileHover={{ y: -10, rotate: Math.random() * 10 - 5 }}
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </span>
+    );
+  };
+
+  // Orbital ring component
+  const OrbitalRing = ({ size, duration, delay, reverse, children }: { size: number; duration: number; delay: number; reverse?: boolean; children: React.ReactNode }) => {
+    return (
+      <div className="absolute rounded-full border border-brand-primary/20" style={{ width: size, height: size }}>
+        <motion.div
+          className="w-full h-full relative"
+          animate={{ rotate: reverse ? -360 : 360 }}
+          transition={{ repeat: Infinity, duration, ease: 'linear', delay }}
+        >
+          {children}
+        </motion.div>
+      </div>
+    );
+  };
+
+  const OrbitalItem = ({ icon, color, angle = 0 }: { icon: React.ReactNode; color: string; angle?: number }) => {
+    return (
+      <div
+        className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center text-brand-primary shadow-lg`}
+        style={{ transform: `rotate(${angle}deg) translateY(-50%) rotate(-${angle}deg)` }}
+      >
+        {icon}
+      </div>
+    );
+  };
+
   const servicesData = [
-    {
-      name: 'Web Solutions',
-      icon: Globe2,
-      desc: 'Modern websites and digital experiences',
-      color: 'bg-accent-dark',
-      media: uiuxSvg,
-      quote: "\"Our website looks outdated and doesn't convert visitors. We're losing potential customers to competitors with better online presence.\""
-    },
-    {
-      name: 'Branding',
-      icon: Palette,
-      desc: 'Visual identities that stick',
-      color: 'bg-brand-primary',
-      media: marketingSvg,
-      quote: "\"We don't have a consistent brand identity. Our marketing materials look unprofessional and don't reflect our company values.\""
-    },
-    {
-      name: 'IT Support',
-      icon: Cpu,
-      desc: 'Robust technical solutions',
-      color: 'bg-accent-light',
-      media: supportSvg,
-      quote: "\"Our IT systems keep breaking down, causing downtime and lost productivity. We need reliable technical support.\""
-    },
-    {
-      name: 'Training',
-      icon: BookOpen,
-      desc: 'Empowering through knowledge',
-      color: 'bg-brand-tertiary',
-      media: onboardingSvg,
-      quote: "\"Our team struggles with new technologies. We need training to stay competitive and improve our digital skills.\""
-    },
+    { name: 'Web Solutions', icon: Globe2, desc: 'Modern websites and digital experiences', color: 'bg-accent-dark' },
+    { name: 'Branding', icon: Palette, desc: 'Visual identities that stick', color: 'bg-brand-primary' },
+    { name: 'IT Support', icon: Cpu, desc: 'Robust technical solutions', color: 'bg-accent-light' },
+    { name: 'Training', icon: BookOpen, desc: 'Empowering through knowledge', color: 'bg-brand-tertiary' },
   ];
 
   const teamMembers = [
@@ -174,7 +172,6 @@ const Home = () => {
     { name: 'Node.js', image: nodejsTechImg },
     { name: 'AI/ML', image: mlTechImg },
     { name: 'Cloud', image: cloudTechImg },
-    { name: 'CloudFlare', image: cloudflareImg },
   ];
 
   return (
@@ -182,10 +179,10 @@ const Home = () => {
       {/* Section 1: Hero Section */}
       <section
         onMouseMove={handleMouseMove}
-        className="relative bg-brand-cream h-[calc(100dvh-4rem)] flex flex-col items-center justify-center overflow-hidden z-20"
+        className="relative h-[calc(100dvh-4rem)] flex flex-col items-center justify-center overflow-hidden"
       >
         {/* Animated Squares Background */}
-        <div className="absolute inset-0 opacity-30 pointer-events-none z-30">
+        <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
           <Squares
             speed={0.5}
             squareSize={30}
@@ -244,10 +241,18 @@ const Home = () => {
             </button>
           </motion.div>
         </div>
+
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-brand-primary/60"
+        >
+          <ArrowDown className="w-6 h-6" />
+        </motion.div>
       </section>
 
       {/* Sleek Cat Image - Intermediary Overlapping Both Sections */}
-      <section className="relative -mt-20 sm:-mt-40 mb-0 pointer-events-none" style={{ zIndex: 20 }}>
+      <section className="relative -mt-40 mb-0 pointer-events-none" style={{ zIndex: 20 }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <motion.div
@@ -266,206 +271,118 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Section 2: The digital divide */}
-      <section className="bg-[#ECE0BF] relative -mt-40 pt-48 shadow-[inset_0_10px_10px_-10px_rgba(0,0,0,0.5)] z-10">
+      {/* Section 2: Market Opportunity */}
+      <section className="py-24 bg-brand-quaternary/10 relative -mt-40 pt-48 shadow-[inset_0_10px_10px_-10px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-6 mt-10 text-center">
+            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-6 text-center">
               The Digital Divide is <span className="text-accent-dark">Real</span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <p className="text-xl text-brand-primary/80 max-w-3xl mx-auto text-center mb-16">
-              Businesses are losing out larger market without digital presence
+              Businesses need modern solutions, but many lack the expertise and resources to bridge the gap between traditional operations and digital transformation.
             </p>
           </ScrollReveal>
 
-          {/* 2-Column Statistics Grid - Side by side on all screens */}
-          <ScrollReveal delay={0.1}>
-            <div className="grid grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-12 w-full">
-              {/* Larger card */}
-              <div className="flex flex-col gap-2 sm:grid sm:grid-cols-5 sm:gap-3 md:gap-4 lg:gap-6 col-span-3 bg-white p-4 md:p-8 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 h-full items-center justify-center min-h-[200px] md:min-h-[250px]">
-                <div className="sm:col-span-3 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black text-accent-dark leading-none flex items-center justify-center">
-                  <AnimatedCounter value={65} suffix="%" duration={1} />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              { value: 65, suffix: '%', label: 'of SMEs lack digital presence', icon: TrendingUp },
+              { value: 500, suffix: 'B+', label: 'market opportunity', icon: Briefcase },
+              { value: 25, suffix: '%', label: 'annual growth in digital services', icon: Sparkles },
+              { value: 80, suffix: '%', label: 'of businesses need IT support', icon: Users },
+            ].map((stat, idx) => (
+              <ScrollReveal key={idx} delay={idx * 0.1}>
+                <div className="p-8 rounded-2xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all hover:transform hover:-translate-y-1 text-center">
+                  <div className="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center mx-auto mb-4">
+                    <stat.icon className="w-8 h-8 text-brand-primary" />
+                  </div>
+                  <div className="text-4xl font-black text-accent-dark mb-2">
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <p className="text-brand-primary/70 text-sm">{stat.label}</p>
                 </div>
-                <p className="sm:col-span-2 text-brand-primary/70 text-center sm:text-left font-normal md:text-lg lg:text-2xl leading-relaxed flex items-center">
-                  of SMEs lack digital presence
-                </p>
-              </div>
-
-              {/* Smaller card */}
-              <div className="col-span-2 bg-white p-4 md:p-6 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 flex flex-col h-full items-center justify-center text-center min-h-[200px] md:min-h-[250px]">
-                <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-accent-dark mb-2 md:mb-3 leading-none">
-                  <AnimatedCounter value={500} suffix="B+" duration={1} />
-                </div>
-                <p className="text-brand-primary/70 text-xs md:text-sm lg:text-base leading-relaxed px-1">
-                  market opportunity
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <div className="grid grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-12 w-full">
-              {/* Smaller card */}
-              <div className="col-span-2 bg-white p-4 md:p-6 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 flex flex-col h-full items-center justify-center text-center min-h-[200px] md:min-h-[250px]">
-                <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-accent-dark mb-2 md:mb-3 leading-none">
-                  <AnimatedCounter value={80} suffix="%" duration={1} />
-                </div>
-                <p className="text-brand-primary/70 text-xs md:text-sm lg:text-base leading-relaxed px-1">
-                  of businesses need IT support
-                </p>
-              </div>
-
-              {/* Larger card */}
-              <div className="flex flex-col gap-2 sm:grid sm:grid-cols-5 sm:gap-3 md:gap-4 lg:gap-6 col-span-3 bg-white p-4 md:p-8 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 h-full items-center justify-center min-h-[200px] md:min-h-[250px]">
-                <div className="sm:col-span-3 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black text-accent-dark leading-none flex items-center justify-center">
-                  <AnimatedCounter value={25} suffix="%" duration={1} />
-                </div>
-                <p className="sm:col-span-2 text-brand-primary/70 text-center sm:text-left font-normal md:text-lg lg:text-2xl leading-relaxed flex items-center">
-                  annual growth in digital services
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-12">
-          <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary text-center">
-              Digital Solutions That <span className="text-accent-dark">Works For You</span>
-            </h2>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Section 3: Our Solution - Services Overview - Two Column Layout */}
-      <section className="relative">
-        {/* Fixed Background Image - Stays in place while services scroll */}
-        <div className="fixed top-16 right-0 w-1/2 h-[calc(100dvh-4rem)] z-0 pointer-events-none hidden md:flex items-center justify-center">
-          <div className="h-full w-full flex items-center justify-center p-4 lg:p-4">
-            <img
-              src={vibrantAbstractDesign}
-              alt="Vibrant Abstract Design"
-              className='rounded-4xl max-h-full mx-auto'
-            />
+              </ScrollReveal>
+            ))}
           </div>
         </div>
-
-        {servicesData.map((service) => (
-          <div className='min-h-screen flex flex-col md:flex-row relative overflow-hidden'>
-            {/* Left Column - Quote & Service Name */}
-            <div className="w-full md:w-1/2 flex flex-col justify-center px-4 sm:px-6 lg:px-12 py-16 md:py-24 relative z-10">
-              <ScrollReveal delay={0.2}>
-                <div className="relative mb-8 md:mb-12">
-                  <blockquote className="text-xl md:text-2xl lg:text-3xl text-brand-primary/90 italic leading-relaxed font-serif relative">
-                    {service.quote}
-                  </blockquote>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.3}>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-brand-primary mb-8 md:mb-12 leading-20">
-                  <span className="text-accent-dark">{service.name}</span>
-                </h2>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.4}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
-                  className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-accent-dark text-white rounded-full font-bold text-base md:text-lg hover:shadow-xl transition-all cursor-pointer"
-                >
-                  Learn More
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </ScrollReveal>
-            </div>
-
-            {/* Right Column - Media (Larger Size) */}
-            <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-8 lg:p-12 relative">
-              <ScrollReveal delay={0.3}>
-                <div className="w-full h-full flex items-center justify-center">
-                  <img
-                    src={service.media}
-                    alt={service.name}
-                    className="w-full h-full max-w-none object-contain scale-125 md:scale-150"
-                  />
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
-        ))}
       </section>
 
       {/* Section 4: Why Us? - Competitive Advantages - Bento Box */}
       <section className="py-24 bg-[#ECE0BF] relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
           <ScrollReveal>
-            <div className="text-center md:space-y-2">
-              {[
-                "Meowieeee helps your business run faster, safer, and smarter.",
-                "With built-in AI and a design that puts people first,",
-                "we make technology work for you, not the other way around."
-              ].map((line, idx) => (
-                <motion.p
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.3, duration: 0.8, ease: "easeOut" }}
-                  className="text-[1rem] md:text-xl lg:text-2xl xl:text-3xl text-brand-primary/90 leading-tight font-medium"
-                >
-                  {line}
-                </motion.p>
-              ))}
-            </div>
+            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
+              Four Pillars of <span className="text-accent-dark">Growth</span>
+            </h2>
+            <p className="text-xl text-brand-primary/70 max-w-2xl mx-auto text-center mb-16">
+              Our diversified revenue streams reduce risk and maximize growth potential
+            </p>
           </ScrollReveal>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Row Layout - Each row has title and description together */}
-          <div className="space-y-8 md:space-y-12">
-            {[
-              { title: 'Human-Centered', desc: 'UX philosophy that puts users first', icon: Users },
-              { title: 'AI Integration', desc: 'Built-in AI assistants for instant optimization', icon: Sparkles },
-              { title: 'Secure by Default', desc: 'Enterprise-grade security with automated compliance', icon: Shield },
-              { title: 'Lightning Fast', desc: 'Optimized for speed with edge computing capabilities', icon: Zap },
-            ].map((feature, idx) => {
-              // Decreasing opacity: 100%, 85%, 70%, 55%
-              const opacity = 100 - (idx * 15);
-              return (
-                <ScrollReveal key={idx} delay={idx * 0.1}>
-                  <div className="relative">
-                    <div className="grid grid-cols-3 gap-4 md:gap-8 lg:gap-12">
-                      {/* Left Side - Number & Title */}
-                      <div className="flex flex-col items-start gap-1">
-                        <div className="text-sm md:text-lg lg:text-xl text-brand-primary/50 tabular-nums">
-                          {String(idx + 1).padStart(2, '0')}
-                        </div>
-                        <h3 className="mt-[-12px] text-2xl md:text-3xl lg:text-4xl font-bold text-brand-primary">
-                          {feature.title}
-                        </h3>
-                      </div>
-                      {/* Right Side - Description */}
-                      <div className="relative col-span-2 flex items-center h-full">
-                        <p
-                          className="text-lg md:text-xl lg:text-2xl text-brand-primary leading-relaxed"
-                          style={{ opacity: `${opacity}%` }}
-                        >
-                          {feature.desc}
-                        </p>
-                        {/* Divider on the right side - more visible */}
-                        {idx > 0 && (
-                          <div className="absolute -top-4 md:-top-6 left-0 w-full md:w-1/2 h-px bg-brand-quaternary" />
-                        )}
-                      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {servicesData.map((service, idx) => (
+              <ScrollReveal key={idx} delay={idx * 0.1}>
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="group relative overflow-hidden rounded-3xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all duration-500 p-8 flex flex-col cursor-pointer"
+                  onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
+                >
+                  <div className={`absolute inset-0 ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  <div className="relative z-10">
+                    <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
+                      <service.icon className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-brand-primary mb-3">{service.name}</h3>
+                    <p className="text-brand-primary/70 mb-6 group-hover:text-brand-primary transition-colors">{service.desc}</p>
+                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 flex items-center text-accent-dark font-bold">
+                      Learn More <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
                   </div>
-                </ScrollReveal>
-              );
-            })}
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Why Us? - Competitive Advantages */}
+      <section className="py-24 bg-brand-quaternary/10 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
+              Why <span className="text-accent-dark">Meowieeee</span> Wins
+            </h2>
+            <p className="text-xl text-brand-primary/70 max-w-2xl mx-auto text-center mb-16">
+              Trusted by businesses seeking innovative, reliable digital solutions
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: 'Lightning Fast', desc: 'Optimized for speed with edge computing capabilities', icon: Zap, color: 'text-brand-primary' },
+              { title: 'Secure by Default', desc: 'Enterprise-grade security with automated compliance', icon: Shield, color: 'text-brand-secondary' },
+              { title: 'AI Integration', desc: 'Built-in AI assistants for instant optimization', icon: Sparkles, color: 'text-accent-light' },
+              { title: 'Human-Centered', desc: 'UX philosophy that puts users first', icon: Users, color: 'text-brand-tertiary' },
+            ].map((feature, idx) => (
+              <ScrollReveal key={idx} delay={idx * 0.1}>
+                <motion.div
+                  whileHover={{ scale: 1.05, rotate: 1 }}
+                  className="p-8 rounded-2xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all group shadow-sm"
+                >
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+                    className={`w-16 h-16 rounded-lg bg-brand-cream flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors`}
+                  >
+                    <feature.icon className={`w-8 h-8 ${feature.color}`} />
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-brand-primary mb-3">{feature.title}</h3>
+                  <p className="text-brand-primary/70 leading-relaxed">{feature.desc}</p>
+                </motion.div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
@@ -523,7 +440,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
-              Built on Modern <span className="text-accent-dark">Web Technologies</span>
+              Built on Modern <span className="text-accent-dark">Technology</span>
             </h2>
             <p className="text-xl text-brand-primary/70 max-w-2xl mx-auto text-center mb-16">
               Scalable infrastructure powered by cutting-edge tools
@@ -551,13 +468,16 @@ const Home = () => {
                 {techStack.map((tech) => (
                   <motion.div
                     key={tech.name}
-                    className="p-6 rounded-2xl text-center group"
+                    className="p-6 rounded-2xl bg-white text-center group"
                   >
-                    <img
-                      src={tech.image}
-                      alt={tech.name}
-                      className="w-full h-16 md:h-28 object-contain filter sepia"
-                    />
+                    <div className="w-full mb-4 rounded-xl overflow-hidden flex items-center justify-center">
+                      <img
+                        src={tech.image}
+                        alt={tech.name}
+                        className="w-full h-16 md:h-28 object-contain"
+                      />
+                    </div>
+                    <p className="font-bold text-brand-primary">{tech.name}</p>
                   </motion.div>
                 ))}
               </div>
@@ -567,7 +487,7 @@ const Home = () => {
       </section>
 
       {/* Section 10: Investment Opportunity */}
-      <section id="investment" className="py-24 bg-[#ECE0BF] relative">
+      <section id="investment" className="py-24 bg-brand-quaternary/10 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
@@ -576,7 +496,7 @@ const Home = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="bg-white rounded-3xl p-8 pb-4 md:p-12 md:pb-8 border border-brand-quaternary/20 shadow-xl mb-8">
+            <div className="bg-white rounded-3xl p-8 md:p-12 border border-brand-quaternary/20 shadow-xl mb-8">
               <h3 className="text-2xl font-bold text-brand-primary mb-6">Investment Highlights</h3>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -589,11 +509,11 @@ const Home = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-accent-dark mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Proven Team:</strong> 10 hackathon awards</span>
+                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Proven Team:</strong> 15+ years combined experience</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-accent-dark mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Strong Traction:</strong> 50+ Agile projects delievered</span>
+                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Strong Traction:</strong> 50+ clients, 100+ projects</span>
                 </li>
               </ul>
             </div>
@@ -649,22 +569,17 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="submit"
-                  className="cursor-pointer flex-1 bg-accent-dark text-brand-cream hover:bg-accent-light px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl"
+                  className="flex-1 bg-accent-dark text-brand-cream hover:bg-accent-light px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl"
                 >
                   Schedule Meeting
                 </button>
-                <div className="relative inline-flex sm:w-auto group">
-                  <button
-                    type="button"
-                    className="cursor-pointer w-full border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-cream px-8 py-4 rounded-full font-bold text-lg transition-all"
-                  >
-                    <Download className="w-5 h-5 inline mr-2" />
-                    Download Deck
-                  </button>
-                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-full bg-brand-primary text-brand-cream text-xs px-3 py-1 shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200">
-                    Download a copy of our pitch deck
-                  </span>
-                </div>
+                <button
+                  type="button"
+                  className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-cream px-8 py-4 rounded-full font-bold text-lg transition-all"
+                >
+                  <Download className="w-5 h-5 inline mr-2" />
+                  Download Deck
+                </button>
               </div>
               <p className="text-sm text-brand-primary/60 mt-4 text-center">
                 <Shield className="w-4 h-4 inline mr-1 mb-1" />
