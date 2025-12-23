@@ -54,18 +54,18 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed w-full z-50 bg-linear-to-r from-brand-primary to-accent-dark/95 backdrop-blur-md shadow-lg">
+        <nav className="fixed w-full z-50 bg-brand-primary backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    <div className="shrink-0 flex items-center">
-                        <img src={logo} alt="Meowieeee" className="h-17 w-auto" />
-                        <Link to="/" className="text-2xl font-bold text-brand-cream">
-                            Meowieeee
+                    <div className="shrink-0">
+                        <Link to="/" className="flex items-center cursor-pointer">
+                            <img src={logo} alt="Meowieeee" className="h-17 w-auto" />
+                            <span className="text-2xl font-bold text-brand-cream">Meowieeee</span>
                         </Link>
                     </div>
 
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-8">
+                        <div className="ml-10 flex items-baseline space-x-2 lg:space-x-8">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
