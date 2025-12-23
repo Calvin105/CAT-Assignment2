@@ -13,6 +13,7 @@ import CatIcon4 from '../assets/cat-icon4.png';
 import CatRain from '../components/CatRain';
 import { SwimmingFish } from '../components/AnimatedAnimals';
 
+
 interface TeamMember {
     id: number;
     name: string;
