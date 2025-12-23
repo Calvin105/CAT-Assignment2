@@ -80,6 +80,26 @@ const AnimatedCounter = ({ value, suffix = '', duration = 2 }: { value: number; 
   return <span ref={ref}>{count}{suffix}</span>;
 };
 
+// Kinetic text component
+const KineticText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+  return (
+    <span className="inline-block">
+      {text.split('').map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: delay + i * 0.05, type: 'spring', stiffness: 100 }}
+          className="inline-block hover:text-accent-dark transition-colors duration-200"
+          whileHover={{ y: -10, rotate: Math.random() * 10 - 5 }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
 const Home = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
@@ -104,26 +124,6 @@ const Home = () => {
     e.preventDefault();
     setFormSubmitted(true);
     setTimeout(() => setFormSubmitted(false), 3000);
-  };
-
-  // Kinetic text component
-  const KineticText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
-    return (
-      <span className="inline-block">
-        {text.split('').map((char, i) => (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: delay + i * 0.05, type: 'spring', stiffness: 100 }}
-            className="inline-block hover:text-accent-dark transition-colors duration-200"
-            whileHover={{ y: -10, rotate: Math.random() * 10 - 5 }}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </span>
-    );
   };
 
   const servicesData = [

@@ -84,14 +84,14 @@ const members: TeamMember[] = [
 // Filler bubbles positions and data
 const fillerBubbles = [
     // Top Left Zone
-    { id: 'c1', top: '15%', left: '10%', size: 'w-20 h-20', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Pawsitive Vibes" },
-    { id: 'c2', top: '25%', left: '20%', size: 'w-14 h-14', img: CatIcon2, color: 'bg-[#865832]', quote: "Meow!" },
-    { id: 'c3', top: '35%', left: '5%', size: 'w-24 h-24', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hello!" },
+    { id: 'c1', top: '22%', left: '10%', size: 'w-20 h-20', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Pawsitive Vibes" },
+    { id: 'c2', top: '30%', left: '20%', size: 'w-14 h-14', img: CatIcon2, color: 'bg-[#865832]', quote: "Meow!" },
+    { id: 'c3', top: '40%', left: '5%', size: 'w-24 h-24', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hello!" },
 
     // Top Right Zone
-    { id: 'c4', top: '15%', left: '80%', size: 'w-22 h-22', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Purr..." },
-    { id: 'c5', top: '28%', left: '90%', size: 'w-16 h-16', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Hugs?" },
-    { id: 'c6', top: '35%', left: '75%', size: 'w-18 h-18', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Nap?" },
+    { id: 'c4', top: '22%', left: '80%', size: 'w-22 h-22', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Purr..." },
+    { id: 'c5', top: '33%', left: '90%', size: 'w-16 h-16', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Hugs?" },
+    { id: 'c6', top: '40%', left: '75%', size: 'w-18 h-18', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Nap?" },
 
     // Bottom Left Zone
     { id: 'c7', top: '75%', left: '10%', size: 'w-28 h-28', img: CatIcon3, color: 'bg-[#C5A978]', quote: "Dream Big" },
@@ -114,10 +114,10 @@ const fillerBubbles = [
 
 // Fixed positions for team members to ensure they are well spaced
 const teamPositions = [
-    { top: '15%', left: '15%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Calvin
-    { top: '15%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Ke Ying
-    { top: '55%', left: '20%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Pei Xuan
-    { top: '55%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Bao Sheng
+    { top: '25%', left: '15%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Calvin
+    { top: '25%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Ke Ying
+    { top: '60%', left: '20%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Pei Xuan
+    { top: '60%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Bao Sheng
 ];
 
 const OurTeam = () => {
@@ -267,7 +267,7 @@ const OurTeam = () => {
 
                         <div className="overflow-y-auto custom-scrollbar">
                             <div className="flex flex-col md:flex-row">
-                                <div className="md:w-2/5 h-60 md:h-auto bg-[#C5A978] relative shrink-0">
+                                <div className="md:w-2/5 aspect-square md:aspect-auto md:h-auto bg-[#C5A978] relative shrink-0">
                                     <img
                                         src={selectedMember.image || CatLogo}
                                         alt={selectedMember.name}
