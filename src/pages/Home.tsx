@@ -276,7 +276,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Section 2: Market Opportunity */}
+      {/* Section 2: Market Opportunity - Bento Box */}
       <section className="py-24 bg-brand-quaternary/10 relative -mt-40 pt-48 shadow-[inset_0_10px_10px_-10px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -287,36 +287,64 @@ const Home = () => {
 
           <ScrollReveal delay={0.1}>
             <p className="text-xl text-brand-primary/80 max-w-3xl mx-auto text-center mb-16">
-              Businesses need modern solutions, but many lack the expertise and resources to bridge the gap between traditional operations and digital transformation.
+              Businesses are losing out larger market without digital presence
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { value: 65, suffix: '%', label: 'of SMEs lack digital presence', icon: TrendingUp },
-              { value: 500, suffix: 'B+', label: 'market opportunity', icon: Briefcase },
-              { value: 25, suffix: '%', label: 'annual growth in digital services', icon: Sparkles },
-              { value: 80, suffix: '%', label: 'of businesses need IT support', icon: Users },
-            ].map((stat, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.1}>
-                <div className="p-8 rounded-2xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all hover:transform hover:-translate-y-1 text-center">
-                  <div className="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center mx-auto mb-4">
-                    <stat.icon className="w-8 h-8 text-brand-primary" />
-                  </div>
-                  <div className="text-4xl font-black text-accent-dark mb-2">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <p className="text-brand-primary/70 text-sm">{stat.label}</p>
+          {/* 2-Column Statistics Grid - Side by side on all screens */}
+          <ScrollReveal delay={0.1}>
+            <div className="grid grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-12 w-full">
+              {/* Larger card */}
+              <div className="flex flex-col gap-2 sm:grid sm:grid-cols-5 sm:gap-3 md:gap-4 lg:gap-6 col-span-3 bg-white p-4 md:p-8 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 h-full items-center justify-center min-h-[200px] md:min-h-[250px]">
+                <div className="sm:col-span-3 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black text-accent-dark leading-none flex items-center justify-center">
+                  <AnimatedCounter value={65} suffix="%" duration={1} />
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+                <p className="sm:col-span-2 text-brand-primary/70 text-center sm:text-left font-normal md:text-lg lg:text-2xl leading-relaxed flex items-center">
+                  of SMEs lack digital presence
+                </p>
+              </div>
+
+              {/* Smaller card */}
+              <div className="col-span-2 bg-white p-4 md:p-6 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 flex flex-col h-full items-center justify-center text-center min-h-[200px] md:min-h-[250px]">
+                <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-accent-dark mb-2 md:mb-3 leading-none">
+                  <AnimatedCounter value={500} suffix="B+" duration={1} />
+                </div>
+                <p className="text-brand-primary/70 text-xs md:text-sm lg:text-base leading-relaxed px-1">
+                  market opportunity
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={0.1}>
+            <div className="grid grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-12 w-full">
+              {/* Smaller card */}
+              <div className="col-span-2 bg-white p-4 md:p-6 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 flex flex-col h-full items-center justify-center text-center min-h-[200px] md:min-h-[250px]">
+                <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-accent-dark mb-2 md:mb-3 leading-none">
+                  <AnimatedCounter value={80} suffix="%" duration={1} />
+                </div>
+                <p className="text-brand-primary/70 text-xs md:text-sm lg:text-base leading-relaxed px-1">
+                  of businesses need IT support
+                </p>
+              </div>
+
+              {/* Larger card */}
+              <div className="flex flex-col gap-2 sm:grid sm:grid-cols-5 sm:gap-3 md:gap-4 lg:gap-6 col-span-3 bg-white p-4 md:p-8 lg:p-10 xl:p-12 rounded-2xl md:rounded-3xl relative z-10 h-full items-center justify-center min-h-[200px] md:min-h-[250px]">
+                <div className="sm:col-span-3 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black text-accent-dark leading-none flex items-center justify-center">
+                  <AnimatedCounter value={25} suffix="%" duration={1} />
+                </div>
+                <p className="sm:col-span-2 text-brand-primary/70 text-center sm:text-left font-normal md:text-lg lg:text-2xl leading-relaxed flex items-center">
+                  annual growth in digital services
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       
 
-      {/* Section 3: Our Solution - Services Overview */}
+      {/* Section 3: Our Solution - Services Overview - Bento Box */}
       <section className="py-24 bg-brand-cream relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -328,33 +356,45 @@ const Home = () => {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {servicesData.map((service, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.1}>
-                <motion.div
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="group relative overflow-hidden rounded-3xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all duration-500 p-8 flex flex-col cursor-pointer"
-                  onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
-                >
-                  <div className={`absolute inset-0 ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-                  <div className="relative z-10">
-                    <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
-                      <service.icon className="w-8 h-8" />
+          {/* Bento Grid - Varied sizes for organic feel */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
+            {servicesData.map((service, idx) => {
+              // Create varied spans for bento effect
+              const spans = [
+                'md:col-span-2 lg:col-span-2', // Web Solutions - large
+                'md:col-span-1 lg:col-span-1', // Branding - small
+                'md:col-span-1 lg:col-span-1', // IT Support - small
+                'md:col-span-2 lg:col-span-1', // Training - medium
+              ];
+              const isLarge = idx === 0 || idx === 3;
+              
+              return (
+                <ScrollReveal key={idx} delay={idx * 0.1}>
+                  <motion.div
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className={`${spans[idx]} group relative overflow-hidden rounded-3xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all duration-500 ${isLarge ? 'p-8 md:p-10 lg:p-12' : 'p-6 md:p-8'} flex flex-col cursor-pointer`}
+                    onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
+                  >
+                    <div className={`absolute inset-0 ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                    <div className="relative z-10 flex flex-col h-full">
+                      <div className={`${isLarge ? 'w-20 h-20' : 'w-16 h-16'} ${service.color} rounded-2xl flex items-center justify-center text-white mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
+                        <service.icon className={`${isLarge ? 'w-10 h-10' : 'w-8 h-8'}`} />
+                      </div>
+                      <h3 className={`${isLarge ? 'text-3xl md:text-4xl' : 'text-2xl md:text-2xl'} font-bold text-brand-primary mb-3 md:mb-4`}>{service.name}</h3>
+                      <p className={`text-brand-primary/70 ${isLarge ? 'text-base md:text-lg' : 'text-sm md:text-base'} mb-4 md:mb-6 group-hover:text-brand-primary transition-colors grow`}>{service.desc}</p>
+                      <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 flex items-center text-accent-dark font-bold">
+                        Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-brand-primary mb-3">{service.name}</h3>
-                    <p className="text-brand-primary/70 mb-6 group-hover:text-brand-primary transition-colors">{service.desc}</p>
-                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 flex items-center text-accent-dark font-bold">
-                      Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                    </div>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
+                  </motion.div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Section 4: Why Us? - Competitive Advantages */}
+      {/* Section 4: Why Us? - Competitive Advantages - Bento Box */}
       <section className="py-24 bg-brand-quaternary/10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -366,30 +406,37 @@ const Home = () => {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Bento Grid - Asymmetric layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
             {[
-              { title: 'Lightning Fast', desc: 'Optimized for speed with edge computing capabilities', icon: Zap, color: 'text-brand-primary' },
-              { title: 'Secure by Default', desc: 'Enterprise-grade security with automated compliance', icon: Shield, color: 'text-brand-secondary' },
-              { title: 'AI Integration', desc: 'Built-in AI assistants for instant optimization', icon: Sparkles, color: 'text-accent-light' },
-              { title: 'Human-Centered', desc: 'UX philosophy that puts users first', icon: Users, color: 'text-brand-tertiary' },
-            ].map((feature, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.1}>
-                <motion.div
-                  whileHover={{ scale: 1.05, rotate: 1 }}
-                  className="p-8 rounded-2xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all group shadow-sm"
-                >
+              { title: 'Lightning Fast', desc: 'Optimized for speed with edge computing capabilities', icon: Zap, color: 'text-brand-primary', span: 'md:col-span-1 lg:col-span-2', size: 'large' },
+              { title: 'Secure by Default', desc: 'Enterprise-grade security with automated compliance', icon: Shield, color: 'text-brand-secondary', span: 'md:col-span-1', size: 'medium' },
+              { title: 'AI Integration', desc: 'Built-in AI assistants for instant optimization', icon: Sparkles, color: 'text-accent-light', span: 'md:col-span-1', size: 'medium' },
+              { title: 'Human-Centered', desc: 'UX philosophy that puts users first', icon: Users, color: 'text-brand-tertiary', span: 'md:col-span-2 lg:col-span-1', size: 'large' },
+            ].map((feature, idx) => {
+              const isLarge = feature.size === 'large';
+              return (
+                <ScrollReveal key={idx} delay={idx * 0.1}>
                   <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                    className={`w-16 h-16 rounded-lg bg-brand-cream flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors`}
+                    whileHover={{ scale: 1.05, rotate: 1 }}
+                    className={`${feature.span} p-6 md:p-8 lg:p-10 rounded-3xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all group shadow-sm relative overflow-hidden`}
                   >
-                    <feature.icon className={`w-8 h-8 ${feature.color}`} />
+                    <div className={`absolute inset-0 ${isLarge ? 'bg-accent-dark' : 'bg-brand-primary'} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                    <div className="relative z-10 flex flex-col h-full">
+                      <motion.div
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+                        className={`${isLarge ? 'w-20 h-20' : 'w-16 h-16'} rounded-lg bg-brand-cream flex items-center justify-center mb-4 md:mb-6 group-hover:bg-brand-primary/20 transition-colors`}
+                      >
+                        <feature.icon className={`${isLarge ? 'w-10 h-10' : 'w-8 h-8'} ${feature.color}`} />
+                      </motion.div>
+                      <h3 className={`${isLarge ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-bold text-brand-primary mb-3 md:mb-4`}>{feature.title}</h3>
+                      <p className={`text-brand-primary/70 ${isLarge ? 'text-base md:text-lg' : 'text-sm md:text-base'} leading-relaxed`}>{feature.desc}</p>
+                    </div>
                   </motion.div>
-                  <h3 className="text-xl font-bold text-brand-primary mb-3">{feature.title}</h3>
-                  <p className="text-brand-primary/70 leading-relaxed">{feature.desc}</p>
-                </motion.div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
