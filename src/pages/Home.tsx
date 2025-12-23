@@ -438,9 +438,9 @@ const Home = () => {
               return (
                 <ScrollReveal key={idx} delay={idx * 0.1}>
                   <div className="relative">
-                    <div className="grid grid-cols-3 md:items-center gap-4 md:gap-8 lg:gap-12">
+                    <div className="grid grid-cols-3 gap-4 md:gap-8 lg:gap-12">
                       {/* Left Side - Number & Title */}
-                      <div className="flex flex-col items-startmd:gap-2">
+                      <div className="flex flex-col items-start gap-1">
                         <div className="text-sm md:text-lg lg:text-xl text-brand-primary/50 tabular-nums">
                           {String(idx + 1).padStart(2, '0')}
                         </div>
@@ -449,7 +449,7 @@ const Home = () => {
                         </h3>
                       </div>
                       {/* Right Side - Description */}
-                      <div className="relative col-span-2">
+                      <div className="relative col-span-2 flex items-center h-full">
                         <p 
                           className="text-lg md:text-xl lg:text-2xl text-brand-primary leading-relaxed"
                           style={{ opacity: `${opacity}%` }}
