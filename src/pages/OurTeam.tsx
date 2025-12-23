@@ -6,6 +6,10 @@ import KeYingImg from '../assets/KeYing-pic.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
 import CatLogo from '../assets/Meowieeee logo transparent bg.png';
+import CatIcon1 from '../assets/cat-icon1.png';
+import CatIcon2 from '../assets/cat-icon2.png';
+import CatIcon3 from '../assets/cat-icon3.png';
+import CatIcon4 from '../assets/cat-icon4.png';
 import CatRain from '../components/CatRain';
 
 interface TeamMember {
@@ -80,32 +84,32 @@ const members: TeamMember[] = [
 // Filler bubbles positions and data
 const fillerBubbles = [
     // Top Left Zone
-    { id: 'c1', top: '15%', left: '10%', size: 'w-20 h-20', img: CatLogo, color: 'bg-[#C5A978]', quote: "Pawsitive Vibes" },
-    { id: 'c2', top: '25%', left: '20%', size: 'w-14 h-14', img: CatLogo, color: 'bg-[#865832]', quote: "Meow!" },
-    { id: 'c3', top: '35%', left: '5%', size: 'w-24 h-24', img: CatLogo, color: 'bg-[#A8754D]', quote: "Hello!" },
+    { id: 'c1', top: '15%', left: '10%', size: 'w-20 h-20', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Pawsitive Vibes" },
+    { id: 'c2', top: '25%', left: '20%', size: 'w-14 h-14', img: CatIcon2, color: 'bg-[#865832]', quote: "Meow!" },
+    { id: 'c3', top: '35%', left: '5%', size: 'w-24 h-24', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hello!" },
 
     // Top Right Zone
-    { id: 'c4', top: '15%', left: '80%', size: 'w-22 h-22', img: CatLogo, color: 'bg-[#0E5851]', quote: "Purr..." },
-    { id: 'c5', top: '28%', left: '90%', size: 'w-16 h-16', img: CatLogo, color: 'bg-[#73A6A2]', quote: "Hugs?" },
-    { id: 'c6', top: '35%', left: '75%', size: 'w-18 h-18', img: CatLogo, color: 'bg-[#EEE3C3] opacity-80', quote: "Nap?" },
+    { id: 'c4', top: '15%', left: '80%', size: 'w-22 h-22', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Purr..." },
+    { id: 'c5', top: '28%', left: '90%', size: 'w-16 h-16', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Hugs?" },
+    { id: 'c6', top: '35%', left: '75%', size: 'w-18 h-18', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Nap?" },
 
     // Bottom Left Zone
-    { id: 'c7', top: '75%', left: '10%', size: 'w-28 h-28', img: CatLogo, color: 'bg-[#C5A978]', quote: "Dream Big" },
-    { id: 'c8', top: '60%', left: '5%', size: 'w-16 h-16', img: CatLogo, color: 'bg-[#865832]', quote: "Go go!" },
-    { id: 'c9', top: '85%', left: '25%', size: 'w-20 h-20', img: CatLogo, color: 'bg-[#A8754D]', quote: "Chase it!" },
+    { id: 'c7', top: '75%', left: '10%', size: 'w-28 h-28', img: CatIcon3, color: 'bg-[#C5A978]', quote: "Dream Big" },
+    { id: 'c8', top: '60%', left: '5%', size: 'w-16 h-16', img: CatIcon4, color: 'bg-[#865832]', quote: "Go go!" },
+    { id: 'c9', top: '85%', left: '25%', size: 'w-20 h-20', img: CatIcon1, color: 'bg-[#A8754D]', quote: "Chase it!" },
 
     // Bottom Right Zone
-    { id: 'c10', top: '70%', left: '85%', size: 'w-24 h-24', img: CatLogo, color: 'bg-[#0E5851]', quote: "Cool Cat" },
-    { id: 'c11', top: '85%', left: '75%', size: 'w-18 h-18', img: CatLogo, color: 'bg-[#73A6A2]', quote: "Smile!" },
-    { id: 'c12', top: '55%', left: '92%', size: 'w-14 h-14', img: CatLogo, color: 'bg-[#EEE3C3] opacity-80', quote: "^.^" },
+    { id: 'c10', top: '70%', left: '85%', size: 'w-24 h-24', img: CatIcon2, color: 'bg-[#0E5851]', quote: "Cool Cat" },
+    { id: 'c11', top: '85%', left: '75%', size: 'w-18 h-18', img: CatIcon3, color: 'bg-[#73A6A2]', quote: "Smile!" },
+    { id: 'c12', top: '55%', left: '92%', size: 'w-14 h-14', img: CatIcon4, color: 'bg-[#EEE3C3] opacity-80', quote: "^.^" },
 
     // Gaps between team members (Inner Fillers)
-    { id: 'c13', top: '35%', left: '42%', size: 'w-12 h-12', img: CatLogo, color: 'bg-[#C5A978]', quote: "Tiny meow" },
-    { id: 'c14', top: '50%', left: '50%', size: 'w-20 h-20', img: CatLogo, color: 'bg-[#865832]', quote: "Center of attention" },
-    { id: 'c15', top: '40%', left: '32%', size: 'w-10 h-10', img: CatLogo, color: 'bg-[#A8754D]', quote: "Hi" },
-    { id: 'c16', top: '40%', left: '58%', size: 'w-10 h-10', img: CatLogo, color: 'bg-[#0E5851]', quote: "Yo" },
-    { id: 'c17', top: '60%', left: '25%', size: 'w-12 h-12', img: CatLogo, color: 'bg-[#73A6A2]', quote: "Run" },
-    { id: 'c18', top: '60%', left: '75%', size: 'w-12 h-12', img: CatLogo, color: 'bg-[#EEE3C3] opacity-80', quote: "Jump" },
+    { id: 'c13', top: '35%', left: '42%', size: 'w-12 h-12', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Tiny meow" },
+    { id: 'c14', top: '50%', left: '50%', size: 'w-20 h-20', img: CatIcon2, color: 'bg-[#865832]', quote: "Center of attention" },
+    { id: 'c15', top: '40%', left: '32%', size: 'w-10 h-10', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hi" },
+    { id: 'c16', top: '40%', left: '58%', size: 'w-10 h-10', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Yo" },
+    { id: 'c17', top: '60%', left: '25%', size: 'w-12 h-12', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Run" },
+    { id: 'c18', top: '60%', left: '75%', size: 'w-12 h-12', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Jump" },
 ];
 
 // Fixed positions for team members to ensure they are well spaced
