@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useInView, AnimatePresence } from 'motion/react';
-import { 
-  ArrowDown, 
+import {
   Globe2,
   Palette, 
   Users, 
@@ -353,7 +352,7 @@ const Home = () => {
           </div>
         </div>
 
-        {servicesData.map((service, idx) => (
+        {servicesData.map((service) => (
           <div className='min-h-screen flex flex-col md:flex-row relative overflow-hidden'>
             {/* Left Column - Quote & Service Name */}
             <div className="w-full md:w-1/2 flex flex-col justify-center px-4 sm:px-6 lg:px-12 py-16 md:py-24 relative z-10">
