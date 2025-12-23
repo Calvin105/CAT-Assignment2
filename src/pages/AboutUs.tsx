@@ -3,7 +3,8 @@ import { MousePointer2, Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, H
 
 const AboutUs = () => {
     return (
-        <div className="bg-[#EEE3C3] text-[#865832] selection:bg-[#0E5851]/30 selection:text-[#0E5851] overflow-x-hidden font-sans">
+        <div className="bg-mesh-gradient text-[#865832] selection:bg-[#0E5851]/30 selection:text-[#0E5851] overflow-x-hidden font-sans">
+            <HeroSection />
             <OurApproachSection />
             <AboutMeowieeeeSection />
             <VisionOrbitalSection />
@@ -46,9 +47,9 @@ const HeroSection = () => {
                     Est. 2025
                 </motion.div>
 
-                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
+                <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
                     <KineticText text="MEOW" delay={0} />
-                    <KineticText text="IEEE" delay={0.2} />
+                    <KineticText text="IEEEE" delay={0.2} />
                 </h1>
 
                 <motion.p
@@ -174,27 +175,27 @@ const VisionOrbitalSection = () => {
                 </div>
 
                 {/* Orbital Animation (Kept as visual metaphor) */}
-                <div className="md:w-1/2 h-[500px] relative flex items-center justify-center">
+                <div className="md:w-1/2 h-[300px] sm:h-[400px] md:h-[500px] relative flex items-center justify-center scale-75 sm:scale-90 md:scale-100 overflow-visible">
                     {/* Center Core */}
-                    <div className="absolute w-24 h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
-                    <div className="relative w-24 h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
-                        <Globe2 className="w-10 h-10 text-[#0E5851]" />
+                    <div className="absolute w-16 h-16 md:w-24 md:h-24 bg-linear-to-br from-[#0E5851] to-[#73A6A2] rounded-full blur-xl opacity-50 animate-pulse"></div>
+                    <div className="relative w-16 h-16 md:w-24 md:h-24 bg-[#EEE3C3] rounded-full border border-[#0E5851]/50 flex items-center justify-center z-10 shadow-[0_0_30px_rgba(14,88,81,0.3)]">
+                        <Globe2 className="w-8 h-8 md:w-10 md:h-10 text-[#0E5851]" />
                     </div>
 
                     {/* Orbit 1 */}
-                    <OrbitalRing size={200} duration={20} delay={0}>
-                        <OrbitalItem icon={<Lightbulb size={20} />} color="bg-[#C5A978]" />
+                    <OrbitalRing size={140} mdSize={200} duration={20} delay={0}>
+                        <OrbitalItem icon={<Lightbulb size={16} />} mdIcon={<Lightbulb size={20} />} color="bg-[#C5A978]" />
                     </OrbitalRing>
 
                     {/* Orbit 2 */}
-                    <OrbitalRing size={350} duration={25} delay={-5} reverse>
-                        <OrbitalItem icon={<Code2 size={20} />} color="bg-[#73A6A2]" />
-                        <OrbitalItem icon={<Palette size={20} />} color="bg-[#A8754D]" angle={180} />
+                    <OrbitalRing size={240} mdSize={350} duration={25} delay={-5} reverse>
+                        <OrbitalItem icon={<Code2 size={16} />} mdIcon={<Code2 size={20} />} color="bg-[#73A6A2]" />
+                        <OrbitalItem icon={<Palette size={16} />} mdIcon={<Palette size={20} />} color="bg-[#A8754D]" angle={180} />
                     </OrbitalRing>
 
                     {/* Orbit 3 */}
-                    <OrbitalRing size={450} duration={35} delay={-10}>
-                        <OrbitalItem icon={<Users size={20} />} color="bg-[#0E5851]" angle={90} />
+                    <OrbitalRing size={320} mdSize={450} duration={35} delay={-10}>
+                        <OrbitalItem icon={<Users size={16} />} mdIcon={<Users size={20} />} color="bg-[#0E5851]" angle={90} />
                     </OrbitalRing>
                 </div>
             </div>
@@ -202,12 +203,24 @@ const VisionOrbitalSection = () => {
     );
 };
 
-const OrbitalRing = ({ size, duration, delay, reverse, children }: any) => {
+const OrbitalRing = ({ size, mdSize, duration, delay, reverse, children }: any) => {
     return (
         <div
             className="absolute rounded-full border border-[#865832]/20"
-            style={{ width: size, height: size }}
+            style={{
+                width: 'var(--ring-size)',
+                height: 'var(--ring-size)',
+                '--ring-size': `${size}px`
+            } as any}
         >
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (min-width: 768px) {
+                    div[style*="--ring-size: ${size}px"] {
+                        --ring-size: ${mdSize}px !important;
+                    }
+                }
+            `}} />
             <motion.div
                 className="w-full h-full relative"
                 animate={{ rotate: reverse ? -360 : 360 }}
@@ -219,13 +232,14 @@ const OrbitalRing = ({ size, duration, delay, reverse, children }: any) => {
     );
 };
 
-const OrbitalItem = ({ icon, color, angle = 0 }: any) => {
+const OrbitalItem = ({ icon, mdIcon, color, angle = 0 }: any) => {
     return (
         <div
-            className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center text-[#EEE3C3] shadow-lg`}
+            className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 ${color} rounded-full flex items-center justify-center text-[#EEE3C3] shadow-lg`}
             style={{ transform: `rotate(${angle}deg) translateY(-50%) rotate(-${angle}deg)` }}
         >
-            <div className="animate-spin-reverse">{icon}</div>
+            <div className="md:hidden flex items-center justify-center animate-spin-reverse">{icon}</div>
+            <div className="hidden md:flex items-center justify-center animate-spin-reverse">{mdIcon}</div>
         </div>
     );
 };

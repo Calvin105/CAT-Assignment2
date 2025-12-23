@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const handleGetInTouch = () => {
         setIsOpen(false);
-        
+
         if (location.pathname === '/') {
             // Already on home page, scroll to section with navbar offset
             const element = document.getElementById('investment');
@@ -54,7 +54,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed w-full z-50 bg-brand-primary backdrop-blur-md">
+        <nav className="fixed w-full z-50 bg-linear-to-r from-brand-primary to-accent-dark/95 backdrop-blur-md shadow-lg">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="shrink-0 flex items-center">
@@ -115,7 +115,7 @@ const Navbar = () => {
                                 {link.name}
                             </Link>
                         ))}
-                        <button 
+                        <button
                             className="w-full mt-3 bg-brand-cream hover:bg-brand-tertiary text-brand-primary px-4 py-2 rounded-full text-base font-bold transition-colors duration-300 shadow-md"
                             onClick={handleGetInTouch}
                         >

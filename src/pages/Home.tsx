@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useInView, AnimatePresence } from 'motion/react';
-import { 
-  ArrowDown, 
-  Globe2, 
-  Lightbulb, 
-  Code2, 
-  Palette, 
-  Users, 
-  Zap, 
-  Shield, 
+import {
+  ArrowDown,
+  Globe2,
+  Lightbulb,
+  Code2,
+  Palette,
+  Users,
+  Zap,
+  Shield,
   Sparkles,
   TrendingUp,
   CheckCircle,
@@ -21,7 +21,7 @@ import {
   Crown
 } from 'lucide-react';
 import CalvinImg from '../assets/CALVIN.jpg';
-import KeYingImg from '../assets/KeYing.JPG';
+import KeYingImg from '../assets/KeYing-pic.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
 import webDesignImage from '../assets/cyber-security-expert-working-with-technology-neon-lights.jpg';
@@ -64,13 +64,13 @@ const AnimatedCounter = ({ value, suffix = '', duration = 2 }: { value: number; 
 
   useEffect(() => {
     if (!isInView) return;
-    
+
     let startTime: number;
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
       setCount(Math.floor(progress * value));
-      
+
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
@@ -178,7 +178,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="grow pt-16 bg-brand-cream">
+    <div className="grow pt-16 bg-mesh-gradient">
       {/* Section 1: Hero Section */}
       <section
         onMouseMove={handleMouseMove}
@@ -207,10 +207,10 @@ const Home = () => {
             Open For Business
           </motion.div>
 
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 leading-tight">
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter mb-8 leading-tight">
             <div className="text-brand-primary">
               <KineticText text="MEOW" delay={0} />
-              <KineticText text="IEEE" delay={0.2} />
+              <KineticText text="IEEEE" delay={0.2} />
             </div>
           </h1>
 
@@ -312,7 +312,7 @@ const Home = () => {
         </div>
       </section>
 
-      
+
 
       {/* Section 3: Our Solution - Services Overview */}
       <section className="py-24 bg-brand-cream relative">
@@ -494,7 +494,7 @@ const Home = () => {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-              {[
+            {[
               { value: 50, suffix: '+', label: 'Clients Served', color: 'bg-accent-dark' },
               { value: 100, suffix: '+', label: 'Projects Completed', color: 'bg-brand-primary' },
               { value: 25, suffix: '+', label: 'Workshops Conducted', color: 'bg-accent-light' },
@@ -529,7 +529,7 @@ const Home = () => {
           </ScrollReveal>
 
           <div className="space-y-4">
-              {[
+            {[
               { name: 'WEB SOLUTIONS', tagline: 'We design and build modern websites', image: webDesignImage, color: 'var(--color-accent-dark)' },
               { name: 'BRANDING', tagline: 'We shape brands for the digital world', image: brandingImage, color: 'var(--color-brand-primary)' },
               { name: 'IT SUPPORT', tagline: 'We keep your systems running smoothly', image: itSupportImage, color: 'var(--color-accent-light)' },

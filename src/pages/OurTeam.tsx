@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Briefcase, PawPrint, Cpu, Palette, BookOpen, Crown, X, Bomb } from 'lucide-react';
 import CalvinImg from '../assets/CALVIN.jpg';
-import KeYingImg from '../assets/KeYing.JPG';
+import KeYingImg from '../assets/KeYing-pic.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
 import CatLogo from '../assets/Meowieeee logo transparent bg.png';
+import CatIcon1 from '../assets/cat-icon1.png';
+import CatIcon2 from '../assets/cat-icon2.png';
+import CatIcon3 from '../assets/cat-icon3.png';
+import CatIcon4 from '../assets/cat-icon4.png';
 import CatRain from '../components/CatRain';
+import { SwimmingFish } from '../components/AnimatedAnimals';
 
 interface TeamMember {
     id: number;
@@ -80,55 +85,64 @@ const members: TeamMember[] = [
 // Filler bubbles positions and data
 const fillerBubbles = [
     // Top Left Zone
-    { id: 'c1', top: '15%', left: '10%', size: 'w-20 h-20', img: CatLogo, color: 'bg-[#C5A978]', quote: "Pawsitive Vibes" },
-    { id: 'c2', top: '25%', left: '20%', size: 'w-14 h-14', img: CatLogo, color: 'bg-[#865832]', quote: "Meow!" },
-    { id: 'c3', top: '35%', left: '5%', size: 'w-24 h-24', img: CatLogo, color: 'bg-[#A8754D]', quote: "Hello!" },
+    { id: 'c1', top: '5%', left: '5%', size: 'w-12 h-12 md:w-20 md:h-20', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Pawsitive Vibes" },
+    { id: 'c2', top: '25%', left: '15%', size: 'w-10 h-10 md:w-14 md:h-14', img: CatIcon2, color: 'bg-[#865832]', quote: "Meow!" },
+    { id: 'c3', top: '35%', left: '2%', size: 'w-16 h-16 md:w-24 md:h-24', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hello!" },
 
     // Top Right Zone
-    { id: 'c4', top: '15%', left: '80%', size: 'w-22 h-22', img: CatLogo, color: 'bg-[#0E5851]', quote: "Purr..." },
-    { id: 'c5', top: '28%', left: '90%', size: 'w-16 h-16', img: CatLogo, color: 'bg-[#73A6A2]', quote: "Hugs?" },
-    { id: 'c6', top: '35%', left: '75%', size: 'w-18 h-18', img: CatLogo, color: 'bg-[#EEE3C3] opacity-80', quote: "Nap?" },
+    { id: 'c4', top: '5%', left: '85%', size: 'w-14 h-14 md:w-22 md:h-22', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Purr..." },
+    { id: 'c5', top: '28%', left: '92%', size: 'w-10 h-10 md:w-16 md:h-16', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Hugs?" },
+    { id: 'c6', top: '35%', left: '78%', size: 'w-12 h-12 md:w-18 md:h-18', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Nap?" },
 
     // Bottom Left Zone
-    { id: 'c7', top: '75%', left: '10%', size: 'w-28 h-28', img: CatLogo, color: 'bg-[#C5A978]', quote: "Dream Big" },
-    { id: 'c8', top: '60%', left: '5%', size: 'w-16 h-16', img: CatLogo, color: 'bg-[#865832]', quote: "Go go!" },
-    { id: 'c9', top: '85%', left: '25%', size: 'w-20 h-20', img: CatLogo, color: 'bg-[#A8754D]', quote: "Chase it!" },
+    { id: 'c7', top: '80%', left: '5%', size: 'w-20 h-20 md:w-28 md:h-28', img: CatIcon3, color: 'bg-[#C5A978]', quote: "Dream Big" },
+    { id: 'c8', top: '65%', left: '2%', size: 'w-12 h-12 md:w-16 md:h-16', img: CatIcon4, color: 'bg-[#865832]', quote: "Go go!" },
+    { id: 'c9', top: '90%', left: '20%', size: 'w-14 h-14 md:w-20 md:h-20', img: CatIcon1, color: 'bg-[#A8754D]', quote: "Chase it!" },
 
     // Bottom Right Zone
-    { id: 'c10', top: '70%', left: '85%', size: 'w-24 h-24', img: CatLogo, color: 'bg-[#0E5851]', quote: "Cool Cat" },
-    { id: 'c11', top: '85%', left: '75%', size: 'w-18 h-18', img: CatLogo, color: 'bg-[#73A6A2]', quote: "Smile!" },
-    { id: 'c12', top: '55%', left: '92%', size: 'w-14 h-14', img: CatLogo, color: 'bg-[#EEE3C3] opacity-80', quote: "^.^" },
+    { id: 'c10', top: '80%', left: '80%', size: 'w-20 h-20 md:w-24 md:h-24', img: CatIcon2, color: 'bg-[#0E5851]', quote: "Cool Cat" },
+    { id: 'c11', top: '90%', left: '70%', size: 'w-14 h-14 md:w-18 md:h-18', img: CatIcon3, color: 'bg-[#73A6A2]', quote: "Smile!" },
+    { id: 'c12', top: '55%', left: '92%', size: 'w-10 h-10 md:w-14 md:h-14', img: CatIcon4, color: 'bg-[#EEE3C3] opacity-80', quote: "^.^" },
 
     // Gaps between team members (Inner Fillers)
-    { id: 'c13', top: '35%', left: '42%', size: 'w-12 h-12', img: CatLogo, color: 'bg-[#C5A978]', quote: "Tiny meow" },
-    { id: 'c14', top: '50%', left: '50%', size: 'w-20 h-20', img: CatLogo, color: 'bg-[#865832]', quote: "Center of attention" },
-    { id: 'c15', top: '40%', left: '32%', size: 'w-10 h-10', img: CatLogo, color: 'bg-[#A8754D]', quote: "Hi" },
-    { id: 'c16', top: '40%', left: '58%', size: 'w-10 h-10', img: CatLogo, color: 'bg-[#0E5851]', quote: "Yo" },
-    { id: 'c17', top: '60%', left: '25%', size: 'w-12 h-12', img: CatLogo, color: 'bg-[#73A6A2]', quote: "Run" },
-    { id: 'c18', top: '60%', left: '75%', size: 'w-12 h-12', img: CatLogo, color: 'bg-[#EEE3C3] opacity-80', quote: "Jump" },
+    { id: 'c13', top: '45%', left: '42%', size: 'w-10 h-10 md:w-12 md:h-12', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Tiny meow" },
+    { id: 'c14', top: '50%', left: '50%', size: 'w-16 h-16 md:w-20 md:h-20', img: CatIcon2, color: 'bg-[#865832]', quote: "Center of attention" },
+    { id: 'c15', top: '40%', left: '32%', size: 'w-8 h-8 md:w-10 md:h-10', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hi" },
+    { id: 'c16', top: '40%', left: '58%', size: 'w-8 h-8 md:w-10 md:h-10', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Yo" },
+    { id: 'c17', top: '70%', left: '25%', size: 'w-10 h-10 md:w-12 md:h-12', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Run" },
+    { id: 'c18', top: '70%', left: '75%', size: 'w-10 h-10 md:w-12 md:h-12', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Jump" },
 ];
 
-// Fixed positions for team members to ensure they are well spaced
+// Positions for team members that adapt to screen size
 const teamPositions = [
-    { top: '15%', left: '15%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Calvin (Top Left)
-    { top: '15%', left: '65%', size: 'w-40 h-40 md:w-48 md:h-48' }, // Ke Ying (Top Right)
-    { top: '55%', left: '20%', size: 'w-44 h-44 md:w-52 md:h-52' }, // Pei Xuan (Bottom Left)
-    { top: '55%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Bao Sheng (Bottom Right)
+    { top: { base: '10%', md: '15%' }, left: { base: '10%', md: '15%' }, size: 'w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56' }, // Calvin
+    { top: { base: '10%', md: '15%' }, left: { base: '55%', md: '65%' }, size: 'w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48' }, // Ke Ying
+    { top: { base: '50%', md: '55%' }, left: { base: '10%', md: '20%' }, size: 'w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52' }, // Pei Xuan
+    { top: { base: '50%', md: '55%' }, left: { base: '55%', md: '65%' }, size: 'w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56' }, // Bao Sheng
 ];
 
 const OurTeam = () => {
     const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
     const [selectedQuote, setSelectedQuote] = useState<string | null>(null);
     const [isExploding, setIsExploding] = useState(false);
+    const [isMobile, setIsMobile] = React.useState(false);
 
     const handleBoom = () => {
         setIsExploding(true);
         setTimeout(() => setIsExploding(false), 6000); // Stop rain after 6 seconds
     };
 
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
-        <div className="min-h-screen bg-[#EEE3C3] relative overflow-hidden pt-16 font-sans">
+        <div className="min-h-screen bg-mesh-gradient relative overflow-hidden pt-16 font-sans">
             {isExploding && <CatRain />}
+            <SwimmingFish />
 
             {/* Header / Title */}
             <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 w-full px-4 pointer-events-none">
@@ -165,7 +179,7 @@ const OurTeam = () => {
 
 
             {/* Bubbles Container */}
-            <div className="relative w-full h-[800px] md:h-screen mx-auto max-w-7xl">
+            <div className="relative w-full h-[600px] sm:h-[800px] md:h-screen mx-auto max-w-7xl z-10">
 
                 {/* Filler Cat Bubbles */}
                 {fillerBubbles.map((bubble, idx) => (
@@ -187,6 +201,9 @@ const OurTeam = () => {
                 {/* Team Member Bubbles */}
                 {members.map((member, index) => {
                     const pos = teamPositions[index];
+                    const currentTop = isMobile ? pos.top.base : pos.top.md;
+                    const currentLeft = isMobile ? pos.left.base : pos.left.md;
+
                     // Randomize animation slightly for team members too
                     const delay = index * 0.7;
                     const duration = 5 + index;
@@ -197,8 +214,8 @@ const OurTeam = () => {
                             onClick={() => setSelectedMember(member)}
                             className={`absolute rounded-full border-4 border-white shadow-xl hover:scale-110 hover:shadow-2xl hover:border-[#865032] cursor-pointer transition-all duration-300 z-20 overflow-hidden ${pos.size} group bg-white animate-float`}
                             style={{
-                                top: pos.top,
-                                left: pos.left,
+                                top: currentTop,
+                                left: currentLeft,
                                 animationDelay: `${delay}s`,
                                 animationDuration: `${duration}s`
                             }}

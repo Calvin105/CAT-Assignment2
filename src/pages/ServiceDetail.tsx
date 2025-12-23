@@ -123,8 +123,7 @@ const ServiceDetail = () => {
 
   return (
     <div
-      className="grow pt-24 min-h-screen relative overflow-hidden"
-      style={{ backgroundColor: "#EEE3C3" }}
+      className="grow pt-24 min-h-screen relative overflow-hidden bg-mesh-gradient"
     >
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/20 rounded-full blur-3xl pointer-events-none -mr-32 -mt-32" />
@@ -149,7 +148,7 @@ const ServiceDetail = () => {
           className="mb-16 relative"
         >
           <div className="absolute -left-4 -top-6 opacity-10 rotate-12">{service.icon}</div>
-          <h1 className="text-6xl md:text-8xl font-black text-[#1a1a1a] mb-4 tracking-tighter leading-none">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-[#1a1a1a] mb-4 tracking-tighter leading-none">
             {service.name}
           </h1>
           <div className="h-2 w-32 bg-[#0E5851] rounded-full mb-6" />
