@@ -649,17 +649,22 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-accent-dark text-brand-cream hover:bg-accent-light px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl"
+                  className="cursor-pointer flex-1 bg-accent-dark text-brand-cream hover:bg-accent-light px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl"
                 >
                   Schedule Meeting
                 </button>
-                <button
-                  type="button"
-                  className="border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-cream px-8 py-4 rounded-full font-bold text-lg transition-all"
-                >
-                  <Download className="w-5 h-5 inline mr-2" />
-                  Download Deck
-                </button>
+                <div className="relative inline-flex sm:w-auto group">
+                  <button
+                    type="button"
+                    className="cursor-pointer w-full border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-cream px-8 py-4 rounded-full font-bold text-lg transition-all"
+                  >
+                    <Download className="w-5 h-5 inline mr-2" />
+                    Download Deck
+                  </button>
+                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-full bg-brand-primary text-brand-cream text-xs px-3 py-1 shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200">
+                    Download a copy of our pitch deck
+                  </span>
+                </div>
               </div>
               <p className="text-sm text-brand-primary/60 mt-4 text-center">
                 <Shield className="w-4 h-4 inline mr-1 mb-1" />
