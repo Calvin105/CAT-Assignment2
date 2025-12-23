@@ -3,19 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useInView, AnimatePresence } from 'motion/react';
 import { 
   ArrowDown, 
-  Globe2, 
-  Lightbulb, 
-  Code2, 
+  Globe2,
   Palette, 
   Users, 
   Zap, 
   Shield, 
   Sparkles,
-  TrendingUp,
   CheckCircle,
   ArrowRight,
   Download,
-  Briefcase,
   BookOpen,
   Cpu,
   Crown
@@ -29,7 +25,7 @@ import brandingImage from '../assets/3d-rendering-futuristic-technologies.jpg';
 import itSupportImage from '../assets/761.jpg';
 import trainingImage from '../assets/futurism-perspective-digital-nomads-lifestyle.jpg';
 import sleekCatImage from '../assets/Sleek Cat.png';
-import tabletLoginVideo from '../assets/Tablet login.mp4';
+import tabletLoginVideo from '../assets/videos/Tablet login.mp4';
 import reactTechImg from '../assets/tech/react.png';
 import cloudflareImg from '../assets/tech/cloudflare.png';
 import typescriptTechImg from '../assets/tech/typescript.jpg';
@@ -598,7 +594,7 @@ const Home = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="bg-white rounded-3xl p-8 md:p-12 border border-brand-quaternary/20 shadow-xl mb-8">
+            <div className="bg-white rounded-3xl p-8 pb-4 md:p-12 md:pb-8 border border-brand-quaternary/20 shadow-xl mb-8">
               <h3 className="text-2xl font-bold text-brand-primary mb-6">Investment Highlights</h3>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -611,11 +607,11 @@ const Home = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-accent-dark mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Proven Team:</strong> 15+ years combined experience</span>
+                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Proven Team:</strong> 10 hackathon awards</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-accent-dark mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Strong Traction:</strong> 50+ clients, 100+ projects</span>
+                  <span className="text-brand-primary/80"><strong className="text-brand-primary">Strong Traction:</strong> 50+ Agile projects delievered</span>
                 </li>
               </ul>
             </div>
