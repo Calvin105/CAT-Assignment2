@@ -20,10 +20,6 @@ import CalvinImg from '../assets/CALVIN.jpg';
 import KeYingImg from '../assets/KeYing.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
-import webDesignImage from '../assets/cyber-security-expert-working-with-technology-neon-lights.jpg';
-import brandingImage from '../assets/3d-rendering-futuristic-technologies.jpg';
-import itSupportImage from '../assets/761.jpg';
-import trainingImage from '../assets/futurism-perspective-digital-nomads-lifestyle.jpg';
 import sleekCatImage from '../assets/Sleek Cat.png';
 import tabletLoginVideo from '../assets/videos/Tablet login.mp4';
 import reactTechImg from '../assets/tech/react.png';
@@ -34,6 +30,11 @@ import cloudTechImg from '../assets/tech/aws-cloud.png';
 import mlTechImg from '../assets/tech/machine-learning-logo.png';
 import Squares from '../components/Squares';
 import HackathonLoops from '../components/HackathonLoops';
+import uiuxSvg from '../assets/videos/uiux.svg';
+import marketingSvg from '../assets/videos/marketing.svg';
+import supportSvg from '../assets/videos/support.svg';
+import onboardingSvg from '../assets/videos/onboarding.svg';
+import vibrantAbstractDesign from '../assets/Vibrant Abstract Design.png';
 
 // Reusable scroll animation component
 const ScrollReveal = ({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) => {
@@ -126,37 +127,39 @@ const Home = () => {
     );
   };
 
-  // Orbital ring component
-  const OrbitalRing = ({ size, duration, delay, reverse, children }: { size: number; duration: number; delay: number; reverse?: boolean; children: React.ReactNode }) => {
-    return (
-      <div className="absolute rounded-full border border-brand-primary/20" style={{ width: size, height: size }}>
-        <motion.div
-          className="w-full h-full relative"
-          animate={{ rotate: reverse ? -360 : 360 }}
-          transition={{ repeat: Infinity, duration, ease: 'linear', delay }}
-        >
-          {children}
-        </motion.div>
-      </div>
-    );
-  };
-
-  const OrbitalItem = ({ icon, color, angle = 0 }: { icon: React.ReactNode; color: string; angle?: number }) => {
-    return (
-      <div
-        className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 ${color} rounded-full flex items-center justify-center text-brand-primary shadow-lg`}
-        style={{ transform: `rotate(${angle}deg) translateY(-50%) rotate(-${angle}deg)` }}
-      >
-        {icon}
-      </div>
-    );
-  };
-
   const servicesData = [
-    { name: 'Web Solutions', icon: Globe2, desc: 'Modern websites and digital experiences', color: 'bg-accent-dark' },
-    { name: 'Branding', icon: Palette, desc: 'Visual identities that stick', color: 'bg-brand-primary' },
-    { name: 'IT Support', icon: Cpu, desc: 'Robust technical solutions', color: 'bg-accent-light' },
-    { name: 'Training', icon: BookOpen, desc: 'Empowering through knowledge', color: 'bg-brand-tertiary' },
+    { 
+      name: 'Web Solutions', 
+      icon: Globe2, 
+      desc: 'Modern websites and digital experiences', 
+      color: 'bg-accent-dark',
+      media: uiuxSvg,
+      quote: "\"Our website looks outdated and doesn't convert visitors. We're losing potential customers to competitors with better online presence.\""
+    },
+    { 
+      name: 'Branding', 
+      icon: Palette, 
+      desc: 'Visual identities that stick', 
+      color: 'bg-brand-primary',
+      media: marketingSvg,
+      quote: "\"We don't have a consistent brand identity. Our marketing materials look unprofessional and don't reflect our company values.\""
+    },
+    { 
+      name: 'IT Support', 
+      icon: Cpu, 
+      desc: 'Robust technical solutions', 
+      color: 'bg-accent-light',
+      media: supportSvg,
+      quote: "\"Our IT systems keep breaking down, causing downtime and lost productivity. We need reliable technical support.\""
+    },
+    { 
+      name: 'Training', 
+      icon: BookOpen, 
+      desc: 'Empowering through knowledge', 
+      color: 'bg-brand-tertiary',
+      media: onboardingSvg,
+      quote: "\"Our team struggles with new technologies. We need training to stay competitive and improve our digital skills.\""
+    },
   ];
 
   const teamMembers = [
@@ -180,10 +183,10 @@ const Home = () => {
       {/* Section 1: Hero Section */}
       <section
         onMouseMove={handleMouseMove}
-        className="relative h-[calc(100dvh-4rem)] flex flex-col items-center justify-center overflow-hidden"
+        className="relative bg-brand-cream h-[calc(100dvh-4rem)] flex flex-col items-center justify-center overflow-hidden z-20"
       >
         {/* Animated Squares Background */}
-        <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <div className="absolute inset-0 opacity-30 pointer-events-none z-30">
           <Squares
             speed={0.5}
             squareSize={30}
@@ -242,14 +245,6 @@ const Home = () => {
             </button>
           </motion.div>
         </div>
-
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-brand-primary/60"
-        >
-          <ArrowDown className="w-6 h-6" />
-        </motion.div>
       </section>
 
       {/* Sleek Cat Image - Intermediary Overlapping Both Sections */}
@@ -273,10 +268,10 @@ const Home = () => {
       </section>
 
       {/* Section 2: Market Opportunity - Bento Box */}
-      <section className="py-24 bg-brand-quaternary/10 relative -mt-40 pt-48 shadow-[inset_0_10px_10px_-10px_rgba(0,0,0,0.5)]">
+      <section className="py-24 bg-[#ECE0BF] relative -mt-40 pt-48 shadow-[inset_0_10px_10px_-10px_rgba(0,0,0,0.5)] z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-6 text-center">
+            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-6 mt-10 text-center">
               The Digital Divide is <span className="text-accent-dark">Real</span>
             </h2>
           </ScrollReveal>
@@ -338,60 +333,68 @@ const Home = () => {
         </div>
       </section>
 
-      
-
-      {/* Section 3: Our Solution - Services Overview - Bento Box */}
-      <section className="py-24 bg-brand-cream relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
-              Four Pillars of <span className="text-accent-dark">Growth</span>
-            </h2>
-            <p className="text-xl text-brand-primary/70 max-w-2xl mx-auto text-center mb-16">
-              Our diversified revenue streams reduce risk and maximize growth potential
-            </p>
-          </ScrollReveal>
-
-          {/* Bento Grid - Varied sizes for organic feel */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
-            {servicesData.map((service, idx) => {
-              // Create varied spans for bento effect
-              const spans = [
-                'md:col-span-2 lg:col-span-2', // Web Solutions - large
-                'md:col-span-1 lg:col-span-1', // Branding - small
-                'md:col-span-1 lg:col-span-1', // IT Support - small
-                'md:col-span-2 lg:col-span-1', // Training - medium
-              ];
-              const isLarge = idx === 0 || idx === 3;
-              
-              return (
-                <ScrollReveal key={idx} delay={idx * 0.1}>
-                  <motion.div
-                    whileHover={{ y: -5, scale: 1.02 }}
-                    className={`${spans[idx]} group relative overflow-hidden rounded-3xl bg-white border border-brand-quaternary/20 hover:border-brand-primary/50 transition-all duration-500 ${isLarge ? 'p-8 md:p-10 lg:p-12' : 'p-6 md:p-8'} flex flex-col cursor-pointer`}
-                    onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
-                  >
-                    <div className={`absolute inset-0 ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-                    <div className="relative z-10 flex flex-col h-full">
-                      <div className={`${isLarge ? 'w-20 h-20' : 'w-16 h-16'} ${service.color} rounded-2xl flex items-center justify-center text-white mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl`}>
-                        <service.icon className={`${isLarge ? 'w-10 h-10' : 'w-8 h-8'}`} />
-                      </div>
-                      <h3 className={`${isLarge ? 'text-3xl md:text-4xl' : 'text-2xl md:text-2xl'} font-bold text-brand-primary mb-3 md:mb-4`}>{service.name}</h3>
-                      <p className={`text-brand-primary/70 ${isLarge ? 'text-base md:text-lg' : 'text-sm md:text-base'} mb-4 md:mb-6 group-hover:text-brand-primary transition-colors grow`}>{service.desc}</p>
-                      <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 flex items-center text-accent-dark font-bold">
-                        Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                      </div>
-                    </div>
-                  </motion.div>
-                </ScrollReveal>
-              );
-            })}
+      {/* Section 3: Our Solution - Services Overview - Two Column Layout */}
+      <section className="relative">
+        {/* Fixed Background Image - Stays in place while services scroll */}
+        <div className="fixed top-16 right-0 w-1/2 h-[calc(100dvh-4rem)] z-0 pointer-events-none hidden md:flex items-center justify-center">
+          <div className="h-full w-full flex items-center justify-center p-4 lg:p-4 bg-white/50">
+            <img 
+              src={vibrantAbstractDesign}
+              alt="Vibrant Abstract Design"
+              className='rounded-4xl max-h-full mx-auto'
+            />
           </div>
         </div>
+
+        {servicesData.map((service, idx) => (
+          <div className='min-h-screen flex flex-col md:flex-row relative overflow-hidden'>
+            {/* Left Column - Quote & Service Name */}
+            <div className="w-full md:w-1/2 flex flex-col justify-center px-4 sm:px-6 lg:px-12 py-16 md:py-24 relative z-10">
+              <ScrollReveal delay={0.2}>
+                <div className="relative mb-8 md:mb-12">
+                  <blockquote className="text-xl md:text-2xl lg:text-3xl text-brand-primary/90 italic leading-relaxed font-serif relative">
+                    {service.quote}
+                  </blockquote>
+                </div>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={0.3}>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-brand-primary mb-8 md:mb-12 leading-20">
+                  <span className="text-accent-dark">{service.name}</span>
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.4}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
+                  className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-accent-dark text-white rounded-full font-bold text-base md:text-lg hover:shadow-xl transition-all cursor-pointer"
+                >
+                  Learn More
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </ScrollReveal>
+            </div>
+
+            {/* Right Column - Media (Larger Size) */}
+            <div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-8 lg:p-12 relative">
+              <ScrollReveal delay={0.3}>
+                <div className="w-full h-full flex items-center justify-center">
+                  <img 
+                    src={service.media} 
+                    alt={service.name}
+                    className="w-full h-full max-w-none object-contain scale-125 md:scale-150"
+                  />
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        ))}
       </section>
 
       {/* Section 4: Why Us? - Competitive Advantages - Bento Box */}
-      <section className="py-24 bg-brand-quaternary/10 relative">
+      <section className="py-24 bg-[#ECE0BF] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
@@ -485,57 +488,6 @@ const Home = () => {
         </div>
       </section>
 
-      
-
-      {/* Section 8: Services Deep Dive */}
-      <section className="py-24 bg-brand-quaternary/10 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
-              How We Generate <span className="text-accent-dark">Value</span>
-            </h2>
-            <p className="text-xl text-brand-primary/70 max-w-2xl mx-auto text-center mb-16">
-              Custom packages starting from competitive rates
-            </p>
-          </ScrollReveal>
-
-          <div className="space-y-4">
-              {[
-              { name: 'WEB SOLUTIONS', tagline: 'We design and build modern websites', image: webDesignImage, color: 'var(--color-accent-dark)' },
-              { name: 'BRANDING', tagline: 'We shape brands for the digital world', image: brandingImage, color: 'var(--color-brand-primary)' },
-              { name: 'IT SUPPORT', tagline: 'We keep your systems running smoothly', image: itSupportImage, color: 'var(--color-accent-light)' },
-              { name: 'TRAINING', tagline: 'We make technology easy to learn', image: trainingImage, color: 'var(--color-brand-tertiary)' },
-            ].map((service, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.1}>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="relative cursor-pointer overflow-hidden rounded-xl border border-brand-quaternary/20 group bg-white"
-                  onClick={() => navigate(`/services/${getServiceSlug(service.name)}`)}
-                >
-                  <div className="py-10 px-8 sm:px-12 relative z-10 flex items-center justify-between">
-                    <div className="flex-1">
-                      <h3 className="text-3xl md:text-5xl font-black tracking-tight text-brand-primary mb-2">{service.name}</h3>
-                      <p className="text-xl text-brand-primary/70 italic">"{service.tagline}"</p>
-                    </div>
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ repeat: Infinity, duration: 2 }}
-                      className="hidden sm:block"
-                    >
-                      <ArrowRight className="w-8 h-8 text-brand-primary" />
-                    </motion.div>
-                  </div>
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-                    style={{ backgroundColor: service.color }}
-                  />
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Section 9: Technology Stack */}
       <section className="py-24 bg-brand-cream relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -585,7 +537,7 @@ const Home = () => {
       </section>
 
       {/* Section 10: Investment Opportunity */}
-      <section id="investment" className="py-24 bg-brand-quaternary/10 relative">
+      <section id="investment" className="py-24 bg-[#ECE0BF] relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <h2 className="text-4xl md:text-6xl font-bold text-brand-primary mb-4 text-center">
