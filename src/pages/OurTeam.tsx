@@ -12,6 +12,7 @@ import CatIcon3 from '../assets/cat-icon3.png';
 import CatIcon4 from '../assets/cat-icon4.png';
 import CatRain from '../components/CatRain';
 
+
 interface TeamMember {
     id: number;
     name: string;
