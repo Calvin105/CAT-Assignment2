@@ -54,7 +54,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed w-full z-50 bg-brand-primary backdrop-blur-md">
+        <nav className="fixed w-full z-50 bg-brand-primary backdrop-blur-md shadow-[0_4px_6px_rgba(0,0,0,0.1)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="shrink-0">

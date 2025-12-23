@@ -247,7 +247,7 @@ const Home = () => {
       </section>
 
       {/* Sleek Cat Image - Intermediary Overlapping Both Sections */}
-      <section className="relative -mt-40 mb-0 pointer-events-none" style={{ zIndex: 20 }}>
+      <section className="relative -mt-20 sm:-mt-40 mb-0 pointer-events-none" style={{ zIndex: 20 }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <motion.div
