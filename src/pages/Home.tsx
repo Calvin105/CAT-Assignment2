@@ -16,7 +16,7 @@ import {
   Crown
 } from 'lucide-react';
 import CalvinImg from '../assets/CALVIN.jpg';
-import KeYingImg from '../assets/KeYing-pic.JPG';
+import KeYingImg from '../assets/KeYing-pic.jpg';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
 import sleekCatImage from '../assets/Sleek Cat.png';
