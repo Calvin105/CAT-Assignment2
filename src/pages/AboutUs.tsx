@@ -1,5 +1,6 @@
 import { motion, useTransform, useMotionValue } from 'framer-motion';
 import { MousePointer2, Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
+import meowieeeeVideo from '../assets/Meowieeee.mp4';
 
 const AboutUs = () => {
     return (
@@ -7,6 +8,7 @@ const AboutUs = () => {
             <HeroSection />
             <OurApproachSection />
             <AboutMeowieeeeSection />
+            <VideoShowcaseSection />
             <VisionOrbitalSection />
             <MissionSection />
         </div>
@@ -286,6 +288,30 @@ const MissionSection = () => {
                     ))}
                 </div>
             </div>
+        </section>
+    );
+};
+
+// --- Video Showcase Section ---
+const VideoShowcaseSection = () => {
+    return (
+        <section className="py-16 px-6 max-w-5xl mx-auto relative z-10 w-full flex justify-center">
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl border-4 border-[#865832]/20 bg-black/5"
+            >
+                <video
+                    controls
+                    className="w-full h-full object-cover"
+                    poster="" // Optional: Add a poster image if available
+                >
+                    <source src={meowieeeeVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </motion.div>
         </section>
     );
 };
