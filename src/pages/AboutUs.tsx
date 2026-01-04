@@ -193,7 +193,55 @@ const MissionSection = () => {
 };
 
 // --- Video Showcase Section ---
+import { useState, useEffect } from 'react';
+
 const VideoShowcaseSection = () => {
+    const [videoUrl, setVideoUrl] = useState<string | null>(null);
+    const [loadingProgress, setLoadingProgress] = useState(0);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadVideo = async () => {
+            try {
+                // Fetch manifest
+                const manifestRes = await fetch('/videos/video-manifest.json');
+                if (!manifestRes.ok) throw new Error('Failed to load video manifest');
+                const manifest = await manifestRes.json();
+
+                const chunks = manifest.chunks;
+                const totalChunks = chunks.length;
+                const buffers = new Array(totalChunks);
+
+                let completedChunks = 0;
+
+                // Fetch all chunks
+                await Promise.all(chunks.map(async (chunkName: string, index: number) => {
+                    const chunkRes = await fetch(`/videos/${chunkName}`);
+                    if (!chunkRes.ok) throw new Error(`Failed to load chunk ${chunkName}`);
+                    buffers[index] = await chunkRes.arrayBuffer();
+
+                    completedChunks++;
+                    setLoadingProgress(Math.round((completedChunks / totalChunks) * 100));
+                }));
+
+                // Combine chunks
+                const blob = new Blob(buffers, { type: manifest.mimeType });
+                const url = URL.createObjectURL(blob);
+                setVideoUrl(url);
+
+            } catch (err) {
+                console.error('Error loading video:', err);
+                setError('Failed to load video. Please try refreshing.');
+            }
+        };
+
+        loadVideo();
+
+        return () => {
+            if (videoUrl) URL.revokeObjectURL(videoUrl);
+        };
+    }, []);
+
     return (
         <section className="py-16 px-6 max-w-5xl mx-auto relative z-10 w-full flex justify-center">
             <motion.div
@@ -201,16 +249,28 @@ const VideoShowcaseSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl border-4 border-[#865832]/20 bg-black/5"
+                className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl border-4 border-[#865832]/20 bg-black/5 aspect-video flex items-center justify-center bg-gray-900"
             >
-                <video
-                    controls
-                    className="w-full h-full object-cover"
-                    poster="" // Optional: Add a poster image if available
-                >
-                    <source src="Meowieeee.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                {videoUrl ? (
+                    <video
+                        controls
+                        className="w-full h-full object-cover"
+                    >
+                        <source src={videoUrl} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                ) : (
+                    <div className="flex flex-col items-center justify-center text-[#EEE3C3]">
+                        {error ? (
+                            <p className="text-red-400">{error}</p>
+                        ) : (
+                            <>
+                                <div className="w-12 h-12 border-4 border-[#EEE3C3] border-t-transparent rounded-full animate-spin mb-4"></div>
+                                <p>Loading Meowieeee {loadingProgress}%...</p>
+                            </>
+                        )}
+                    </div>
+                )}
             </motion.div>
         </section>
     );
