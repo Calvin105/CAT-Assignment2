@@ -494,7 +494,7 @@ const Home = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-brand-primary via-transparent to-transparent opacity-60" />
                   </div>
