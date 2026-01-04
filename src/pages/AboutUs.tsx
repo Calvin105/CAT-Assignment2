@@ -203,35 +203,82 @@ const VideoShowcaseSection = () => {
     useEffect(() => {
         const loadVideo = async () => {
             try {
-                // Fetch manifest
                 const manifestRes = await fetch('/videos/video-manifest.json');
                 if (!manifestRes.ok) throw new Error('Failed to load video manifest');
                 const manifest = await manifestRes.json();
 
-                const chunks = manifest.chunks;
+                const chunks: string[] = manifest.chunks;
                 const totalChunks = chunks.length;
-                const buffers = new Array(totalChunks);
 
-                let completedChunks = 0;
+                // Track progress of each chunk independently
+                // We estimate total size based on typical chunk size (20MB) x count, or refine if manifest had sizes
+                // For now, we will track "chunks completed" in decimal (e.g., 0.5 chunks)
 
-                // Fetch all chunks
-                await Promise.all(chunks.map(async (chunkName: string, index: number) => {
-                    const chunkRes = await fetch(`/videos/${chunkName}`);
-                    if (!chunkRes.ok) throw new Error(`Failed to load chunk ${chunkName}`);
-                    buffers[index] = await chunkRes.arrayBuffer();
+                // Better approach: track bytes
+                // But we don't know total bytes from manifest. 
+                // We will assume equal weight for progress bar simplicity or rely entirely on bytes if Content-Length provided.
 
-                    completedChunks++;
-                    setLoadingProgress(Math.round((completedChunks / totalChunks) * 100));
+                const chunkBuffers = new Array(totalChunks);
+                const chunkProgress = new Array(totalChunks).fill(0);
+
+                const updateGlobalProgress = () => {
+                    const totalProgress = chunkProgress.reduce((a, b) => a + b, 0);
+                    // Average progress across all chunks (0 to 100)
+                    setLoadingProgress(Math.round((totalProgress / totalChunks)));
+                };
+
+                await Promise.all(chunks.map(async (chunkName, index) => {
+                    const response = await fetch(`/videos/${chunkName}`);
+                    if (!response.ok) throw new Error(`Failed to load chunk ${chunkName}`);
+
+                    const contentLength = response.headers.get('Content-Length');
+                    const total = contentLength ? parseInt(contentLength, 10) : 0;
+
+                    if (!response.body) {
+                        chunkBuffers[index] = await response.arrayBuffer();
+                        chunkProgress[index] = 100;
+                        updateGlobalProgress();
+                        return;
+                    }
+
+                    const reader = response.body.getReader();
+                    const chunksArray = [];
+                    let receivedLength = 0;
+
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+
+                        chunksArray.push(value);
+                        receivedLength += value.length;
+
+                        if (total) {
+                            chunkProgress[index] = (receivedLength / total) * 100;
+                            updateGlobalProgress();
+                        }
+                    }
+
+                    // Reassemble this chunk
+                    const combinedChunk = new Uint8Array(receivedLength);
+                    let position = 0;
+                    for (let chunk of chunksArray) {
+                        combinedChunk.set(chunk, position);
+                        position += chunk.length;
+                    }
+                    chunkBuffers[index] = combinedChunk.buffer;
+
+                    // Ensure 100% at end
+                    chunkProgress[index] = 100;
+                    updateGlobalProgress();
                 }));
 
-                // Combine chunks
-                const blob = new Blob(buffers, { type: manifest.mimeType });
+                const blob = new Blob(chunkBuffers, { type: manifest.mimeType });
                 const url = URL.createObjectURL(blob);
                 setVideoUrl(url);
 
             } catch (err) {
                 console.error('Error loading video:', err);
-                setError('Failed to load video. Please try refreshing.');
+                setError('Failed to load video (Network error or Timeout)');
             }
         };
 
