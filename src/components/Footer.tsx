@@ -32,42 +32,15 @@ const Footer = () => {
             <div>
               <h4 className="font-bold mb-4">Connect</h4>
               <div className="flex space-x-4">
-                <div className="relative group">
-                  <a
-                    href="#"
-                    className="text-brand-cream/60 hover:text-brand-cream transition-colors"
-                    aria-label="Visit our LinkedIn profile"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-full bg-brand-cream text-brand-primary text-xs px-3 py-1 shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200">
-                    Opens LinkedIn profile
-                  </span>
-                </div>
-                <div className="relative group">
-                  <a
-                    href="#"
-                    className="text-brand-cream/60 hover:text-brand-cream transition-colors"
-                    aria-label="Visit our Twitter profile"
-                  >
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-full bg-brand-cream text-brand-primary text-xs px-3 py-1 shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200">
-                    Opens Twitter profile
-                  </span>
-                </div>
-                <div className="relative group">
-                  <a
-                    href="#"
-                    className="text-brand-cream/60 hover:text-brand-cream transition-colors"
-                    aria-label="Visit our GitHub projects"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-full bg-brand-cream text-brand-primary text-xs px-3 py-1 shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200">
-                    View GitHub projects
-                  </span>
-                </div>
+                <a href="#" className="text-brand-cream/60 hover:text-brand-cream transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-brand-cream/60 hover:text-brand-cream transition-colors">
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-brand-cream/60 hover:text-brand-cream transition-colors">
+                  <Github className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </div>
