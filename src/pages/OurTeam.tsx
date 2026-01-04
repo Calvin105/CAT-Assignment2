@@ -1,514 +1,356 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
-import {
-  Briefcase,
-  PawPrint,
-  Cpu,
-  Palette,
-  BookOpen,
-  Crown,
-  X,
-  Bomb,
-} from "lucide-react";
-import CalvinImg from "../assets/CALVIN.jpg";
-import KeYingImg from "../assets/KeYing-pic.JPG";
-import PeiXuanImg from "../assets/PeiXuan.JPG";
-import BaoShengImg from "../assets/BaoSheng.jpeg";
-import CatLogo from "../assets/Meowieeee logo transparent bg.png";
-import CatIcon1 from "../assets/cat-icon1.png";
-import CatIcon2 from "../assets/cat-icon2.png";
-import CatIcon3 from "../assets/cat-icon3.png";
-import CatIcon4 from "../assets/cat-icon4.png";
-import CatRain from "../components/CatRain";
-import { SwimmingFish } from "../components/AnimatedAnimals";
-
+import { Briefcase, PawPrint, Cpu, Palette, BookOpen, Crown, X, Bomb } from 'lucide-react';
+import CalvinImg from '../assets/CALVIN.jpg';
+import KeYingImg from '../assets/KeYing.jpg';
+import PeiXuanImg from '../assets/PeiXuan.JPG';
+import BaoShengImg from '../assets/BaoSheng.jpeg';
+import CatLogo from '../assets/Meowieeee logo transparent bg.png';
+import CatIcon1 from '../assets/cat-icon1.png';
+import CatIcon2 from '../assets/cat-icon2.png';
+import CatIcon3 from '../assets/cat-icon3.png';
+import CatIcon4 from '../assets/cat-icon4.png';
+import CatRain from '../components/CatRain';
 
 interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  icon: React.ElementType;
-  bio: string;
-  responsibilities: string[];
-  image: string | null;
+    id: number;
+    name: string;
+    role: string;
+    icon: React.ElementType;
+    bio: string;
+    responsibilities: string[];
+    image: string | null;
 }
 
 const members: TeamMember[] = [
-  {
-    id: 1,
-    name: "Calvin Khoo",
-    role: "Project Lead & Creative Strategist",
-    icon: Crown,
-    bio: "The “Head Cat” who oversees the entire project direction. They ensure that every idea aligns with Meowieeee’s vision and mission, guiding the creative direction to stay fresh, playful, and meaningful.",
-    responsibilities: [
-      "Project planning & coordination",
-      "Creative direction & concept development",
-      "Quality control",
-      "Team communication and final approvals",
-    ],
-    image: CalvinImg,
-  },
-  {
-    id: 2,
-    name: "Koay Ke Ying",
-    role: "Technical Developer & IT Specialist",
-    icon: Cpu,
-    bio: "Our tech-savvy cat who builds, fixes, and optimizes everything behind the scenes. They lead the technical development of websites and digital tools, ensuring all systems run smoothly.",
-    responsibilities: [
-      "Web development (frontend/back-end)",
-      "System setup, troubleshooting & tech support",
-      "Tool development for workshops",
-      "Ensuring digital assets are functional",
-    ],
-    image: KeYingImg,
-  },
-  {
-    id: 3,
-    name: "Lim Pei Xuan",
-    role: "UI/UX & Branding Designer",
-    icon: Palette,
-    bio: "The creative cat with sharp eyes and sharper instincts. They craft visuals that reflect Meowieeee’s playful yet professional identity, from user-friendly layouts to lasting brand designs.",
-    responsibilities: [
-      "UI/UX design for websites and apps",
-      "Branding assets (logo, colour palette, CI)",
-      "Social media visuals",
-      "Enhancing user experience",
-    ],
-    image: PeiXuanImg,
-  },
-  {
-    id: 4,
-    name: "Ch’ng Bao Sheng",
-    role: "Training & Content Specialist",
-    icon: BookOpen,
-    bio: "The “teacher cat” who transforms complex tech concepts into easy, bite-sized, pawsible lessons. They develop workshop materials and educational content to empower users.",
-    responsibilities: [
-      "Designing workshop modules & content",
-      "Creating step-by-step guides",
-      "Delivering training sessions",
-      "Ensuring content is accessible to all",
-    ],
-    image: BaoShengImg,
-  },
+    {
+        id: 1,
+        name: "Calvin Khoo",
+        role: "Project Lead & Creative Strategist",
+        icon: Crown,
+        bio: "The “Head Cat” who oversees the entire project direction. They ensure that every idea aligns with Meowieeee’s vision and mission, guiding the creative direction to stay fresh, playful, and meaningful.",
+        responsibilities: [
+            "Project planning & coordination",
+            "Creative direction & concept development",
+            "Quality control",
+            "Team communication and final approvals"
+        ],
+        image: CalvinImg
+    },
+    {
+        id: 2,
+        name: "Koay Ke Ying",
+        role: "Technical Developer & IT Specialist",
+        icon: Cpu,
+        bio: "Our tech-savvy cat who builds, fixes, and optimizes everything behind the scenes. They lead the technical development of websites and digital tools, ensuring all systems run smoothly.",
+        responsibilities: [
+            "Web development (frontend/back-end)",
+            "System setup, troubleshooting & tech support",
+            "Tool development for workshops",
+            "Ensuring digital assets are functional"
+        ],
+        image: KeYingImg
+    },
+    {
+        id: 3,
+        name: "Lim Pei Xuan",
+        role: "UI/UX & Branding Designer",
+        icon: Palette,
+        bio: "The creative cat with sharp eyes and sharper instincts. They craft visuals that reflect Meowieeee’s playful yet professional identity, from user-friendly layouts to lasting brand designs.",
+        responsibilities: [
+            "UI/UX design for websites and apps",
+            "Branding assets (logo, colour palette, CI)",
+            "Social media visuals",
+            "Enhancing user experience"
+        ],
+        image: PeiXuanImg
+    },
+    {
+        id: 4,
+        name: "Ch’ng Bao Sheng",
+        role: "Training & Content Specialist",
+        icon: BookOpen,
+        bio: "The “teacher cat” who transforms complex tech concepts into easy, bite-sized, pawsible lessons. They develop workshop materials and educational content to empower users.",
+        responsibilities: [
+            "Designing workshop modules & content",
+            "Creating step-by-step guides",
+            "Delivering training sessions",
+            "Ensuring content is accessible to all"
+        ],
+        image: BaoShengImg
+    }
 ];
 
 // Filler bubbles positions and data
 const fillerBubbles = [
-  // Top Left Zone
-  {
-    id: "c1",
-    top: "5%",
-    left: "5%",
-    size: "w-12 h-12 md:w-20 md:h-20",
-    img: CatIcon1,
-    color: "bg-[#C5A978]",
-    quote: "Pawsitive Vibes",
-  },
-  {
-    id: "c2",
-    top: "25%",
-    left: "15%",
-    size: "w-10 h-10 md:w-14 md:h-14",
-    img: CatIcon2,
-    color: "bg-[#865832]",
-    quote: "Meow!",
-  },
-  {
-    id: "c3",
-    top: "35%",
-    left: "2%",
-    size: "w-16 h-16 md:w-24 md:h-24",
-    img: CatIcon3,
-    color: "bg-[#A8754D]",
-    quote: "Hello!",
-  },
+    // Top Left Zone
+    { id: 'c1', top: '22%', left: '10%', size: 'w-20 h-20', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Pawsitive Vibes" },
+    { id: 'c2', top: '30%', left: '20%', size: 'w-14 h-14', img: CatIcon2, color: 'bg-[#865832]', quote: "Meow!" },
+    { id: 'c3', top: '40%', left: '5%', size: 'w-24 h-24', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hello!" },
 
-  // Top Right Zone
-  {
-    id: "c4",
-    top: "5%",
-    left: "85%",
-    size: "w-14 h-14 md:w-22 md:h-22",
-    img: CatIcon4,
-    color: "bg-[#0E5851]",
-    quote: "Purr...",
-  },
-  {
-    id: "c5",
-    top: "28%",
-    left: "92%",
-    size: "w-10 h-10 md:w-16 md:h-16",
-    img: CatIcon1,
-    color: "bg-[#73A6A2]",
-    quote: "Hugs?",
-  },
-  {
-    id: "c6",
-    top: "35%",
-    left: "78%",
-    size: "w-12 h-12 md:w-18 md:h-18",
-    img: CatIcon2,
-    color: "bg-[#EEE3C3] opacity-80",
-    quote: "Nap?",
-  },
+    // Top Right Zone
+    { id: 'c4', top: '22%', left: '80%', size: 'w-22 h-22', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Purr..." },
+    { id: 'c5', top: '33%', left: '90%', size: 'w-16 h-16', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Hugs?" },
+    { id: 'c6', top: '40%', left: '75%', size: 'w-18 h-18', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Nap?" },
 
-  // Bottom Left Zone
-  {
-    id: "c7",
-    top: "80%",
-    left: "5%",
-    size: "w-20 h-20 md:w-28 md:h-28",
-    img: CatIcon3,
-    color: "bg-[#C5A978]",
-    quote: "Dream Big",
-  },
-  {
-    id: "c8",
-    top: "65%",
-    left: "2%",
-    size: "w-12 h-12 md:w-16 md:h-16",
-    img: CatIcon4,
-    color: "bg-[#865832]",
-    quote: "Go go!",
-  },
-  {
-    id: "c9",
-    top: "90%",
-    left: "20%",
-    size: "w-14 h-14 md:w-20 md:h-20",
-    img: CatIcon1,
-    color: "bg-[#A8754D]",
-    quote: "Chase it!",
-  },
+    // Bottom Left Zone
+    { id: 'c7', top: '75%', left: '10%', size: 'w-28 h-28', img: CatIcon3, color: 'bg-[#C5A978]', quote: "Dream Big" },
+    { id: 'c8', top: '60%', left: '5%', size: 'w-16 h-16', img: CatIcon4, color: 'bg-[#865832]', quote: "Go go!" },
+    { id: 'c9', top: '85%', left: '25%', size: 'w-20 h-20', img: CatIcon1, color: 'bg-[#A8754D]', quote: "Chase it!" },
 
-  // Bottom Right Zone
-  {
-    id: "c10",
-    top: "80%",
-    left: "80%",
-    size: "w-20 h-20 md:w-24 md:h-24",
-    img: CatIcon2,
-    color: "bg-[#0E5851]",
-    quote: "Cool Cat",
-  },
-  {
-    id: "c11",
-    top: "90%",
-    left: "70%",
-    size: "w-14 h-14 md:w-18 md:h-18",
-    img: CatIcon3,
-    color: "bg-[#73A6A2]",
-    quote: "Smile!",
-  },
-  {
-    id: "c12",
-    top: "55%",
-    left: "92%",
-    size: "w-10 h-10 md:w-14 md:h-14",
-    img: CatIcon4,
-    color: "bg-[#EEE3C3] opacity-80",
-    quote: "^.^",
-  },
+    // Bottom Right Zone
+    { id: 'c10', top: '70%', left: '85%', size: 'w-24 h-24', img: CatIcon2, color: 'bg-[#0E5851]', quote: "Cool Cat" },
+    { id: 'c11', top: '85%', left: '75%', size: 'w-18 h-18', img: CatIcon3, color: 'bg-[#73A6A2]', quote: "Smile!" },
+    { id: 'c12', top: '55%', left: '92%', size: 'w-14 h-14', img: CatIcon4, color: 'bg-[#EEE3C3] opacity-80', quote: "^.^" },
 
-  // Gaps between team members (Inner Fillers)
-  {
-    id: "c13",
-    top: "45%",
-    left: "42%",
-    size: "w-10 h-10 md:w-12 md:h-12",
-    img: CatIcon1,
-    color: "bg-[#C5A978]",
-    quote: "Tiny meow",
-  },
-  {
-    id: "c14",
-    top: "50%",
-    left: "50%",
-    size: "w-16 h-16 md:w-20 md:h-20",
-    img: CatIcon2,
-    color: "bg-[#865832]",
-    quote: "Center of attention",
-  },
-  {
-    id: "c15",
-    top: "40%",
-    left: "32%",
-    size: "w-8 h-8 md:w-10 md:h-10",
-    img: CatIcon3,
-    color: "bg-[#A8754D]",
-    quote: "Hi",
-  },
-  {
-    id: "c16",
-    top: "40%",
-    left: "58%",
-    size: "w-8 h-8 md:w-10 md:h-10",
-    img: CatIcon4,
-    color: "bg-[#0E5851]",
-    quote: "Yo",
-  },
-  {
-    id: "c17",
-    top: "70%",
-    left: "25%",
-    size: "w-10 h-10 md:w-12 md:h-12",
-    img: CatIcon1,
-    color: "bg-[#73A6A2]",
-    quote: "Run",
-  },
-  {
-    id: "c18",
-    top: "70%",
-    left: "75%",
-    size: "w-10 h-10 md:w-12 md:h-12",
-    img: CatIcon2,
-    color: "bg-[#EEE3C3] opacity-80",
-    quote: "Jump",
-  },
+    // Gaps between team members (Inner Fillers)
+    { id: 'c13', top: '35%', left: '42%', size: 'w-12 h-12', img: CatIcon1, color: 'bg-[#C5A978]', quote: "Tiny meow" },
+    { id: 'c14', top: '50%', left: '50%', size: 'w-20 h-20', img: CatIcon2, color: 'bg-[#865832]', quote: "Center of attention" },
+    { id: 'c15', top: '40%', left: '32%', size: 'w-10 h-10', img: CatIcon3, color: 'bg-[#A8754D]', quote: "Hi" },
+    { id: 'c16', top: '40%', left: '58%', size: 'w-10 h-10', img: CatIcon4, color: 'bg-[#0E5851]', quote: "Yo" },
+    { id: 'c17', top: '60%', left: '25%', size: 'w-12 h-12', img: CatIcon1, color: 'bg-[#73A6A2]', quote: "Run" },
+    { id: 'c18', top: '60%', left: '75%', size: 'w-12 h-12', img: CatIcon2, color: 'bg-[#EEE3C3] opacity-80', quote: "Jump" },
 ];
 
-// Positions for team members that adapt to screen size
+// Fixed positions for team members to ensure they are well spaced
 const teamPositions = [
-  {
-    top: { base: "10%", md: "15%" },
-    left: { base: "10%", md: "15%" },
-    size: "w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56",
-  }, // Calvin
-  {
-    top: { base: "10%", md: "15%" },
-    left: { base: "55%", md: "65%" },
-    size: "w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48",
-  }, // Ke Ying
-  {
-    top: { base: "50%", md: "55%" },
-    left: { base: "10%", md: "20%" },
-    size: "w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52",
-  }, // Pei Xuan
-  {
-    top: { base: "50%", md: "55%" },
-    left: { base: "55%", md: "65%" },
-    size: "w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56",
-  }, // Bao Sheng
+    { top: '25%', left: '15%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Calvin
+    { top: '25%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Ke Ying
+    { top: '60%', left: '20%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Pei Xuan
+    { top: '60%', left: '65%', size: 'w-48 h-48 md:w-56 md:h-56' }, // Bao Sheng
 ];
 
 const OurTeam = () => {
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
-  const [selectedQuote, setSelectedQuote] = useState<string | null>(null);
-  const [isExploding, setIsExploding] = useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
+    const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+    const [selectedQuote, setSelectedQuote] = useState<string | null>(null);
+    const [isExploding, setIsExploding] = useState(false);
 
-  const handleBoom = () => {
-    setIsExploding(true);
-    setTimeout(() => setIsExploding(false), 6000); // Stop rain after 6 seconds
-  };
+    const handleBoom = () => {
+        setIsExploding(true);
+        setTimeout(() => setIsExploding(false), 6000); // Stop rain after 6 seconds
+    };
 
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+    return (
+        <div className="min-h-screen bg-[#EEE3C3] relative overflow-hidden pt-16 font-sans">
+            {isExploding && <CatRain />}
 
-  return (
-    <div className="min-h-screen bg-mesh-gradient relative overflow-hidden pt-16 font-sans">
-      {isExploding && <CatRain />}
-      <SwimmingFish />
+            {/* Mobile Responsiveness Styles */}
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (max-width: 767px) {
+                    .bubbles-container {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        align-items: center !important;
+                        gap: 3rem !important;
+                        height: auto !important;
+                        padding-top: 10rem !important;
+                        padding-bottom: 5rem !important;
+                    }
+                    .team-bubble {
+                        position: relative !important;
+                        top: auto !important;
+                        left: auto !important;
+                        margin: 0 auto !important;
+                    }
+                    .filler-bubble {
+                        display: none !important;
+                    }
+                }
+            `}} />
 
-      {/* Header / Title */}
-      <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 w-full px-4 pointer-events-none">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-6xl font-extrabold text-[#865832] mb-2 drop-shadow-sm"
-        >
-          Our Team
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-[#A8754D] font-medium text-lg"
-        >
-          Click on a bubble to meet the team!
-        </motion.p>
-      </div>
+            {/* Header / Title */}
+            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 w-full px-4 pointer-events-none">
+                <motion.h1
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-4xl md:text-6xl font-extrabold text-[#865832] mb-2 drop-shadow-sm"
+                >
+                    Our Team
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="text-[#A8754D] font-medium text-lg"
+                >
+                    Click on a bubble to meet the team!
+                </motion.p>
+            </div>
 
-      {/* Bomb Button - Floating Fixed Position */}
-      <button
-        onClick={handleBoom}
-        className="fixed bottom-8 right-8 z-40 group inline-flex items-center justify-center w-16 h-16 bg-red-500 text-white rounded-full font-bold shadow-2xl hover:bg-red-600 transition-all active:scale-95 animate-shake cursor-pointer"
-        title="Don't click!"
-      >
-        <Bomb className="w-8 h-8" />
-        <span className="absolute -top-1 -right-1 flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-        </span>
-      </button>
-
-      {/* Bubbles Container */}
-      <div className="relative w-full h-[600px] sm:h-[800px] md:h-screen mx-auto max-w-7xl z-10">
-        {/* Filler Cat Bubbles */}
-        {fillerBubbles.map((bubble, idx) => (
-          <div
-            key={bubble.id}
-            onClick={() => setSelectedQuote(bubble.quote)}
-            className={`absolute rounded-full flex items-center justify-center overflow-hidden shadow-md animate-float cursor-pointer hover:scale-110 transition-transform duration-300 ${bubble.color} ${bubble.size}`}
-            style={{
-              top: bubble.top,
-              left: bubble.left,
-              animationDelay: `${idx * 1.5}s`,
-              animationDuration: `${4 + idx}s`,
-            }}
-          >
-            <img
-              src={bubble.img}
-              alt="Cat"
-              className="w-[70%] h-[70%] object-contain opacity-80"
-            />
-          </div>
-        ))}
-
-        {/* Team Member Bubbles */}
-        {members.map((member, index) => {
-          const pos = teamPositions[index];
-          const currentTop = isMobile ? pos.top.base : pos.top.md;
-          const currentLeft = isMobile ? pos.left.base : pos.left.md;
-
-          // Randomize animation slightly for team members too
-          const delay = index * 0.7;
-          const duration = 5 + index;
-
-          return (
-            <div
-              key={member.id}
-              onClick={() => setSelectedMember(member)}
-              className={`absolute rounded-full border-4 border-white shadow-xl hover:scale-110 hover:shadow-2xl hover:border-[#865032] cursor-pointer transition-all duration-300 z-20 overflow-hidden ${pos.size} group bg-white animate-float`}
-              style={{
-                top: currentTop,
-                left: currentLeft,
-                animationDelay: `${delay}s`,
-                animationDuration: `${duration}s`,
-              }}
+            {/* Bomb Button - Floating Fixed Position */}
+            <button
+                onClick={handleBoom}
+                className="fixed bottom-8 right-8 z-40 group inline-flex items-center justify-center w-16 h-16 bg-red-500 text-white rounded-full font-bold shadow-2xl hover:bg-red-600 transition-all active:scale-95 animate-shake cursor-pointer"
+                title="Don't click!"
             >
-              <img
-                src={member.image || CatLogo}
-                alt={member.name}
-                className="w-full h-full object-cover object-top"
-              />
-              {/* Hover Overlay Name */}
-              <div className="absolute inset-0 bg-[#865032]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-bold text-center px-2">
-                  {member.name}
+                <Bomb className="w-8 h-8" />
+                <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                 </span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Modal - Team Member Details */}
-      {selectedMember && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-2xl w-full shadow-2xl relative overflow-hidden animate-slide-up">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedMember(null)}
-              className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors z-10"
-            >
-              <X className="w-6 h-6 text-gray-600" />
             </button>
 
-            <div className="flex flex-col md:flex-row">
-              {/* Left Side: Image */}
-              <div className="md:w-2/5 h-64 md:h-auto bg-[#C5A978] relative">
-                <img
-                  src={selectedMember.image || CatLogo}
-                  alt={selectedMember.name}
-                  className="w-full h-full object-cover object-top"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-4">
-                  <div className="text-white font-bold flex items-center gap-2">
-                    <selectedMember.icon className="w-5 h-5" />
-                    <span>{selectedMember.role.split("&")[0].trim()}</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* Right Side: Content */}
-              <div className="md:w-3/5 p-8">
-                <h2 className="text-2xl md:text-3xl font-extrabold text-[#865032] mb-2">
-                  {selectedMember.name}
-                </h2>
-                <h3 className="text-[#0E5851] font-bold mb-4 flex items-center">
-                  <Briefcase className="w-4 h-4 mr-2" />
-                  {selectedMember.role}
-                </h3>
+            {/* Bubbles Container */}
+            <div className="bubbles-container relative w-full h-[800px] md:h-screen mx-auto max-w-7xl md:block">
 
-                <div className="prose prose-sm text-[#A8754D] mb-6">
-                  <p className="leading-relaxed">{selectedMember.bio}</p>
-                </div>
+                {/* Filler Cat Bubbles */}
+                {fillerBubbles.map((bubble, idx) => (
+                    <div
+                        key={bubble.id}
+                        onClick={() => setSelectedQuote(bubble.quote)}
+                        className={`filler-bubble absolute rounded-full flex items-center justify-center overflow-hidden shadow-md animate-float cursor-pointer hover:scale-110 transition-transform duration-300 ${bubble.color} ${bubble.size}`}
+                        style={{
+                            top: bubble.top,
+                            left: bubble.left,
+                            animationDelay: `${idx * 1.5}s`,
+                            animationDuration: `${4 + idx}s`
+                        }}
+                    >
+                        <img src={bubble.img} alt="Cat" className="w-[70%] h-[70%] object-contain opacity-80" />
+                    </div>
+                ))}
 
-                <div className="bg-[#EEE3C3]/30 rounded-xl p-4 border border-[#EEE3C3]">
-                  <h4 className="text-[#865032] font-bold text-sm uppercase tracking-wider mb-3 flex items-center">
-                    <PawPrint className="w-4 h-4 mr-2" />
-                    Responsibilities
-                  </h4>
-                  <ul className="space-y-2">
-                    {selectedMember.responsibilities.map((resp, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start text-sm text-[#5d4037]"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#73A6A2] mr-2 mt-1.5 shrink-0"></span>
-                        {resp}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                {/* Team Member Bubbles */}
+                {members.map((member, index) => {
+                    const pos = teamPositions[index];
+                    // Randomize animation slightly for team members too
+                    const delay = index * 0.7;
+                    const duration = 5 + index;
+
+                    return (
+                        <div
+                            key={member.id}
+                            onClick={() => setSelectedMember(member)}
+                            className={`team-bubble absolute rounded-full border-4 border-white shadow-xl hover:scale-110 hover:shadow-2xl hover:border-[#865032] cursor-pointer transition-all duration-300 z-20 overflow-hidden ${pos.size} group bg-white animate-float`}
+                            style={{
+                                top: pos.top,
+                                left: pos.left,
+                                animationDelay: `${delay}s`,
+                                animationDuration: `${duration}s`
+                            }}
+                        >
+                            <img
+                                src={member.image || CatLogo}
+                                alt={member.name}
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: 'center 10%' }}
+                            />
+                            {/* Hover Overlay Name */}
+                            <div className="absolute inset-0 bg-[#865032]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span className="text-white font-bold text-center px-2">{member.name}</span>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-          </div>
+
+            {/* Modal - Team Member Details */}
+            {selectedMember && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto"
+                    onClick={() => setSelectedMember(null)}
+                >
+                    <div
+                        className="bg-white rounded-3xl max-w-2xl w-full shadow-2xl relative overflow-hidden animate-slide-up my-auto max-h-[90vh] flex flex-col"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setSelectedMember(null)}
+                            className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors z-30 shadow-lg border border-gray-100"
+                        >
+                            <X className="w-5 h-5 md:w-6 md:h-6 text-gray-800" />
+                        </button>
+
+                        <div className="overflow-y-auto custom-scrollbar">
+                            <div className="flex flex-col md:flex-row">
+                                <div className="md:w-2/5 aspect-square md:aspect-auto md:h-auto bg-[#C5A978] relative shrink-0">
+                                    <img
+                                        src={selectedMember.image || CatLogo}
+                                        alt={selectedMember.name}
+                                        className="w-full h-full object-cover"
+                                        style={{ objectPosition: 'center 10%' }}
+                                    />
+                                    <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-4">
+                                        <div className="text-white font-bold flex items-center gap-2">
+                                            {React.createElement(selectedMember.icon, { className: "w-5 h-5" })}
+                                            <span>{selectedMember.role.split('&')[0].trim()}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Right Side: Content */}
+                                <div className="md:w-3/5 p-6 md:p-8">
+                                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#865032] mb-2">{selectedMember.name}</h2>
+                                    <h3 className="text-[#0E5851] font-bold mb-4 flex items-center">
+                                        <Briefcase className="w-4 h-4 mr-2" />
+                                        {selectedMember.role}
+                                    </h3>
+
+                                    <div className="prose prose-sm text-[#A8754D] mb-6">
+                                        <p className="leading-relaxed">{selectedMember.bio}</p>
+                                    </div>
+
+                                    <div className="bg-[#EEE3C3]/30 rounded-xl p-4 border border-[#EEE3C3]">
+                                        <h4 className="text-[#865032] font-bold text-sm uppercase tracking-wider mb-3 flex items-center">
+                                            <PawPrint className="w-4 h-4 mr-2" />
+                                            Responsibilities
+                                        </h4>
+                                        <ul className="space-y-2">
+                                            {selectedMember.responsibilities.map((resp, idx) => (
+                                                <li key={idx} className="flex items-start text-sm text-[#5d4037]">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-[#73A6A2] mr-2 mt-1.5 shrink-0"></span>
+                                                    {resp}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal - Quote Pop-up */}
+            {selectedQuote && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+                    <div className="bg-white rounded-3xl max-w-sm w-full shadow-2xl relative overflow-hidden animate-slide-up p-8 text-center border-4 border-[#C5A978]">
+                        <button
+                            onClick={() => setSelectedQuote(null)}
+                            className="absolute top-2 right-2 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        >
+                            <X className="w-6 h-6" />
+                        </button>
+
+                        <div className="mb-6 flex justify-center">
+                            <div className="w-20 h-20 bg-[#EEE3C3] rounded-full flex items-center justify-center">
+                                <PawPrint className="w-10 h-10 text-[#865032]" />
+                            </div>
+                        </div>
+
+                        <h3 className="text-2xl font-black text-[#865032] mb-4">
+                            "{selectedQuote}"
+                        </h3>
+
+                        <p className="text-[#A8754D] font-medium text-sm">
+                            - Wisdom from Meowieeee
+                        </p>
+
+                        <button
+                            onClick={() => setSelectedQuote(null)}
+                            className="mt-6 bg-[#0E5851] text-[#EEE3C3] px-6 py-2 rounded-full font-bold hover:bg-[#73A6A2] transition-colors"
+                        >
+                            Purr-fect!
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
-      )}
-
-      {/* Modal - Quote Pop-up */}
-      {selectedQuote && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-sm w-full shadow-2xl relative overflow-hidden animate-slide-up p-8 text-center border-4 border-[#C5A978]">
-            <button
-              onClick={() => setSelectedQuote(null)}
-              className="absolute top-2 right-2 p-2 text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            <div className="mb-6 flex justify-center">
-              <div className="w-20 h-20 bg-[#EEE3C3] rounded-full flex items-center justify-center">
-                <PawPrint className="w-10 h-10 text-[#865032]" />
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-black text-[#865032] mb-4">
-              "{selectedQuote}"
-            </h3>
-
-            <p className="text-[#A8754D] font-medium text-sm">
-              - Wisdom from Meowieeee
-            </p>
-
-            <button
-              onClick={() => setSelectedQuote(null)}
-              className="mt-6 bg-[#0E5851] text-[#EEE3C3] px-6 py-2 rounded-full font-bold hover:bg-[#73A6A2] transition-colors"
-            >
-              Purr-fect!
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default OurTeam;
