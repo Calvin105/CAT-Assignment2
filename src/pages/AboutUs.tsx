@@ -1,5 +1,5 @@
-import { motion, useTransform, useMotionValue } from 'framer-motion';
-import { MousePointer2, Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
 import meowieeeeVideo from '../assets/Meowieeee.mp4';
 
 const AboutUs = () => {
@@ -12,91 +12,6 @@ const AboutUs = () => {
             <MissionSection />
         </div>
     );
-};
-
-// --- Hero Section: Kinetic Typography ---
-const HeroSection = () => {
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
-        mouseX.set(clientX / innerWidth);
-        mouseY.set(clientY / innerHeight);
-    };
-
-    return (
-        <section
-            onMouseMove={handleMouseMove}
-            className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
-        >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(134,88,50,0.05),transparent_50%)]" />
-
-            {/* Floating Elements that react to mouse */}
-            <FloatingShape mouseX={mouseX} mouseY={mouseY} speed={2} className="top-1/4 left-1/4 w-64 h-64 bg-[#C5A978]/20 rounded-full blur-3xl" />
-            <FloatingShape mouseX={mouseX} mouseY={mouseY} speed={-2} className="bottom-1/4 right-1/4 w-96 h-96 bg-[#0E5851]/10 rounded-full blur-3xl" />
-
-            <div className="relative z-10 text-center px-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-6 inline-flex items-center px-3 py-1 rounded-full border border-[#865832]/30 bg-[#865832]/10 text-[#865832] text-xs font-medium uppercase tracking-wider"
-                >
-                    <span className="w-2 h-2 rounded-full bg-[#865832] mr-2 animate-pulse" />
-                    Est. 2025
-                </motion.div>
-
-                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-[#865832] to-[#A8754D] mb-8 leading-tight">
-                    <KineticText text="MEOW" delay={0} />
-                    <KineticText text="IEEE" delay={0.2} />
-                </h1>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="text-2xl md:text-4xl font-light text-[#865832]/80 max-w-4xl mx-auto"
-                >
-                    Be <span className="text-[#0E5851] font-medium">pawsitive</span>, it’s <span className="text-[#A8754D] font-medium">pawsible</span>.
-                </motion.p>
-            </div>
-
-            <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[#865832]/50"
-            >
-                <MousePointer2 className="w-6 h-6" />
-            </motion.div>
-        </section>
-    );
-};
-
-const KineticText = ({ text, delay }: { text: string, delay: number }) => {
-    return (
-        <span className="inline-block hover:scale-110 transition-transform duration-300 cursor-default">
-            {text.split('').map((char, i) => (
-                <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: delay + i * 0.05, type: "spring", stiffness: 100 }}
-                    className="inline-block hover:text-[#0E5851] transition-colors duration-200"
-                    whileHover={{ y: -20, rotate: Math.random() * 10 - 5 }}
-                >
-                    {char}
-                </motion.span>
-            ))}
-        </span>
-    );
-};
-
-const FloatingShape = ({ mouseX, mouseY, speed, className }: any) => {
-    const x = useTransform(mouseX, [0, 1], [-20 * speed, 20 * speed]);
-    const y = useTransform(mouseY, [0, 1], [-20 * speed, 20 * speed]);
-    return <motion.div style={{ x, y }} className={`absolute ${className}`} />;
 };
 
 // --- Our Approach Section ---
