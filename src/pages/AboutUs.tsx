@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Code2, Palette, Globe2, Lightbulb, Users, Zap, Target, Heart } from 'lucide-react';
-import meowieeeeVideo from '../assets/Meowieeee.mp4';
 
 const AboutUs = () => {
     return (
@@ -209,7 +208,7 @@ const VideoShowcaseSection = () => {
                     className="w-full h-full object-cover"
                     poster="" // Optional: Add a poster image if available
                 >
-                    <source src={meowieeeeVideo} type="video/mp4" />
+                    <source src="Meowieeee.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </motion.div>
