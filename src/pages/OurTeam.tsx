@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Briefcase, PawPrint, Cpu, Palette, BookOpen, Crown, X, Bomb } from 'lucide-react';
 import CalvinImg from '../assets/CALVIN.jpg';
-import KeYingImg from '../assets/KeYing-pic.jpg';
+import KeYingImg from '../assets/KeYing-pic.JPG';
 import PeiXuanImg from '../assets/PeiXuan.JPG';
 import BaoShengImg from '../assets/BaoSheng.jpeg';
 import CatLogo from '../assets/Meowieeee logo transparent bg.png';
